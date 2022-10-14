@@ -1,18 +1,50 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import s from "./styles/Navbar.module.css";
 import cart from "../assets/img/shopping-cart.png";
 import heart from "../assets/img/heart.png";
 import user from "../assets/img/user.png";
 
 function Navbar(props) {
+
+  const [activeSB, setActiveSB] = useState(!true)
+
+  const searchBarHandle = (e) => {
+    e.preventDefault(e);
+    console.log('handled');
+    setActiveSB(!activeSB)
+  }
+
+
   return (
+    <>
+
+
     <div className={s.container}>
-      <div className={s.logo}>
-        <h3>drinks.</h3>
+            <div className={s.categories}>
+        <div className={s.catBtn}>
+        <NavLink to='/wine' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
+        Wine
+        </NavLink>
+        </div >
+        <div className={s.catBtn}>
+        <NavLink to='/beer' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
+        Beer
+        </NavLink>
+        </div >
+        <div className={s.catBtn}>
+        <NavLink to='/spirits' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
+        Spirits
+        </NavLink>
+        </div>
+
       </div>
 
-      <ul className={s.body}>
+
+      <ul className={s.bodyLinks}>
+
+      
         <li className={s.btnBoxSize}>
           <NavLink
             to="/home"
@@ -72,7 +104,14 @@ function Navbar(props) {
         </NavLink>
         </div>
       </div>
+      <div className={ setActiveSB ? `${s.searchBar}` : `${s.activeSearchBar}`}>
+            <input onClick={(e) => searchBarHandle(e)} className={s.searchInput} placeholder='Search' />
+      </div>
     </div>
+    <div className={s.logo}>
+    <h3>drinks.</h3>
+  </div>
+    </>
   );
 }
 
