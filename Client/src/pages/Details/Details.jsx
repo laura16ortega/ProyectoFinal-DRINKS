@@ -26,11 +26,22 @@ function Details(props) {
           <h1>Liquor Exampler 1973</h1>
         </div>
         </div>
+        
         <div className={s.options}>
           <div>
             <p>149,95 €</p>
           </div>
-          <div className={s.rating}>x x x x x</div>
+          <div className={s.rating}>
+          ★★★★☆ 4/5
+          </div>
+          <div className={s.addAmount}>
+            <button className={s.btnPlusMinus}>+</button>
+            <input className={s.amountInput} type='number'/>
+            <button className={s.btnPlusMinus}>-</button>
+          </div>
+          <div className={s.addToCart}>
+            <button className={s.add}>Add to cart.</button>
+          </div>
         </div>
       
     </div>

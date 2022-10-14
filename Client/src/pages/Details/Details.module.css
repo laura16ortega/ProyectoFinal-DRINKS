@@ -1,12 +1,11 @@
 .container {
-    margin-top: 0rem;
+    margin-top: -10rem;
 }
 
 .body {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     width: 100%;
+    margin-right: 35rem;
 }
 .img {
     height: 37.5rem;
@@ -27,11 +26,34 @@
 .options {
     display: flex;
     flex-direction: column;
-    justify-content: right;
-    position: absolute;
+    justify-content: left;
     margin-top: -34.5rem;
-    margin-left: 37.9rem;
+    margin-left: 3.1rem;
     font-family: Helvetica;
     color:rgb(35, 35, 35);
     font-size: 2rem;
+}
+.rating {
+    margin-left: 3.8rem;
+}
+
+.addAmount {
+    margin-left: 4rem;
+    margin-top: 5rem;
+}
+.btnPlusMinus {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+}
+.amountInput {
+    width: 4rem;
+    height: 2rem;
+    margin: 0.7rem 0.7rem;
+}
+
+.add {
+    height: 3rem;
+    width: 35rem;
+    margin-left: 27rem;
+    padding-bottom: 3.3rem;
 }

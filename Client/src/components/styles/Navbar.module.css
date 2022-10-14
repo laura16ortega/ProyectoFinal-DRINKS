@@ -9,7 +9,7 @@
     font-size: 18px;
     font-family: manrope-regular;
     font-weight: bold;
-    left:12rem;
+    left:17.9rem;
     top:-0.6rem;
     transition: 0.3s;
 }
@@ -35,7 +35,7 @@
     flex-direction: row;
     margin: 0 auto;
     position: absolute;
-    justify-content: center;
+    justify-content: right;
     height: 3rem;
     padding-bottom: 1.1rem;
     top: -1.6rem;
@@ -44,6 +44,7 @@
     font-size:2.3rem;
     transition: 0.3s;
     user-select: none;
+    
   
 }
 .logo:hover {
@@ -62,7 +63,7 @@
 /*white box background for nav buttons*/
 .bodyContainer {
     background-color: rgb(255, 255, 255);
-    height: 6.5rem;
+    height: 5.7rem;
     margin-top: -6.5rem;
     top: 1rem;
     box-shadow: 0px 1px 6px 0px #b1b1b1;
@@ -75,7 +76,7 @@
     position: sticky; /* DELETE*/
     padding-top: 2rem;
     font-weight: lighter; 
-    margin-left: -64.5rem;
+    margin-left: -53rem;
 }
 
 .activeBtn {
@@ -91,12 +92,11 @@
 .btn {
     color:rgb(46, 46, 46);
     text-decoration: none;
-    width: 20rem;
-    height: 20rem;
     font-size: 20px;
     font-family: Helvetica;
     font-weight: bolder;
     user-select: none;
+
 }
 .btn:hover {
     color: rgb(0, 0, 0);
