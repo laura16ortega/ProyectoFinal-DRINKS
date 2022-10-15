@@ -1,0 +1,11 @@
+.container input {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.container button {
+    font-size: 13px;
+    background-color: rgb(28,172,177);
+    padding: 5px;
+    margin: 5px;
+}
