@@ -2,7 +2,7 @@ import {
    GET_PRODUCTS,
    PRICE_FILTER,
    CATEGORY_FILTER,
-   PRICE_SORT,
+   SORTING,
 } from "../actions"
 
 const initialState = {
@@ -31,14 +31,27 @@ const rootReducer = (state = initialState, action) => {
             products: state.productsBackup.filter(e => e.price <= action.payload)
          }
       
-      case PRICE_SORT:
+      case SORTING:
          const allProducts = state.products.filter(e => e.price)
          const sortedPrice = allProducts.sort((a, b) => {
-            if (action.payload === "asc") {
+            if (action.payload === "OrderByPriceASC") {
                return a.price - b.price
             }
-            if (action.payload === "desc") {
+            if (action.payload === "OrderByPriceDESC") {
                return b.price - a.price
+            }
+            if (action.payload === "OrderByNameASC") {
+               if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+               if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+               return 0
+            }
+            if (action.payload === "OrderByNameDESC") {
+               if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
+               if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
+               return 0
+            }
+            if (action.payload === "OrderByReviewRateDESC") {
+               return b.rating - a.rating
             }
             return true
          })

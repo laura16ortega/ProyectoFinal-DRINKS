@@ -5,7 +5,7 @@ import { getProducts } from '../../redux/actions'
 import Filters from '../Filters/Filters'
 import Pagination from '../Pagination/Pagination'
 import fakeJSON from '../../assets/fakeJson'
-import { PriceOrder } from '../Filters/Filters'
+import Sorting from '../Sorting/Sorting'
 import s from "./Home.module.css"
 
 const Home = () => {
@@ -23,7 +23,7 @@ const Home = () => {
             <div style={{ display: "flex" }}>
                 <Filters />
                 <div className={s.rightContainer}>
-                    <PriceOrder/>
+                    <Sorting/>
                     <Pagination allProducts={allProducts} loaded={loaded} />
                 </div>
             </div>

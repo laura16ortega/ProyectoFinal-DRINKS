@@ -3,31 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import fakeJSON from '../../assets/fakeJson'
 import s from "./Filters.module.css"
-import { categoryFilter, getProducts, priceFilter, priceSort } from '../../redux/actions'
-
-export const PriceOrder = () => {
-
-   const dispatch = useDispatch()
-
-   //sort de precio
-   const handlePriceSort = (e) => {
-      e.preventDefault()
-      dispatch(priceSort(e.target.value))
-      //set page 1
-   }
-
-
-   return (
-      <div className={s.priceSort}>
-         <label>Price order: </label>
-         <select onChange={e => handlePriceSort(e)}>
-            <option disabled>Price</option>
-            <option value="asc">ASC</option>
-            <option value="desc">DESC</option>
-         </select>
-      </div>
-   )
-}
+import { categoryFilter, getProducts, priceFilter } from '../../redux/actions'
 
 const Filters = () => {
 
@@ -74,7 +50,8 @@ const Filters = () => {
 
    return (
       <div className={s.filterContainer}>
-
+         <h1>FILTERS</h1>
+         
          <div className={s.categoriesFilter}>
             <h4>Categories</h4>
             <select onChange={handleCategory}>

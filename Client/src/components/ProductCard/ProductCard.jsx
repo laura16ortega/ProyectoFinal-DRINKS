@@ -1,17 +1,39 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import s from "./ProductCard.module.css"
 
-const ProductCard = ({ name, image, price, category }) => {
+const ProductCard = ({ id, name, image, price, category, numReviews, rating }) => {
    return (
-      <div className={s.container}> {/* style={{ margin: "10px 25px", backgroundColor: "rebeccapurple" }} */}
-            <div className={s.imgContainer}>
-               <img src={image} alt={name} style={{ width: "250px", height: "250px" }} />
+      <div className={s.container}>
+         <Link to={`/details/${id}`}>
+            <div className={s.contents}>
+               <div className={s.imgContainer}>
+                  <img src={image} alt={name} style={{ width: "340px", height: "230px" }} />
+               </div>
+               <div className={s.category}>{category}</div>
+               <div className={s.data}>
+                  <h2>{name}</h2>
+                  <div className={s.reviews}>
+                     {/* Update to star component */}
+                     <div className={s.stars}>
+                        <span className={s.blackStars} style={{ color: "#333" }}>☆☆☆☆☆</span>
+                        <span className={s.rated} style={{ color: "#ffb400" }}>
+                           {[...Array(rating)].map((n, i) => {
+                              return (
+                                 <span key={i} style={{ color: "#ffb400" }}>
+                                    ★
+                                 </span>
+                              )
+                           })
+                           }
+                        </span>
+                     </div>
+                     <span className={s.reviewers}>{`${numReviews} reviews`}</span>
+                  </div>
+                  <h3>{`$${price}`}</h3>
+               </div>
             </div>
-            <div className={s.data}>
-               <h2>{name}</h2>
-               <h3>Category: {category}</h3>
-               <h3 className={s.price}>${price}</h3>
-            </div>
+         </Link>
       </div>
    )
 }

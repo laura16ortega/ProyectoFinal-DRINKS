@@ -1,49 +1,73 @@
 .container {
-    position: relative;
-    width: 30%;
-    max-width: 100%;
-    text-align: center;
-    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.contents {
+    padding-bottom: 15px;
 }
 
 .imgContainer {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    min-height: 50px;
-    padding-bottom: 10px;
+    
 }
 
 .imgContainer img {
-    width:300px;
-    height:300px;
+    width:100%;
+    height: auto;
     object-fit: cover;
-    overflow: hidden;
+    border: 1px solid #C4C4C4;
+}
+
+.category {
+    display: none;
+    color: #777;
 }
 
 .data {
-    padding: 3px 0;
-    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: .4rem;
+    flex-wrap: wrap;
+    color: black;
+    position: relative;
+    pointer-events: none;
 }
 
 .data h2 {
-    margin: 5px 0;
+    margin: .3rem 0;
     font-size: 1rem;
-    font-weight: 700;
-    color: #000;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-}
-
-.price {
-    color: #777
 }
 
 .data h3 {
-    margin: 5px 0;
-    font-size: .9;
+    font-size: large;
+    margin: .3rem 0;
+}
+
+.reviews {
+    position: relative;
+    padding: .3rem 0;
+    display: flex;
+}
+
+.stars {
+    font-size: 1.3rem;
+}
+
+.blackStars { 
+    left: 0;
+}
+
+.rated {
+    position: absolute;
+    left: 0;
+}
+
+.reviewers {
+    padding-left: .6rem;
+    font-weight: bold;
+    font-size: .9rem;
+    color: #777;
 }
