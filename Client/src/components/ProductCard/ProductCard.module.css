@@ -1,0 +1,49 @@
+.container {
+    position: relative;
+    width: 30%;
+    max-width: 100%;
+    text-align: center;
+    color: black;
+}
+
+.imgContainer {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    min-height: 50px;
+    padding-bottom: 10px;
+}
+
+.imgContainer img {
+    width:300px;
+    height:300px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.data {
+    padding: 3px 0;
+    padding-bottom: 2rem;
+}
+
+.data h2 {
+    margin: 5px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+.price {
+    color: #777
+}
+
+.data h3 {
+    margin: 5px 0;
+    font-size: .9;
+}
