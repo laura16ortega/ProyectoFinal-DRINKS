@@ -1,0 +1,154 @@
+
+.categories{
+    display: flex;
+    flex-direction: row;
+    width: 15rem;
+    justify-content: space-between;
+    position: absolute;
+    color: black;
+    font-size: 18px;
+    font-family: manrope-regular;
+    font-weight: bold;
+    left:17.9rem;
+    top:-0.6rem;
+    transition: 0.3s;
+}
+
+.activeCategory {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: rgb(42, 42, 42);
+    color: white;
+}
+.activeCategory:hover {
+    transform: skew(-15deg);
+
+}
+.catBtn{
+    color: rgb(46, 46, 46);
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+.catBtn:hover {
+    background-color: rgb(187, 187, 187);
+}
+.logo {
+    display: inline-flex;
+    flex-direction: row;
+    margin: 0 auto;
+    position: absolute;
+    justify-content: right;
+    height: 3rem;
+    padding-bottom: 1.1rem;
+    top: -1.6rem;
+    color: rgb(36, 36, 36);
+    font-family: oktaneue-regular;
+    font-size:2.3rem;
+    transition: 0.3s;
+    user-select: none;
+    
+  
+}
+.logo:hover {
+    transform: skew(-15deg);
+    color: rgb(255, 115, 0);
+    height: 2.5rem;
+}
+.container {
+    width: 100%;
+    
+    position: absolute;
+    top: 1rem;
+    left:0;
+}
+
+/*white box background for nav buttons*/
+.bodyContainer {
+    background-color: rgb(255, 255, 255);
+    height: 5.7rem;
+    margin-top: -6.5rem;
+    top: 1rem;
+    box-shadow: 0px 1px 6px 0px #b1b1b1;
+}
+
+/* buttons */
+.bodyLinks {
+    display: inline-flex;
+    width: 35%;
+    position: sticky; /* DELETE*/
+    padding-top: 2rem;
+    font-weight: lighter; 
+    margin-left: -53rem;
+}
+
+.activeBtn {
+    color:rgb(184, 94, 94);
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+.activeBtn:hover {
+    color: rgb(0, 0, 0);
+}
+
+.btn {
+    color:rgb(46, 46, 46);
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Helvetica;
+    font-weight: bolder;
+    user-select: none;
+
+}
+.btn:hover {
+    color: rgb(0, 0, 0);
+}
+ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+  }
+.btnBoxSize {
+    transition: 0.3s;
+}
+.btnBoxSize:hover {
+    transform: skew(-10deg);
+}
+.userBtnBody {
+    display: flex;
+    flex-direction: row;
+    top:-0.5rem;
+    right:0;
+    justify-content: space-between;
+    width: 11rem;
+    height: 3rem;
+    margin-right: 15rem;
+    position: absolute;
+    user-select: none;
+}
+.userBtn {
+    height: 2.8rem;
+    transition: 0.3s;
+}
+.userBtn:hover {
+    height: 3.3rem;
+}
+.searchBar {
+    display: inline-flex;
+    position: absolute;
+    margin-top: -2rem;
+    margin-left: 30.5rem;
+}
+.searchInput {
+    background-color: #e6e4e4;
+    color: #b1b1b1;
+    text-indent: 0.3rem;
+    font-family: Helvetica;
+    font-size: 20px;
+    border-style: none;
+    border: none;
+    border-color: none;
+
+}
+.activeSearchBar {
+
+background-color: red;
+}
