@@ -42,6 +42,9 @@ function Details(props) {
           <div className={s.addToCart}>
             <button className={s.add}>Add to cart.</button>
           </div>
+          <div className={s.reviews}>
+            Reviews
+          </div>
         </div>
       
     </div>
