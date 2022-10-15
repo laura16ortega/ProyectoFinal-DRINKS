@@ -3,7 +3,6 @@ export const PRICE_FILTER = "PRICE_FILTER"
 export const CATEGORY_FILTER = "CATEGORY_FILTER"
 export const NAME_SORT = "NAME_SORT"
 export const SORTING = "SORTING"
-//stock posiblemente no deberia ser sorteado ni filtrado, solo es una muestra
 
 //placeholder
 export const getProducts = (payload) => {

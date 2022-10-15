@@ -10,7 +10,6 @@ export const Sorting = () => {
     const handleSort = (e) => {
        e.preventDefault()
        dispatch(sorting(e.target.value))
-       //set page 1
     }
  
  

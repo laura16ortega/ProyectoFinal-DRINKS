@@ -51,7 +51,7 @@ const Filters = () => {
    return (
       <div className={s.filterContainer}>
          <h1>FILTERS</h1>
-         
+
          <div className={s.categoriesFilter}>
             <h4>Categories</h4>
             <select onChange={handleCategory}>
@@ -77,44 +77,3 @@ const Filters = () => {
 }
 
 export default Filters
-
-
-/*
-
-   //precio con inputs
-   const [price, setPrice] = useState({
-      minPrice: "",
-      maxPrice: ""
-   })
-
-   const handlePrice = (e) => {
-      setPrice({
-         ...price,
-         [e.target.name]: e.target.value
-      })
-   }
-
-   const searchPrice = (e) => {
-      e.preventDefault()
-      dispatch(priceFilter(Number(price.minPrice), Number(price.maxPrice)))
-      setPrice({
-         minPrice: "",
-         maxPrice: ""
-      })
-      //setPage to 1
-   }
-
-   <div className='price range'>
-      <div className='field'>
-         <span>Min</span>
-         <input name="minPrice" type="number" value={price.minPrice} onChange={e => handlePrice(e)} />
-      </div>
-      <div>-</div>
-      <div>
-         <span>Max</span>
-         <input name="maxPrice" type="number" value={price.maxPrice} onChange={e => handlePrice(e)} />
-      </div>
-      <button onClick={e => searchPrice(e)}>{">"}</button>
-   </div>
-
-*/
