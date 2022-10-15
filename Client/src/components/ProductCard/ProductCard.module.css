@@ -1,0 +1,69 @@
+.container {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.contents {
+    padding-bottom: 15px;
+}
+
+.imgContainer img {
+    width:100%;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid #C4C4C4;
+}
+
+.category {
+    display: none;
+    color: #777;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: .4rem;
+    flex-wrap: wrap;
+    color: black;
+    position: relative;
+    pointer-events: none;
+}
+
+.data h2 {
+    margin: .3rem 0;
+    font-size: 1rem;
+}
+
+.data h3 {
+    font-size: large;
+    margin: .3rem 0;
+}
+
+.reviews {
+    position: relative;
+    padding: .3rem 0;
+    display: flex;
+}
+
+.stars {
+    font-size: 1.3rem;
+}
+
+.blackStars { 
+    left: 0;
+}
+
+.rated {
+    position: absolute;
+    left: 0;
+}
+
+.reviewers {
+    padding-left: .6rem;
+    font-weight: bold;
+    font-size: .9rem;
+    color: #777;
+}
