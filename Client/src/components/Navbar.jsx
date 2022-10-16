@@ -32,9 +32,9 @@ function Navbar(props) {
    
 
    return (
-      <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar2}`}>
-         <div style={{ display: "flex", justifyContent: "space-evenly", padding: ".3rem 0" }}>
-            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "15rem", justifyContent: "space-between", fontSize: "18px", fontFamily: "manrope-regular", fontWeight: "bold", transition: "0.3s" }}>
+      <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar}`}>
+         <div className={s.topContents}>
+            <div className={s.categories}>
                <div className={s.catBtn}>
                   <NavLink to='/wine' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
                      Wine
@@ -72,7 +72,7 @@ function Navbar(props) {
                </div>
             </div>
          </div>
-         <div style={{ display: "flex", padding: "0 4rem", paddingRight: "1rem", justifyContent: "space-between", alignItems: "center" }}>
+         <div className={s.bottomContents}>
             <ul className={s.bodyLinks}>
                <li className={s.btnBoxSize}>
                   <NavLink to="/home" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
