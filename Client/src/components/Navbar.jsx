@@ -22,11 +22,19 @@ function Navbar(props) {
    }
    */
 
+   /*
+    background-color: rgb(255, 255, 255);
+    height: 5.7rem;
+    margin-top: -6.5rem;
+    top: 1rem;
+    box-shadow: 0px 1px 6px 0px #b1b1b1;
+   */
+   
 
    return (
-      <>
-         <div className={s.container}>
-            <div className={s.categories}>
+      <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar2}`}>
+         <div style={{ display: "flex", justifyContent: "space-evenly", padding: ".3rem 0" }}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "15rem", justifyContent: "space-between", fontSize: "18px", fontFamily: "manrope-regular", fontWeight: "bold", transition: "0.3s" }}>
                <div className={s.catBtn}>
                   <NavLink to='/wine' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
                      Wine
@@ -42,55 +50,10 @@ function Navbar(props) {
                      Spirits
                   </NavLink>
                </div>
-
             </div>
-
-
-            <ul className={s.bodyLinks}>
-
-
-               <li className={s.btnBoxSize}>
-                  <NavLink
-                     to="/home"
-                     className={({ isActive }) =>
-                        isActive ? `${s.activeBtn}` : `${s.btn}`
-                     }
-                  >
-                     home.
-                  </NavLink>
-               </li>
-               <li className={s.btnBoxSize}>
-                  <NavLink
-                     to="/products"
-                     className={({ isActive }) =>
-                        isActive ? `${s.activeBtn}` : `${s.btn}`
-                     }
-                  >
-                     products.
-                  </NavLink>
-               </li>
-               <li className={s.btnBoxSize}>
-                  <NavLink
-                     to="/about"
-                     className={({ isActive }) =>
-                        isActive ? `${s.activeBtn}` : `${s.btn}`
-                     }
-                  >
-                     about us.
-                  </NavLink>
-               </li>
-               <li className={s.btnBoxSize}>
-                  <NavLink
-                     to="/profile"
-                     className={({ isActive }) =>
-                        isActive ? `${s.activeBtn}` : `${s.btn}`
-                     }
-                  >
-                     my profile.
-                  </NavLink>
-               </li>
-            </ul>
-            <div className={s.bodyContainer}></div>
+            <div className={s.logo}>
+               <h3>drinks.</h3>
+            </div>
             <div className={s.userBtnBody}>
                <div>
                   <NavLink to='/profile'>
@@ -108,14 +71,35 @@ function Navbar(props) {
                   </NavLink>
                </div>
             </div>
+         </div>
+         <div style={{ display: "flex", padding: "0 4rem", paddingRight: "1rem", justifyContent: "space-between", alignItems: "center" }}>
+            <ul className={s.bodyLinks}>
+               <li className={s.btnBoxSize}>
+                  <NavLink to="/home" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
+                     home.
+                  </NavLink>
+               </li>
+               <li className={s.btnBoxSize}>
+                  <NavLink to="/products" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
+                     products.
+                  </NavLink>
+               </li>
+               <li className={s.btnBoxSize}>
+                  <NavLink to="/about" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`} >
+                     about us.
+                  </NavLink>
+               </li>
+               <li className={s.btnBoxSize}>
+                  <NavLink to="/profile" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
+                     my profile.
+                  </NavLink>
+               </li>
+            </ul>
             <div className={/*setActiveSB ?*/ `${s.searchBar}` /*: `${s.activeSearchBar}`*/}>
-               <SearchBar/>
+               <SearchBar />
             </div>
          </div>
-         <div className={s.logo}>
-            <h3>drinks.</h3>
-         </div>
-      </>
+      </div>
    );
 }
 

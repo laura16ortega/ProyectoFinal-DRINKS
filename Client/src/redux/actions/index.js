@@ -24,7 +24,7 @@ export const getProducts = (payload) => {
 export const getProducts = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get("http://localhost:3001/RutaDeProductos")
+            const { data } = await axios.get("http://localhost:3001/api/products")
             return dispatch({type: GET_PRODUCTS, payload: data})
         } catch (e) {
             console.log("Reducer products error", e)
@@ -47,7 +47,7 @@ export const getProductDetails = (id) => {
 export const getProductDetails = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get("http://localhost:3001/RutaDeDetalles/id")
+            const { data } = await axios.get(`http://localhost:3001/api/products/${id}`)
             return dispatch({type: GET_PRODUCT_DETAILS, payload: data})
         } catch (e) {
             console.log("Reducer products DETAIL error", e)
@@ -88,10 +88,10 @@ export const productSearch = (payload) => {
 }
 
 /*
-export const productSearch = () => {
+export const productSearch = (name) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get("http://localhost:3001/RutaDelSearch")
+            const { data } = await axios.get(`http://localhost:3001/api/products?keyword=${name}`)
             return dispatch({type: SEARCH_PRODUCT, payload: data})
         } catch (e) {
             console.log("Actions search error", e)
