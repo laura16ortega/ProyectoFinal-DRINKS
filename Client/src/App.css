@@ -39,3 +39,22 @@
 .read-the-docs {
   color: #888;
 }
+
+@font-face {
+  font-family: 'manrope-regular';
+  src: local('Manrope'), url(./assets/fonts/manrope-bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'oktaneue-regular';
+  src: local('Oktaneue'), url(./assets/fonts/oktaneue-blackitalic-webfont.woff) format('opentype');
+}
+
+
+
+
+
+body{
+  background-color: rgb(238, 238, 238);
+}
+html, body { max-width: 100%; overflow-x: hidden; }
