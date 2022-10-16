@@ -10,22 +10,37 @@ function Navbar(props) {
 
   const [activeSB, setActiveSB] = useState(1)
 
-  const searchBarHandle = (e) => {
+/*   const searchBarHandle = (e) => {
     e.preventDefault(e);
     console.log('handled');
     setActiveSB(0)
-  }
+  } */
 
   useEffect(() => {
 
   },[activeSB]);
 
 
-  return (
-    <>
+   const searchBarHandle = (e) => {
+      e.preventDefault(e);
+      console.log('handled');
+      setActiveSB(!activeSB)
+   }
 
+ 
 
-    <div className={s.container}>
+   /*
+    background-color: rgb(255, 255, 255);
+    height: 5.7rem;
+    margin-top: -6.5rem;
+    top: 1rem;
+    box-shadow: 0px 1px 6px 0px #b1b1b1;
+   */
+   
+
+   return (
+      <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar}`}>
+         <div className={s.topContents}>
             <div className={s.categories}>
         <div className={s.catBtn}>
         <NavLink to='/wine' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>

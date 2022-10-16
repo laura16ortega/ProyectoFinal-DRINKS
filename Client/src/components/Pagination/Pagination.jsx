@@ -8,7 +8,7 @@ const Pagination = ({ allProducts, loaded }) => {
    const [currentItems, setCurrentItems] = useState([]); //displayed products
    const [pageCount, setPageCount] = useState(0); //number of pages
    const [itemOffset, setItemOffset] = useState(0); //first index
-   const [productsPerPage] = useState(6)
+   const [productsPerPage] = useState(9)
    const [showNext, setShowNext] = useState(false)
    const [showPrev, setShowPrev] = useState(false)
 
@@ -22,7 +22,7 @@ const Pagination = ({ allProducts, loaded }) => {
 
    }, [itemOffset, productsPerPage, allProducts]);
 
-   //Set page to 1, active className not showing
+   //Set page to 1, (( active className not showing )) i think it's a bug, solve later
    useEffect(() => {
       if (pageCount === 1) {
          setItemOffset(0)

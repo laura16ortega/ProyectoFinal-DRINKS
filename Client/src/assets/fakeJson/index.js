@@ -22,4 +22,17 @@ const fakeJSON = [
     { numReviews: 9, rating: 5, id: 19,image: "https://thetravelshots.com/wp-content/uploads/2021/02/beer.jpg", name: "Generic beer", price: 5454, category: "Beer" }
 ]
 
+export const categories = [
+    "Ordinary Drink",
+    "Cocktail",
+    "Shake",
+    "Other/Unknown",
+    "Cocoa",
+    "Shot",
+    "Coffee/Tea",
+    "Homemade Liqueur",
+    "Punch/Party Drink",
+    "Beer",
+ ]
+
 export default fakeJSON

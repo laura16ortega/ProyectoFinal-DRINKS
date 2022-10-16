@@ -5,22 +5,19 @@ body, html {
 }
 .container {
     position: absolute;
-    margin-top: 18rem;
-    margin-left: -1rem;
-    width: 31.3rem;
-    
+    margin-top: -51.5rem;
+    margin-left: 35rem;
+    height: 100%;
     /* vertical-align: top; */
-   
-    overflow-y: hidden;
 }
 
 
 .img {
-    margin-left: 0rem;
+    margin-left: -35rem;
     box-shadow: 0px 5px 6px 0px #b1b1b1;
     width: max-content;
-    height: 37.5rem;   
-    overflow-y: hidden;
+    height: 37.5rem;
+       
 }
 .name {
     margin-left: 28rem;
@@ -31,7 +28,6 @@ body, html {
     font-weight: bolder;
     color:rgb(35, 35, 35);
     transition: 0.2s;
-    margin-bottom: -2rem;
 }
 .name:hover {
     color:rgb(75, 75, 75);
@@ -40,17 +36,14 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    margin-top: 35rem;
+    margin-top: -3rem;
     margin-left: 7rem;
     font-family: Helvetica;
     color:rgb(35, 35, 35);
     font-size: 2rem;
 }
-
 .rating {
     margin-left: 3.8rem;
-    margin-top: -0.5rem;
-    z-index: 0;
 }
 .descriptionText{
     margin-left: 28.3rem;
@@ -62,7 +55,6 @@ body, html {
 
 .addAmount {
     margin-left: 4rem;
-    margin-top: -2.5rem;
 }
 
 .amountInput {
@@ -74,11 +66,11 @@ body, html {
     -moz-appearance: textfield !important;
     font-size: 30px;
 }
+
 .add {
     height: 3rem;
     margin-top: -1.9rem;
     width: 35rem;
-    margin-left: 27rem;
     padding-bottom: 3.3rem;
     border-radius: 0.2vh;
 }
@@ -87,12 +79,5 @@ body, html {
     text-align: left;
 }
 .reviews {
-/*     margin-top: 80rem;
-    position: absolute; */
-    font-family: Helvetica;
-    margin-top: 2rem;
-    
-    width: 34.8rem;    
-    margin-left: 28.2rem;
-    padding-bottom: 6rem;
+    margin-top: 5rem;
 }

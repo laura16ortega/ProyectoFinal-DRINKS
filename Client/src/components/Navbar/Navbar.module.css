@@ -3,14 +3,15 @@
     display: flex;
     flex-direction: row;
     width: 15rem;
+    align-items: center;
     justify-content: space-between;
-    position: absolute;
+    /*position: absolute;*/
     color: black;
     font-size: 18px;
     font-family: manrope-regular;
     font-weight: bold;
-    left:17.9rem;
-    top:-0.6rem;
+    /*left:17.9rem;
+    top:-0.6rem;*/
     transition: 0.3s;
 }
 
@@ -31,14 +32,16 @@
     background-color: rgb(187, 187, 187);
 }
 .logo {
-    display: inline-flex;
-    flex-direction: row;
+    /*display: inline-flex;*/
+    display: flex;
+    /*flex-direction: row;
     margin: 0 auto;
     position: absolute;
     justify-content: right;
     height: 3rem;
     padding-bottom: 1.1rem;
     top: -1.6rem;
+    margin-top: .3rem;*/
     color: rgb(36, 36, 36);
     font-family: oktaneue-regular;
     font-size:2.3rem;
@@ -48,6 +51,11 @@
     
   
 }
+
+.logo h3 {
+    margin: 0;
+}
+
 .logo:hover {
     transform: skew(-15deg);
     color: rgb(255, 115, 0);
@@ -61,23 +69,15 @@
     left:0;
 }
 
-/*white box background for nav buttons*/
-.bodyContainer {
-    background-color: rgb(255, 255, 255);
-    height: 5.7rem;
-    margin-top: -6.5rem;
-    top: 1rem;
-    box-shadow: 0px 1px 6px 0px #b1b1b1;
-}
 
 /* buttons */
 .bodyLinks {
     display: inline-flex;
     width: 35%;
-    position: sticky; /* DELETE*/
-    padding-top: 2rem;
+    /*padding-top: 2rem;*/
+    margin: 6px 0;
     font-weight: lighter; 
-    margin-left: -53rem;
+    /*margin-left: -53rem;*/
 }
 
 .activeBtn {
@@ -86,6 +86,7 @@
     font-family:Arial, Helvetica, sans-serif;
     user-select: none;
 }
+
 .activeBtn:hover {
     color: rgb(0, 0, 0);
 }
@@ -99,36 +100,43 @@
     user-select: none;
 
 }
+
 .btn:hover {
     color: rgb(0, 0, 0);
 }
+
 ul {
     display: flex;
     list-style-type: none;
     justify-content: space-evenly;
-  }
+}
+
 .btnBoxSize {
     transition: 0.3s;
 }
+
 .btnBoxSize:hover {
     transform: skew(-10deg);
 }
+
 .userBtnBody {
     display: flex;
     flex-direction: row;
-    top:-0.5rem;
-    right:0;
+    /*top:-0.5rem;
+    right:0;*/
     justify-content: space-between;
     width: 11rem;
     height: 3rem;
-    margin-right: 15rem;
-    position: absolute;
+    /*margin-right: 15rem;
+    position: absolute;*/
     user-select: none;
 }
+
 .userBtn {
     height: 2.8rem;
     transition: 0.3s;
 }
+
 .userBtn:hover {
     height: 3.3rem;
 }
@@ -150,7 +158,32 @@ ul {
     border-color: none;
 
 }
-.activeSearchBar {
 
-background-color: red;
+.navBar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 6px 0px #b1b1b1;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+}
+
+.noDisplay {
+    display: none;
+}
+
+.topContents {
+    display: flex;
+    justify-content: space-evenly;
+    padding: .3rem 0;
+}
+
+.bottomContents {
+    display: flex;
+    padding: 0 4rem;
+    padding-right: 1rem;
+    justify-content: space-between;
+    align-items: center;
 }

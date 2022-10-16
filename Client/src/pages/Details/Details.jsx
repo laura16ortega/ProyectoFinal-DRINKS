@@ -5,28 +5,36 @@ import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
 import Amount from "../../components/Amount/Amount.jsx";
 import Reviews from "../../components/Reviews/Reviews";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearProductDetails, getProductDetails } from "../redux/actions";
 
-function Details(props) {
-  const { id } = useParams();
+function Details() {
+   const { id } = useParams();
+   const dispatch = useDispatch()
+   const product = useSelector(state => state.productDetails)
+   console.log("id: ", id)
+   console.log("product: ", product)
 
-  const [rating, setRating] = useState(0);
+   const [rating, setRating] = useState(0);
 
-  // Catch Rating value
-  const handleRating = (rate) => {
-    setRating(rate);
+   // Catch Rating value
+   const handleRating = (rate) => {
+      setRating(rate);
 
-    // other logic
-  };
-  // Optinal callback functions
-  const onPointerEnter = () => console.log("Enter");
-  const onPointerLeave = () => console.log("Leave");
-  const onPointerMove = (value, index) => console.log(value, index);
+      // other logic
+   };
+   // Optinal callback functions
+   const onPointerEnter = () => console.log("Enter");
+   const onPointerLeave = () => console.log("Leave");
+   const onPointerMove = (value, index) => console.log(value, index);
 
-  /*     const product = useSelector((state) => state.productDetails);
-    const {} = product;
-
-    const dispatch = useDispatch();
-    const navigate = useNavigate(); */
+   /*     const product = useSelector((state) => state.productDetails);
+     const {} = product;
+ 
+     const dispatch = useDispatch();
+     const navigate = useNavigate(); 
+   */
 
   return (
     <>
@@ -92,3 +100,15 @@ alt="placeholder"
 }
 
 export default Details;
+
+/*
+    height: 3rem;
+    width: 35rem;
+    padding-bottom: 3.3rem;
+    border-radius: 0.2vh;
+
+
+   textDescription
+   style={{height: "3rem", width: "35rem", paddingBottom: "3.3rem", borderRadius: "0.2vh"}}
+
+*/

@@ -3,12 +3,18 @@ import {
    PRICE_FILTER,
    CATEGORY_FILTER,
    SORTING,
+   GET_PRODUCT_DETAILS,
+   CLEAR_PRODUCT_DETAILS,
+   SEARCH_PRODUCT,
+   GET_PRODUCT_CATEGORIES,
 } from "../actions"
 
 const initialState = {
    products: [],
    productsBackup: [],
-   allProducts: [] //creado solo para filtro de categorias
+   allProducts: [], //creado solo para filtro de categorias,
+   categories: [],
+   productDetails: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -74,6 +80,26 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             products: filteredCategory,
             productsBackup: filteredCategory
+         }
+      case GET_PRODUCT_DETAILS: 
+         return {
+            ...state,
+            productDetails: action.payload
+         }
+      case CLEAR_PRODUCT_DETAILS:
+         return {
+            ...state,
+            productDetails: {}
+         }
+      case SEARCH_PRODUCT: 
+         return {
+            ...state,
+            products: action.payload
+         }
+      case GET_PRODUCT_CATEGORIES:
+         return {
+            ...state,
+            categories: action.payload
          }
       default:
          return initialState
