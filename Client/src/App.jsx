@@ -16,7 +16,7 @@ function App() {
       {/* <Navbar /> */}
       <Routes>
         <Route path='/details' element={<Details />} />
-        <Route exact path='/register' element={<Register />} />
+        <Route exact path='/' element={<Register />} />
         <Route path='/LandingPage' element={<LandingPage/>} />
       </Routes>
 
