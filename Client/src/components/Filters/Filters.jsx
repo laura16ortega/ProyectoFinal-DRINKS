@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import fakeJSON from '../../assets/fakeJson'
 import s from "./Filters.module.css"
 import { categoryFilter, getProducts, priceFilter } from '../../redux/actions'
@@ -10,6 +10,7 @@ const Filters = () => {
    const dispatch = useDispatch()
 
    const [rangePrice, setRangePrice] = useState(10000)
+   const categories = useSelector(state => state.categories)
 
    const handleRange = (e) => {
       setRangePrice(e.target.value)
@@ -18,23 +19,6 @@ const Filters = () => {
    useEffect(() => {
       dispatch(priceFilter(Number(rangePrice)))
    }, [rangePrice])
-
-
-
-
-   //filter by categories ---> categories useSelector
-   const categories = [
-      "Ordinary Drink",
-      "Cocktail",
-      "Shake",
-      "Other/Unknown",
-      "Cocoa",
-      "Shot",
-      "Coffee/Tea",
-      "Homemade Liqueur",
-      "Punch/Party Drink",
-      "Beer",
-   ]
 
    const handleCategory = (e) => {
       e.preventDefault()
@@ -65,7 +49,7 @@ const Filters = () => {
          <div className={s.priceFilter}>
             <h4>Price</h4>
             <input type="range" value={rangePrice} onChange={e => handleRange(e)} min="0" max="10000" step="500" />
-            <h3>${rangePrice}</h3>
+            <h3>{`$${rangePrice}`}</h3>
          </div>
 
          <div>

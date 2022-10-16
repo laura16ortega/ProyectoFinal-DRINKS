@@ -8,3 +8,7 @@ export const FILTER_BY_ORDER = 'FILTER_BY_ORDER';
 export const FILTER_BY_TYPE = 'FILTER_BY_TYPE';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
+
+
+
+
