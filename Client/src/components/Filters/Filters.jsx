@@ -49,7 +49,7 @@ const Filters = () => {
          <div className={s.priceFilter}>
             <h4>Price</h4>
             <input type="range" value={rangePrice} onChange={e => handleRange(e)} min="0" max="10000" step="500" />
-            <h3>${rangePrice}</h3>
+            <h3>{`$${rangePrice}`}</h3>
          </div>
 
          <div>

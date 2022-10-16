@@ -1,3 +1,63 @@
-/* .container {
-    margin: 0;
-} */
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+    align-items: flex-start;
+}
+
+.contents img {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+}
+
+.contents div {
+    z-index: 2;
+    padding-left: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 67vh;
+}
+
+.data h1 {
+    display: flex;
+    color: rgb(36, 36, 36);
+    font-family: oktaneue-regular;
+    font-size:9.3rem;
+    transition: 0.3s;
+    user-select: none;
+    text-shadow: 1px 1px white;
+}
+
+.data h1:hover {
+    transform: skew(-7deg);
+    color: rgb(255, 115, 0);
+    /*height: 2.5rem;*/
+}
+
+.data button {
+    border: none;
+    background: none;
+    font-size: 2.3rem;
+    border: 25px solid rgba(255,255,255,.8);
+    border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png") 20;
+    transition: 0.3s;
+    font-family: "Walter Turncoat", cursive;
+}
+
+.data button:hover {
+    transform: scale(1.1);
+}

@@ -12,7 +12,7 @@
 
 .container button {
     background: none;
-    position: absolute;
+    /*position: absolute;*/
     left: 89%;
     padding: 0 0px;
     height: -webkit-fill-available;
