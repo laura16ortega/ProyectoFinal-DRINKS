@@ -1,26 +1,38 @@
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch } from "react-redux"
+import { productSearch } from '../../redux/actions'
 import s from '../styles/SearchBar.module.css'
 
 export default function SearchBar() {
+
     const [input, setInput] = useState('')
-    console.log(input)
+
+    const dispatch = useDispatch()
+    
 
     function handleChange(e) {
-        e.preventDefault()
-        setInput(e.target.value)
-   
+      e.preventDefault()
+      setInput(e.target.value)
     }
 
-    const click = () => {
-        /* aqui va el dispatch de la action */
-        alert(`estas buscando ${input}`)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setInput("")
+        dispatch(productSearch(input))
+        /*alert(`estas buscando ${input}`)*/
     }
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Enter") {
+          handleSubmit(e)
+      }
+  }
 
   return (
     <div className={s.container}>
-        <input type="search" placeholder='Buscar' value={input} onChange={ e =>handleChange(e) } />
-        <button onClick={click}>Buscar</button>
+        <input type="text" placeholder='Search...' value={input} onChange={e => handleChange(e) } onKeyDown={(e) => handleKeyDown(e)}/>
+        <button onClick={e => handleSubmit(e)}>🔍</button>
     </div>
   )
 

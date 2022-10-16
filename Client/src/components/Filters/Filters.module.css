@@ -1,6 +1,7 @@
 .filterContainer {
-    margin: 1rem;
+    margin: 3rem 0;
     width: 20%;
+    color: #383d42
 }
 
 .categoriesFilter {
