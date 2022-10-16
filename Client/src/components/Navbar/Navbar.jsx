@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import s from "./styles/Navbar.module.css";
-import cart from "../assets/img/shopping-cart.png";
-import heart from "../assets/img/heart.png";
-import user from "../assets/img/user.png";
+import s from "./Navbar.module.css";
+import cart from "../../assets/img/shopping-cart.png";
+import heart from "../../assets/img/heart.png";
+import user from "../../assets/img/user.png";
 
 function Navbar(props) {
 
-  const [activeSB, setActiveSB] = useState(!true)
+  const [activeSB, setActiveSB] = useState(1)
 
   const searchBarHandle = (e) => {
     e.preventDefault(e);
     console.log('handled');
-    setActiveSB(!activeSB)
+    setActiveSB(0)
   }
+
+  useEffect(() => {
+
+  },[activeSB]);
 
 
   return (
@@ -104,8 +108,8 @@ function Navbar(props) {
         </NavLink>
         </div>
       </div>
-      <div className={ setActiveSB ? `${s.searchBar}` : `${s.activeSearchBar}`}>
-            <input onClick={(e) => searchBarHandle(e)} className={s.searchInput} placeholder='Search' />
+      <div >
+            <input className={ setActiveSB ? `${s.searchInput}` : `${s.searchInput}`} onClick={(e) => searchBarHandle(e)} /* className={s.searchInput} */ placeholder='Search' />
       </div>
     </div>
     <div className={s.logo}>

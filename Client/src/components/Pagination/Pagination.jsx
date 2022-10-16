@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ProductCard from '../ProductCard/ProductCard'
-import ReactPaginate from 'react-paginate';
+/* import ReactPaginate from 'react-paginate'; */
 import s from "./Pagination.module.css"
-
+/* import ReactPaginate from 'react-paginate';
+ */
 const Pagination = ({ allProducts, loaded }) => {
    const [currentItems, setCurrentItems] = useState([]); //displayed products
    const [pageCount, setPageCount] = useState(0); //number of pages

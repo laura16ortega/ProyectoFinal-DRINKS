@@ -1,9 +1,10 @@
 import { React, useState } from "react";
 /* import { useDispatch, useSelector } from "react-redux"; */
 import { useParams, useNavigate } from "react-router-dom";
-import s from "./styles/Details.module.css";
+import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
-import Amount from "../components/Amount";
+import Amount from "../../components/Amount/Amount.jsx";
+import Reviews from "../../components/Reviews/Reviews";
 
 function Details(props) {
   const { id } = useParams();
@@ -30,7 +31,17 @@ function Details(props) {
   return (
     <>
 
-        
+<div className={s.container}>
+
+<div className={s.img}>
+<img
+className={s.imgSize}
+src="https://placeimg.com/500/600/tech"
+alt="placeholder"
+/>
+</div>
+
+</div> 
 
 
 
@@ -39,7 +50,7 @@ function Details(props) {
         <h3>Liquor Exampler 1973</h3>
       </div>
         <div>
-          <p>149,95 €</p>
+          <p className={s.price}>149,95 €</p>
         </div>
         <div className={s.rating}>
           <Rating
@@ -50,10 +61,9 @@ function Details(props) {
             /* Available Props */
           />
         </div>
-        <div className={s.description}>
-          <p>
+
             <div className={s.descriptionText}>
-              <h2>Description:</h2>
+              <h2>Description</h2>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -62,28 +72,20 @@ function Details(props) {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
-          </p>
-        </div>
+        
         <div className={s.addAmount}>
           <Amount />
         </div>
         <div className={s.addToCart}>
           <button className={s.add}>Add to cart.</button>
         </div>
-        <div className={s.reviews}>Reviews</div>
+        <div className={s.reviews}>
+          <h2 className={s.reviewsHeader}>Reviews</h2>
+          <Reviews />
+        </div>
 
       </div>
-          <div className={s.container}>
 
-              <div className={s.img}>
-          <img
-            className={s.imgSize}
-            src="https://placeimg.com/500/600/tech"
-            alt="placeholder"
-          />
-        </div>
-
-        </div>
     
     </>
   );
