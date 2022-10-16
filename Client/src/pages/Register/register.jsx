@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import Swal from 'sweetalert2'
 import {useNavigate} from 'react-router-dom'
-import s from "../style/register.module.css"
+import s from "./register.module.css"
 import SearchBar from '../../components/SearchBar/SearchBar'
 
 

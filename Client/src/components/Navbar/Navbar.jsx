@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import s from "./styles/Navbar.module.css";
-import cart from "../assets/img/shopping-cart.png";
-import heart from "../assets/img/heart.png";
-import user from "../assets/img/user.png";
-import SearchBar from "./SearchBar/SearchBar";
+import s from "./Navbar.module.css";
+import cart from "../../assets/img/shopping-cart.png";
+import heart from "../../assets/img/heart.png";
+import user from "../../assets/img/user.png";
+import SearchBar from "../SearchBar/SearchBar";
 
 function Navbar(props) {
 

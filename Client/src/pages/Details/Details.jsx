@@ -1,12 +1,12 @@
 import { React, useState } from "react";
 /* import { useDispatch, useSelector } from "react-redux"; */
 import { useParams, useNavigate } from "react-router-dom";
-import s from "./styles/Details.module.css";
+import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
-import Amount from "../components/Amount";
+import Amount from "../../components/Amount/Amount";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearProductDetails, getProductDetails } from "../redux/actions";
+import { clearProductDetails, getProductDetails } from "../../redux/actions";
 
 function Details() {
    const { id } = useParams();
