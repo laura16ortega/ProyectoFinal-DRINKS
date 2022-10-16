@@ -1,5 +1,6 @@
 const productos = [
   {
+    id: "1",
     name: "Cerveza BBC",
     image: "fdsfds",
     description: "Cerveza artesanal",
@@ -7,8 +8,10 @@ const productos = [
     stock: 50,
     rating: 5,
     numReviews: 34,
+    category: "Cerveza",
   },
   {
+    id: "2",
     name: "Vinito Sansón",
     image: "fdsfds",
     description: "Vinito para cocinar",
@@ -16,6 +19,7 @@ const productos = [
     stock: 30,
     rating: 5,
     numReviews: 80,
+    category: "Vino",
   },
 ];
 
