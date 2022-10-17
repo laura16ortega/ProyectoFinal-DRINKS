@@ -10,6 +10,7 @@ import { errorHandler, notFound } from "../Middleware/Errors.js";
 dotenv.config();
 connectDatabase();
 const app = express();
+//ARREGLA PROBLEMA DE CORS
 var cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
