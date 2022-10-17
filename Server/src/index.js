@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import productos from "../data/Products.js";
 import products from "./routes/product.route.js";
 import dotenv from "dotenv";
@@ -11,11 +12,12 @@ dotenv.config();
 connectDatabase();
 const app = express();
 //ARREGLA PROBLEMA DE CORS
-var cors = require("cors");
+app.use(cors());
+
 const PORT = process.env.PORT || 3001;
 
 //API
-app.use(cors());
+
 app.use("/api/import", importData);
 app.use("/api/products", productRoute);
 //ERROR HANDLER
