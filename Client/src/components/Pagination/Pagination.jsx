@@ -37,7 +37,7 @@ const Pagination = ({ allProducts, loaded }) => {
 
       const newOffset = (e.selected * productsPerPage) % allProducts.length;
       setItemOffset(newOffset);
-      window.scrollTo({ behavior: "smooth", top: "0px" });
+      document.querySelector("body").scrollTo({behavior: "smooth", top: "0px"});
 
    };
 
