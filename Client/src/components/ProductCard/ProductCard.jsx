@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import s from "./ProductCard.module.css"
+import { priceWithCommas } from '../../assets/helpers'
 
 const ProductCard = ({ id, name, image, price, category, numReviews, rating }) => {
    return (
@@ -30,7 +31,7 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
                      </div>
                      <span className={s.reviewers}>{`${numReviews} reviews`}</span>
                   </div>
-                  <h3>{`$${price}`}</h3>
+                  <h3>{`$${priceWithCommas(price)}`}</h3>
                </div>
             </div>
          </Link>
