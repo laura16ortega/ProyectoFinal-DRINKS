@@ -10,9 +10,11 @@ import { errorHandler, notFound } from "../Middleware/Errors.js";
 dotenv.config();
 connectDatabase();
 const app = express();
+var cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
 //API
+app.use(cors());
 app.use("/api/import", importData);
 app.use("/api/products", productRoute);
 //ERROR HANDLER
