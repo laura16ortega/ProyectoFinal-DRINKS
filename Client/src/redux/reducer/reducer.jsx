@@ -57,7 +57,7 @@ const rootReducer = (state = initialState, action) => {
                return 0
             }
             if (action.payload === "OrderByReviewRateDESC") {
-               return b.rating - a.rating
+               return (b.rating + b.numReviews) - (a.rating + a.numReviews)
             }
             return true
          })

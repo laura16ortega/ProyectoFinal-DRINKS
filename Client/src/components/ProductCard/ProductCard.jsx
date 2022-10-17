@@ -9,7 +9,7 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
          <Link to={`/details/${id}`}>
             <div className={s.contents}>
                <div className={s.imgContainer}>
-                  <img src={image} alt={name} style={{ width: "340px", height: "230px" }} />
+                  <img src={image} alt={name} />
                </div>
                <div className={s.category}>{category}</div>
                <div className={s.data}>
