@@ -1,83 +1,65 @@
 body, html {
     width: auto;
     height: 100%;
-    
-}
-.container {
-    position: absolute;
-    margin-top: -51.5rem;
-    margin-left: 35rem;
-    height: 100%;
-    /* vertical-align: top; */
 }
 
+.productContainer {
+    display: flex;
+    margin: 4em 5em 1em;
+    font-family: Helvetica;
+    color: rgb(35, 35, 35);
+    font-size: 2em;
+}
 
-.img {
-    margin-left: -35rem;
+.imgContainer {
     box-shadow: 0px 5px 6px 0px #b1b1b1;
     width: max-content;
     height: 37.5rem;
-       
 }
-.name {
-    margin-left: 28rem;
-    margin-top: 15.1rem;
-    font-size: 3rem;
-    width: max-content;
-    font-family: Helvetica;
-    font-weight: bolder;
-    color:rgb(35, 35, 35);
-    transition: 0.2s;
+
+.imgContainer img {
+    height: 600px;
+    width: 500px;
+    object-fit: cover;
 }
-.name:hover {
-    color:rgb(75, 75, 75);
-}
-.body {
+
+.rightData {
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    margin-top: -3rem;
-    margin-left: 7rem;
-    font-family: Helvetica;
-    color:rgb(35, 35, 35);
-    font-size: 2rem;
+    align-items: flex-start;
+    padding-left: 3.5rem;
 }
-.rating {
-    margin-left: 3.8rem;
-}
-.descriptionText{
-    margin-left: 28.3rem;
+
+.description {
     text-align: left;
     font-size: 17px;
     width: 30rem;
     margin-bottom: 4rem;
 }
 
-.addAmount {
-    margin-left: 4rem;
-}
-
-.amountInput {
-    width: 4rem;
-    height: 2rem;
-    margin: 0.7rem 0.7rem;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    -moz-appearance: textfield !important;
-    font-size: 30px;
-}
-
-.add {
+.addToCart {
     height: 3rem;
-    margin-top: -1.9rem;
     width: 35rem;
     padding-bottom: 3.3rem;
     border-radius: 0.2vh;
 }
+
+.reviews {
+    margin-top: 5rem;
+    color: rgb(35, 35, 35);
+    font-size: 2em;
+}
+
 .reviewsHeader {
     font-size: 26.5px;
     text-align: left;
 }
 .reviews {
     margin-top: 5rem;
+/*  margin-top: 80rem;
+    position: absolute; */
+    font-family: Helvetica;
+    margin-top: 2rem;
+    width: 34.8rem;    
+    padding-bottom: 6rem;
 }

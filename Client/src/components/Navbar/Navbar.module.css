@@ -47,9 +47,7 @@
     font-size:2.3rem;
     transition: 0.3s;
     user-select: none;
-    z-index: 101;
-    
-  
+    align-items: center;
 }
 
 .logo h3 {
@@ -59,14 +57,7 @@
 .logo:hover {
     transform: skew(-15deg);
     color: rgb(255, 115, 0);
-    height: 2.5rem;
-}
-.container {
-    width: 100%;
-    z-index: 100;
-    position: absolute;
-    top: 0.9rem;
-    left:0;
+    /*height: 2.5rem;*/
 }
 
 
@@ -140,13 +131,17 @@ ul {
 .userBtn:hover {
     height: 3.3rem;
 }
-/* .searchBar {
+
+.searchBar {
     display: inline-flex;
-    position: absolute;
-    margin-top: 0rem;
-    margin-left: 0;
-    z-index: 105;
-} */
+    /*position: absolute;*/
+    position: relative;
+    /*margin-top: -2rem;
+    margin-left: 30.5rem;*/
+    padding-right: 5rem;
+}
+
+
 .searchInput {
     background-color: #e6e4e4;
     color: #b1b1b1;
@@ -168,6 +163,7 @@ ul {
     z-index: 1000;
     top: 0;
     width: 100%;
+    overflow-y: scroll;
 }
 
 .noDisplay {

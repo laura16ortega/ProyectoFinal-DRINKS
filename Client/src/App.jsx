@@ -1,12 +1,12 @@
 
 import './App.css'
 import React from 'react';
-import { Route, Routes} from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar.jsx'
+import { Navigate, Route, Routes} from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
 import Details from './pages/Details/Details';
-import Register from './pages/Register/Register'
+import Register from './pages/Register/register'
 import LandingPage from './pages/LandingPage/LandingPage';
-import Home from './components/Home/Home';
+import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
 
 
@@ -14,8 +14,8 @@ function App() {
 
   return (
     <div className="App" >
-      <Navbar />
-      <Footer />
+      <Navbar /> 
+      <Footer/>
       <Routes>
         <Route path='/home' element={<Home /> } />
         <Route path='/details' element={<Details />} />
