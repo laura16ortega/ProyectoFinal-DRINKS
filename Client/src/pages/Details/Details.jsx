@@ -1,12 +1,13 @@
 import { React, useState } from "react";
 /* import { useDispatch, useSelector } from "react-redux"; */
 import { useParams, useNavigate } from "react-router-dom";
-import s from "./styles/Details.module.css";
+import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
-import Amount from "../components/Amount";
+import Amount from "../../components/Amount/Amount";
 import { useEffect } from "react";
+import Reviews from "../../components/Reviews/Reviews";
 import { useDispatch, useSelector } from "react-redux";
-import { clearProductDetails, getProductDetails } from "../redux/actions";
+import { clearProductDetails, getProductDetails } from "../../redux/actions";
 
 function Details() {
    const { id } = useParams();
@@ -54,6 +55,8 @@ function Details() {
                         alt="placeholder"
                      />
                   </div>
+                  <div style={{height: "600px", width: "500px"}}>
+                  </div>
                </div>
                <div>
                   <div className={s.rightData}>
@@ -88,26 +91,19 @@ function Details() {
                      <div >
                         <button className={s.addToCart}>Add to cart.</button>
                      </div>
+                     <div className={s.reviews}>
+                        <h2 className={s.reviewsHeader}>
+                           Reviews
+                        </h2>
+                           <Reviews />
+                     </div> 
                   </div>
                </div>
             </div>
             : <h1>Loading</h1>
          }
-         <div className={s.reviews}>Reviews</div>
       </div>
    );
 }
 
 export default Details;
-
-/*
-    height: 3rem;
-    width: 35rem;
-    padding-bottom: 3.3rem;
-    border-radius: 0.2vh;
-
-
-   textDescription
-   style={{height: "3rem", width: "35rem", paddingBottom: "3.3rem", borderRadius: "0.2vh"}}
-
-*/

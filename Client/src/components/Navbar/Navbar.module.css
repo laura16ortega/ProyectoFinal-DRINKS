@@ -162,6 +162,7 @@ ul {
     z-index: 1000;
     top: 0;
     width: 100%;
+    overflow-y: scroll;
 }
 
 .noDisplay {
