@@ -9,6 +9,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
 
+
 function App() {
 
   return (
@@ -16,10 +17,8 @@ function App() {
       <Navbar /> 
       <Footer/>
       <Routes>
-
-        <Route path="/" element={/*<Navigate to="/home"/>}*/ <LandingPage/>}/>
-        <Route path='/details/:id' element={<Details />} />
-        <Route path='/products' element={<Home/>}/>
+        <Route path='/home' element={<Home /> } />
+        <Route path='/details' element={<Details />} />
         <Route exact path='/register' element={<Register />} />
 
       </Routes>

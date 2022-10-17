@@ -56,11 +56,10 @@ body, html {
 }
 .reviews {
     margin-top: 5rem;
-/*     margin-top: 80rem;
+/*  margin-top: 80rem;
     position: absolute; */
     font-family: Helvetica;
     margin-top: 2rem;
-
     width: 34.8rem;    
     padding-bottom: 6rem;
 }
