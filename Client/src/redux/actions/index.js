@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const PRICE_FILTER = "PRICE_FILTER"
 export const CATEGORY_FILTER = "CATEGORY_FILTER"
@@ -9,18 +11,18 @@ export const GET_PRODUCT_CATEGORIES = "GET_PRODUCT_CATEGORIES"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
 
 //placeholder
-import fakeJSON from "../../assets/fakeJson"
-import { categories } from "../../assets/fakeJson"
+//import fakeJSON from "../../assets/fakeJson"
+//import { categories } from "../../assets/fakeJson"
 
 //placeholder
-export const getProducts = (payload) => {
-    return {
-        type: GET_PRODUCTS,
-        payload
-    }
-}
+//export const getProducts = (payload) => {
+//    return {
+//        type: GET_PRODUCTS,
+//        payload
+//    }
+//}
 
-/*
+
 export const getProducts = () => {
     return async (dispatch) => {
         try {
@@ -31,19 +33,19 @@ export const getProducts = () => {
         }
     }
 }
-*/
+
 
 //placeholder
-export const getProductDetails = (id) => {
-    const productDetail = fakeJSON.find(e => e.id === Number(id))
-    console.log(productDetail)
-    return {
-        type: GET_PRODUCT_DETAILS,
-        payload: productDetail
-    }
-}
+//export const getProductDetails = (id) => {
+//    const productDetail = fakeJSON.find(e => e.id === Number(id))
+//    console.log(productDetail)
+//    return {
+//        type: GET_PRODUCT_DETAILS,
+//        payload: productDetail
+//    }
+//}
 
-/*
+
 export const getProductDetails = (id) => {
     return async (dispatch) => {
         try {
@@ -54,40 +56,42 @@ export const getProductDetails = (id) => {
         }
     }
 }
-*/
+
 
 //placeholder
-export const getAllCategories = () => {
-    return {
-        type: GET_PRODUCT_CATEGORIES,
-        payload: categories
-    }
-}
+//export const getAllCategories = () => {
+//    return {
+//        type: GET_PRODUCT_CATEGORIES,
+//        payload: categories
+//    }
+//}
 
 
-/*
+
 export const getAllCategories = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get("http://localhost:3001/RutaDeCategorias")
-            return dispatch({type: GET_PRODUCT_CATEGORIES, payload: data})
+            const { data } = await axios.get("http://localhost:3001/api/products") //Should be a route only with categories
+            const datamap = data.map(e => e.category)
+            const categories = [...new Set(datamap)]
+            return dispatch({type: GET_PRODUCT_CATEGORIES, payload: categories})
         } catch (e) {
             console.log("Actions get categories error", e)
         }
     }
 }
-*/
+
 
 //placeholder 
-export const productSearch = (payload) => {
-    const searchFilter = fakeJSON.filter(e => e.name.toLowerCase().includes(payload.toLowerCase()))
-    return {
-        type: SEARCH_PRODUCT,
-        payload: searchFilter
-    }
-}
+//export const productSearch = (payload) => {
+//    const searchFilter = fakeJSON.filter(e => e.name.toLowerCase().includes(payload.toLowerCase()))
+//    return {
+//        type: SEARCH_PRODUCT,
+//        payload: searchFilter
+//    }
+//}
 
-/*
+
 export const productSearch = (name) => {
     return async (dispatch) => {
         try {
@@ -98,7 +102,6 @@ export const productSearch = (name) => {
         }
     }
 }
-*/
 
 export const priceFilter = (payload) => {
     return {

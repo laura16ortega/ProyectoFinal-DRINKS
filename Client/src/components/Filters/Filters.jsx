@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import fakeJSON from '../../assets/fakeJson'
 import s from "./Filters.module.css"
 import { categoryFilter, getProducts, priceFilter } from '../../redux/actions'
+import { priceWithCommas } from '../../assets/helpers'
 
 const Filters = () => {
 
    const dispatch = useDispatch()
 
-   const [rangePrice, setRangePrice] = useState(10000)
+   const [rangePrice, setRangePrice] = useState(625000)
    const categories = useSelector(state => state.categories)
 
    const handleRange = (e) => {
@@ -28,7 +29,7 @@ const Filters = () => {
    const handleReset = (e) => {
       e.preventDefault()
       dispatch(getProducts(fakeJSON))
-      setRangePrice(10000)
+      setRangePrice(625000)
       dispatch(categoryFilter("all"))
    }
 
@@ -48,8 +49,8 @@ const Filters = () => {
 
          <div className={s.priceFilter}>
             <h4>Price</h4>
-            <input type="range" value={rangePrice} onChange={e => handleRange(e)} min="0" max="10000" step="500" />
-            <h3>{`$${rangePrice}`}</h3>
+            <input type="range" value={rangePrice} onChange={e => handleRange(e)} min="0" max="625000" step="25000" />
+            <h3>{`$${priceWithCommas(rangePrice)}`}</h3>
          </div>
 
          <div>
