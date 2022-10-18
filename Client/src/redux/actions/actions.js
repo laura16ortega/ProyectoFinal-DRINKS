@@ -1,0 +1,14 @@
+import {
+    GET_PRODUCTS,
+    GET_DETAILS,
+    ADD_TO_CART,
+    SEARCH_BAR,
+    FILTER_CREATED,
+    RESET_FILTERS,
+    FILTER_BY_ORDER,
+    FILTER_BY_TYPE,
+    CLEAR_DETAIL,
+    ADD_PRODUCT
+} from './actionsList';
+
+

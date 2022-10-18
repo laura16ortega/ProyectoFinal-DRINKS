@@ -1,0 +1,21 @@
+.contain{
+    display: flex;
+    justify-content: center
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
+.inputs input {
+    margin:5px;
+    text-align: center;
+    padding:5px;
+    width:200px;
+    border-radius:5px;
+}
+
+
+.button{
+    background-color: rgba(72, 162, 197, 0.795);
+    margin: 10px
+}

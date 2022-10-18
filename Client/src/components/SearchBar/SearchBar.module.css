@@ -1,0 +1,24 @@
+.container input {
+    background-color: #e6e4e4;
+    color: #b1b1b1;
+    text-indent: 0.3rem;
+    font-family: Helvetica;
+    font-size: 20px;
+    border-style: none;
+    border: none;
+    border-color: none;
+    position: relative;
+}
+
+.container button {
+    background: none;
+    /*position: absolute;*/
+    left: 89%;
+    padding: 0 0px;
+    height: -webkit-fill-available;
+    border: none;
+}
+
+.container button:hover {
+    outline: none;
+}
