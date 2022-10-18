@@ -47,8 +47,8 @@ const Pagination = ({ allProducts, loaded }) => {
             {loaded ?
                currentItems.length ? currentItems.map(e =>
                   <ProductCard
-                     key={e.id}
-                     id={e.id}
+                     key={e._id}
+                     id={e._id}
                      image={e.image}
                      name={e.name}
                      price={e.price}
