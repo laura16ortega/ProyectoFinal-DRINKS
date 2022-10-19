@@ -57,23 +57,26 @@ function Details() {
                </div>
                <div>
                   <div className={s.rightData}>
-                     <div>
-                        <h3 style={{ fontSize: "2em" }}>{product.name}</h3>
+                     <div className={s.title}>
+                        <h3 style={{ fontSize: "35px  " }}>{product.name}</h3>
                      </div>
-                     <div>
-                        <p>{`$${product.price}`}</p>
+                     <div className={s.price}>
+                        <p style={{fontSize: "30px"}}>{`$${product.price}`}</p>
                      </div>
-                     <div>
+                     <div className={s.rating}>
                         <Rating
                            onClick={handleRating}
                            onPointerEnter={onPointerEnter}
                            onPointerLeave={onPointerLeave}
                            onPointerMove={onPointerMove}
+                           readonly="true"
+                           initialValue={product.rating}
+
                         /* Available Props */
                         />
                      </div>
                      <div className={s.description}>
-                           <h2>Description:</h2>
+                           <h2>Description</h2>
                            {product.description? product.description : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                            enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -82,7 +85,7 @@ function Details() {
                            nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                            sunt in culpa qui officia deserunt mollit anim id est laborum.`}
                      </div>
-                     <div>
+                     <div className={s.amount}>
                         <Amount />
                      </div>
                      <div >
@@ -93,7 +96,9 @@ function Details() {
             </div>
             : <h1>Loading</h1>
          }
-         <div className={s.reviews}>Reviews</div>
+         <div className={s.reviews}>
+         <h2 style={{fontSize:"20px "}}>Reviews</h2>
+         </div>
       </div>
    );
 }
