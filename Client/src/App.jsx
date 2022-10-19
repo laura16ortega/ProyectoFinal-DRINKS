@@ -17,8 +17,9 @@ function App() {
       <Navbar /> 
       <Footer/>
       <Routes>
-        <Route path='/' element={<LandingPage/>}/>
-        <Route path='/products' element={<Home /> } />
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path='/home' element={<LandingPage />} />
+        <Route path='/products' element={<Home />} />
         <Route path='/details/:id' element={<Details />} />
         <Route exact path='/register' element={<Register />} />
       </Routes>
