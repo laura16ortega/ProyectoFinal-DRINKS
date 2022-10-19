@@ -1,5 +1,5 @@
 import {React, useState }from 'react';
-import s from './styles/Amount.module.css';
+import s from './Amount.module.css';
 
 function Amount(props) {
     const [counter, setCounter] = useState(0);

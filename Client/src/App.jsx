@@ -3,7 +3,7 @@ import './App.css'
 import React from 'react';
 import { Route, Routes} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Details from './pages/Details';
+import Details from './pages/Details/Details.jsx';
 import Register from './pages/Register/register'
 import LandingPage from './pages/LandingPage/LandingPage';
 import Home from './pages/Home/Home';
