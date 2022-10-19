@@ -38,18 +38,18 @@ function Navbar(props) {
          <div className={s.topContents}>
             <div className={s.categories}>
                <div className={s.catBtn}>
-                  <NavLink to='/wine' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
-                     Wine
+                  <NavLink to='/vino' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
+                     Vino
                   </NavLink>
                </div >
                <div className={s.catBtn}>
-                  <NavLink to='/beer' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
-                     Beer
+                  <NavLink to='/cerveza' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
+                     Cerveza
                   </NavLink>
                </div >
                <div className={s.catBtn}>
-                  <NavLink to='/spirits' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
-                     Spirits
+                  <NavLink to='/licores' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
+                     Licores
                   </NavLink>
                </div>
             </div>
@@ -78,22 +78,22 @@ function Navbar(props) {
             <ul className={s.bodyLinks}>
                <li className={s.btnBoxSize}>
                   <NavLink to="/home" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
-                     home.
+                     home
                   </NavLink>
                </li>
                <li className={s.btnBoxSize}>
                   <NavLink to="/products" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
-                     products.
+                     productos
                   </NavLink>
                </li>
                <li className={s.btnBoxSize}>
                   <NavLink to="/about" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`} >
-                     about us.
+                     sobre nosotros
                   </NavLink>
                </li>
                <li className={s.btnBoxSize}>
                   <NavLink to="/profile" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
-                     my profile.
+                     mi perfil
                   </NavLink>
                </li>
             </ul>
