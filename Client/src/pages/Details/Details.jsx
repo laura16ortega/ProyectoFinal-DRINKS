@@ -5,6 +5,8 @@ import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
 import Amount from "../../components/Amount/Amount";
 import { useEffect } from "react";
+
+import Reviews from "../../components/Reviews/Reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { clearProductDetails, getProductDetails } from "../../redux/actions";
 
@@ -54,6 +56,7 @@ function Details() {
                         alt="placeholder"
                      />
                   </div>
+
                </div>
                <div>
                   <div className={s.rightData}>
@@ -76,7 +79,9 @@ function Details() {
                         />
                      </div>
                      <div className={s.description}>
+
                            <h2>Description</h2>
+
                            {product.description? product.description : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                            enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -85,34 +90,30 @@ function Details() {
                            nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                            sunt in culpa qui officia deserunt mollit anim id est laborum.`}
                      </div>
-                     <div className={s.amount}>
+
+                     <div  className={s.amount}>
+
                         <Amount />
                      </div>
                      <div >
                         <button className={s.addToCart}>Add to cart.</button>
                      </div>
+                     <div className={s.reviews}>
+                        <h2 className={s.reviewsHeader}>
+                           Reviews
+                        </h2>
+                           <Reviews />
+                     </div> 
+
                   </div>
                </div>
             </div>
             : <h1>Loading</h1>
          }
-         <div className={s.reviews}>
-         <h2 style={{fontSize:"20px "}}>Reviews</h2>
-         </div>
+
       </div>
    );
 }
 
 export default Details;
 
-/*
-    height: 3rem;
-    width: 35rem;
-    padding-bottom: 3.3rem;
-    border-radius: 0.2vh;
-
-
-   textDescription
-   style={{height: "3rem", width: "35rem", paddingBottom: "3.3rem", borderRadius: "0.2vh"}}
-
-*/

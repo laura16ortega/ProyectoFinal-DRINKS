@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import productos from "../data/Products.js";
 import products from "./routes/product.route.js";
 import dotenv from "dotenv";
@@ -6,17 +7,26 @@ import connectDatabase from "../config/MongoDb.js";
 import importData from "../DataImport.js";
 import productRoute from "../Routes/ProductRoutes.js";
 import { errorHandler, notFound } from "../Middleware/Errors.js";
+import userRouter from "../Routes/UserRoutes.js";
+
 
 dotenv.config();
 connectDatabase();
+
 const app = express();
-var cors = require("cors");
+
+//ARREGLA PROBLEMA DE CORS
+app.use(cors());
+app.use(express.json());
+
 const PORT = process.env.PORT || 3001;
 
 //API
-app.use(cors());
+
 app.use("/api/import", importData);
 app.use("/api/products", productRoute);
+app.use("/api/users", userRouter);
+
 //ERROR HANDLER
 app.use(notFound);
 app.use(errorHandler);

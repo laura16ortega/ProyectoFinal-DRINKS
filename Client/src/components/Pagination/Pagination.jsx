@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ProductCard from '../ProductCard/ProductCard'
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from 'react-paginate'; 
 import s from "./Pagination.module.css"
-
 const Pagination = ({ allProducts, loaded }) => {
    const [currentItems, setCurrentItems] = useState([]); //displayed products
    const [pageCount, setPageCount] = useState(0); //number of pages
@@ -38,8 +37,8 @@ const Pagination = ({ allProducts, loaded }) => {
 
       const newOffset = (e.selected * productsPerPage) % allProducts.length;
       setItemOffset(newOffset);
-      window.scrollTo({ behavior: "smooth", top: "0px" });
-      
+      document.querySelector("body").scrollTo({behavior: "smooth", top: "0px"});
+
    };
 
    return (
@@ -48,8 +47,8 @@ const Pagination = ({ allProducts, loaded }) => {
             {loaded ?
                currentItems.length ? currentItems.map(e =>
                   <ProductCard
-                     key={e.id}
-                     id={e.id}
+                     key={e._id}
+                     id={e._id}
                      image={e.image}
                      name={e.name}
                      price={e.price}
