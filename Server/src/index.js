@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import productos from "../data/Products.js";
-import products from "./routes/product.route.js";
 import dotenv from "dotenv";
 import connectDatabase from "../config/MongoDb.js";
 import importData from "../DataImport.js";
@@ -47,4 +46,4 @@ app.get("/api/products/:id", (req, res) => {
 
 app.listen(PORT, () => console.log("Server iniciado en el puerto: " + PORT));
 
-app.use("/products", products);
+
