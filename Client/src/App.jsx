@@ -8,6 +8,7 @@ import Register from './pages/Register/register'
 import LandingPage from './pages/LandingPage/LandingPage';
 import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
+import FavoriteProducts from './components/FavoriteProducts/FavoriteProducts';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/products' element={<Home />} />
         <Route path='/details/:id' element={<Details />} />
         <Route exact path='/register' element={<Register />} />
+        <Route path="/liked" element={<FavoriteProducts/>}/>
       </Routes>
 
     </div>

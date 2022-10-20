@@ -9,6 +9,8 @@ export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS"
 export const CLEAR_PRODUCT_DETAILS = 'CLEAR_PRODUCT_DETAILS';
 export const GET_PRODUCT_CATEGORIES = "GET_PRODUCT_CATEGORIES"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
+export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS"
+export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT"
 
 //placeholder
 //import fakeJSON from "../../assets/fakeJson"
@@ -134,5 +136,27 @@ export const sorting = (payload) => {
 export const clearProductDetails = () => {
     return {
         type: CLEAR_PRODUCT_DETAILS
+    }
+}
+
+export const getFavoriteProducts = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/api/products/${id}`)
+            return dispatch({type: GET_FAVORITE_PRODUCTS, payload: data})
+        } catch (e) {
+            console.log("action fav products error", e)
+        }
+    }
+}
+
+export const deleteFavoriteProduct = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/api/products/${id}`)
+            return dispatch({type: DELETE_FAVORITE_PRODUCT, payload: data})
+        } catch (e) {
+            console.log("action delete fav product error", e)
+        }
     }
 }

@@ -1,3 +1,5 @@
+import Cookies from "universal-cookie";
+let cookies = new Cookies()
 import {
    GET_PRODUCTS,
    PRICE_FILTER,
@@ -7,6 +9,8 @@ import {
    CLEAR_PRODUCT_DETAILS,
    SEARCH_PRODUCT,
    GET_PRODUCT_CATEGORIES,
+   GET_FAVORITE_PRODUCTS,
+   DELETE_FAVORITE_PRODUCT
 } from "../actions"
 
 const initialState = {
@@ -14,7 +18,8 @@ const initialState = {
    productsBackup: [],
    allProducts: [], //creado solo para filtro de categorias,
    categories: [],
-   productDetails: {}
+   productDetails: {},
+   favoriteProducts: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -57,7 +62,7 @@ const rootReducer = (state = initialState, action) => {
                return 0
             }
             if (action.payload === "OrderByReviewRateDESC") {
-               return (b.rating + b.numReviews) - (a.rating + a.numReviews)
+               return b.rating - a.rating
             }
             return true
          })
@@ -101,6 +106,36 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             categories: action.payload
          }
+      case GET_FAVORITE_PRODUCTS: 
+         const findOnFav = state.favoriteProducts.find(e => e._id === action.payload._id) //Buscar si ya existe
+         if (!findOnFav) { //Si no esta...
+            const favArray = [...state.favoriteProducts, action.payload] //Creo un array de objetos, sin alterar el estado
+            let expirationDate = new Date(Date.now() + 100 * 24 * 3600000) //Setteo una fecha de caducidad
+            cookies.set("fav", JSON.stringify(favArray), { path: "/", expires: expirationDate }) //Setteo las cookies, stringify porque cookies aceptan solo strings (Segun alguien en StackOverflow)
+               return {
+                  ...state,
+                  favoriteProducts: favArray //Array de productos pasa a ser el array, sin tener productos repetidos
+               }
+         }
+      case DELETE_FAVORITE_PRODUCT:
+         const cookieState = cookies.get("fav") //Agarro las cookies de fav
+         if (!cookieState) { //Si no existen altero el estado normalmente
+            const filteredFav = state.favoriteProducts.filter(e => e._id !== action.payload._id)
+            return {
+               ...state,
+               favoriteProducts: filteredFav
+            }
+         } else { //Si existen...
+            const filteredFavCookies = cookieState.filter(e => e._id !== action.payload._id) //Filtro por id
+            let expirationDate = new Date(Date.now() + 100 * 24 * 3600000) //Misma fecha de caducidad
+            cookies.set("fav", JSON.stringify(filteredFavCookies), { path: "/", expires: expirationDate }) //Actualizo las cookies de fav con las filtradas
+            return {
+               ...state,
+               favoriteProducts: filteredFavCookies //Pasa a ser filtrado
+            }
+         }
+
+      
       default:
          return initialState
    }
