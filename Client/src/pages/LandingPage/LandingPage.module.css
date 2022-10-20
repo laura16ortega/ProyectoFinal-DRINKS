@@ -1,63 +1,129 @@
-.container {
-    height: 100vh;
+.bodyContainer {
+    padding-top: 6em;
+    display: flex;
+    flex-direction: column;
+}
+
+.separator {
+    /*margin-bottom: 2rem;*/
+}
+
+.featuredContainer {
+    display: flex;
+    position: relative;
+}
+
+.featuredWrapper {
+    display: flex;
+    max-height: 86vh;
+}
+
+.featuredLeft {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #665A48;
+}
+
+.leftContents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 64px 48px;
+    height: 100%;
+}
+
+.leftContents p {
+    display: flex;
+    margin: 0;
+    letter-spacing: 0px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    color: #EDE4E0;
+}
+
+.titleContainer {
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+.titleContainer h1 {
+    font-size: 80px;
+    letter-spacing: -0.8px;
+    line-height: 96px;
+    color: black;
+    display: flex;
+    text-align: start;
+}
+
+.buttonContainer {
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.buttonContainer a {
+    text-decoration: none;
+}
+
+.buttonDesc {
+    height: 64px;
+    font-size: 20px;
+    background-color: #594545;
+    color: whitesmoke;
     display: flex;
     align-items: center;
-    justify-content: center;
-} 
+    padding: 0 32px;
+}
 
-.contents {
+.imgContainer {
+    width: 50%;
+}
+
+.imgContainer img {
+    width: -webkit-fill-available; 
+    height: -webkit-fill-available; 
+    object-fit: cover
+}
+
+.downContent {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    /*padding: 2rem 0;*/
+}
+
+.bestRated {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    position: relative;
-    width: 100vw;
-    align-items: flex-start;
-}
-
-.contents img {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    object-fit: cover;
-    object-position: center top;
-    z-index: 1;
-}
-
-.contents div {
-    z-index: 2;
-    padding-left: 8rem;
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 67vh;
+    background-color: #9E7676;
 }
 
-.data h1 {
+.separatorTitle {
+    margin-bottom: 1rem
+}
+
+.bestRatedProducts {
     display: flex;
-    color: rgb(36, 36, 36);
-    font-family: oktaneue-regular;
-    font-size:9.3rem;
-    transition: 0.3s;
-    user-select: none;
-    text-shadow: 1px 1px white;
+    justify-content: center;
+    width: 100%;
 }
 
-.data h1:hover {
-    transform: skew(-7deg);
-    color: rgb(255, 115, 0);
-    /*height: 2.5rem;*/
+.categories {
+    background-color: #815B5B;
+    padding: 80px 0;
 }
 
-.data button {
-    border: none;
-    background: none;
-    font-size: 2.3rem;
-    border: 25px solid rgba(255,255,255,.8);
-    border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png") 20;
-    transition: 0.3s;
-    font-family: "Walter Turncoat", cursive;
+.categories h1 {
+    padding-bottom: 2.5rem;
 }
 
-.data button:hover {
-    transform: scale(1.1);
+.categoriesLink {
+    display: flex;
+    justify-content: center;
 }
