@@ -7,7 +7,7 @@ import importData from "../DataImport.js";
 import productRoute from "../Routes/ProductRoutes.js";
 import { errorHandler, notFound } from "../Middleware/Errors.js";
 import userRouter from "../Routes/UserRoutes.js";
-
+import orderRouter from "../Routes/orderRoutes.js";
 
 dotenv.config();
 connectDatabase();
@@ -25,6 +25,7 @@ const PORT = process.env.PORT || 3001;
 app.use("/api/import", importData);
 app.use("/api/products", productRoute);
 app.use("/api/users", userRouter);
+app.use("/api/orders", orderRouter);
 
 //ERROR HANDLER
 app.use(notFound);
@@ -45,5 +46,3 @@ app.get("/api/products/:id", (req, res) => {
 // });
 
 app.listen(PORT, () => console.log("Server iniciado en el puerto: " + PORT));
-
-
