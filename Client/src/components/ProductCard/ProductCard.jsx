@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import s from "./ProductCard.module.css"
 import { priceWithCommas } from '../../assets/helpers'
 import { useDispatch } from "react-redux"
-import { getFavoriteProducts } from '../../redux/actions'
+import { addProductToCart, getFavoriteProducts } from '../../redux/actions'
 import heart from "../../assets/img/heart.png";
 import cart from "../../assets/img/shopping-cart.png";
 
@@ -17,6 +17,10 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
 
    }
 
+   const handleCart = (id) => {
+      dispatch(addProductToCart(id))
+   }
+
    return (
       <div className={s.container}>
          <div className={s.contents}>
@@ -26,7 +30,7 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
                   <Link to={`/details/${id}`}>
                   <img src={image} alt={name} className={s.productImage}/>
                   </Link>
-                  <img src={cart} alt="" className={s.addCart}/>
+                  <img src={cart} alt="" className={s.addCart} onClick={() => handleCart(id)}/>
                </div>
 
             <div className={s.category}>{category}</div>
