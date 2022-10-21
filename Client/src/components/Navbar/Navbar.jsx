@@ -39,7 +39,7 @@ function Navbar(props) {
       <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar}`}>
          <div className={s.topContents}>
             <div className={s.categories}>
-               <div className={s.catBtn}>
+{/*                <div className={s.catBtn}>
                   <NavLink to='/vino' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
                      Vino
                   </NavLink>
@@ -53,7 +53,7 @@ function Navbar(props) {
                   <NavLink to='/licores' className={({ isActive }) => isActive ? `${s.activeCategory}` : `${s.catBt}`}>
                      Licores
                   </NavLink>
-               </div>
+               </div> */}
             </div>
             <div className={s.logo}>
                <h3>drinks.</h3>

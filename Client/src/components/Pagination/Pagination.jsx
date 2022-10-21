@@ -42,7 +42,7 @@ const Pagination = ({ allProducts, loaded }) => {
    };
 
    return (
-      <div style={{ backgroundColor: "rgb(238, 238, 238)", width: "-webkit-fill-available" }}>
+      <div className={s.container}>
          <div className={s.productsContainer}>
             {loaded ?
                currentItems.length ? currentItems.map(e =>

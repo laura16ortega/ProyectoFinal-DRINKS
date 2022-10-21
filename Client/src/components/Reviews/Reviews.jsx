@@ -7,10 +7,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 function Reviews(props) {
     const { user, isAuthenticated } = useAuth0();
 
-    const [error, setError ] = useState();
+    const [error, setError ] = useState({});
     const [review, setReview] = useState({
-        Title:'',
-        Content:''
+        title:'',
+        content:'',
+        rating:''
     });
 
 
@@ -29,22 +30,30 @@ function Reviews(props) {
     const validate = () => {
         let error = {};
 
-        if(!review.Title.length) error.Title = 'Agrega un titulo'
-        if(!review.Title) error.Title = 'Agrega un titulo'
-        if(review.Title.length < 3) error.Title = 'minimo 3 caracteres'
-        if(review.Title.length > 20) error.Title = 'maximo 20 caracteres'
+        if(!review.title.length) error.title = 'Agrega un titulo'
+        if(!review.title) error.title = 'Agrega un titulo'
+        if(review.title.length < 3) error.title = 'minimo 3 caracteres'
+        if(review.title.length > 20) error.title = 'maximo 20 caracteres'
 
-        if(!review.Content.length) error.Content = 'Escribe tu reseña'
-        if(!review.Content) error.Content = 'Escribe tu reseña'
-        if(review.Content < 10) error.Content = 'minimo 10 caracteres'
-        if(review.Content > 60) error.Content = 'maximo 60 caracteres'
+        if(!review.content.length) error.content = 'Escribe tu reseña'
+        if(!review.content) error.content = 'Escribe tu reseña'
+        if(review.content < 10) error.content = 'minimo 10 caracteres'
+        if(review.content > 60) error.content = 'maximo 60 caracteres'
 
         return error
     }
 
     const range = [1,2,3,4,5,6,7,8,9,10];
     const obj = [{"title":"Not so good", "content":"This is a random text that is just meant to occupy space and give space notion ","username":"aribxax","rating":"★★★★☆"},{"title":"I recommend it!", "content":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Not worth its price :/", "content":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Good packaging!", "content":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Delivery was quick :)", "content":"I loved it","username":"aribxax","rating":"★★★★☆"}]
-    const onPointerMove = (value, index) => console.log(value, index)
+    const onPointerMove = (value) => {
+        setReview({
+            ...review,
+            rating:value
+        })
+    }
+
+
+
     return (
         <>
         <div className={s.allReviews}>   
@@ -66,22 +75,25 @@ function Reviews(props) {
             <Rating onClick={onPointerMove} allowFraction="true"/>
         </div>
         </div>
-        <form className={s.userReview}>
+        <form className={s.userReview} onSubmit={s}>
 
             <input 
-            name='Title'
+            name='title'
 
             onChange={(e) => handleInput(e)} 
             className={s.inputTitle} 
-            placeholder='Title'
+            placeholder='title'
              />
+              {error.title && <p className={s.alert}>{error.title}</p>}
 
-            <input
-            name='Content'
+            <textarea
+            name='content'
             onChange={(e) => handleInput(e)} 
             className={s.inputContent} 
             placeholder='My review...'
             />
+            {error.content && <p className={s.alert}>{error.content}</p>}
+            <button type='submit' className={s.btn}>Enviar</button>
   
         </form>
         </>

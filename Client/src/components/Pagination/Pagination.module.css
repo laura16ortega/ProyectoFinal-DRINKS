@@ -1,12 +1,13 @@
 .productsContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: center;  
+    margin-right: 10rem;
+    width: 80rem;
     padding: 2rem 0;
     padding-top: 0; 
-    background: rgb(147,85,139);
-   background: linear-gradient(90deg, rgba(147,85,139,1) 20%, rgba(205,212,36,1) 100%);
+        /* background: rgb(147,85,139);
+    background: linear-gradient(90deg, rgba(147,85,139,1) 20%, rgba(205,212,36,1) 100%); */
 }
 
 .noResults {

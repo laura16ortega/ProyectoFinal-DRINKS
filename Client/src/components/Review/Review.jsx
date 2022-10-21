@@ -11,7 +11,7 @@ function Review({title, content, username, rating}) {
 
                     <div className={s.usernameBody}>
                         <img className={s.img} alt='user photo' src={userPhoto} />
-                        <div >
+                        <div>
                         <p className={s.rating}>{rating}</p>
                          </div>
                        
@@ -23,6 +23,7 @@ function Review({title, content, username, rating}) {
 
                     <div >
                         <h3 className={s.title}>{title}</h3>
+                       
                         </div>
                     <div >
                         <p className={s.content}>{content}</p>
