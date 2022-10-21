@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema(
         name: { type: String, required: true },
         qty: { type: Number, required: true },
         image: { type: String, required: true },
-        price: { Number: String, required: true },
+        price: { Number: String, required: false },
         product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
