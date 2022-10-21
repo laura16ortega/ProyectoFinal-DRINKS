@@ -1,19 +1,23 @@
-import { React, useState } from "react";
+import React, { useState,useEffect } from "react";
 /* import { useDispatch, useSelector } from "react-redux"; */
 import { useParams, useNavigate } from "react-router-dom";
 import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
 import Amount from "../../components/Amount/Amount";
-import { useEffect } from "react";
+
 
 import Reviews from "../../components/Reviews/Reviews";
 import { useDispatch, useSelector } from "react-redux";
-import { clearProductDetails, getProductDetails } from "../../redux/actions";
+import { clearProductDetails, getProductDetails, addProductToCart } from "../../redux/actions";
 
 function Details() {
+
    const { id } = useParams();
    const dispatch = useDispatch()
    const product = useSelector(state => state.productDetails)
+   const cart = useSelector(state => state.cart)
+   const qty = useSelector(state => state.qtyToAdd)
+   console.log(cart)
    console.log("id: ", id)
    console.log("product: ", product)
 
@@ -30,6 +34,11 @@ function Details() {
    const onPointerLeave = () => console.log("Leave");
    const onPointerMove = (value, index) => console.log(value, index);
 
+   const handleInToCart = (e) => {
+      e.preventDefault()
+      dispatch (addProductToCart({product, qty }))
+   }
+
    /*     const product = useSelector((state) => state.productDetails);
      const {} = product;
  
@@ -44,6 +53,10 @@ function Details() {
          dispatch(clearProductDetails())
       }
    }, [dispatch, id])
+
+
+   // console.log(React.Children.toArray())
+ 
 
    return (
       <div>
@@ -96,7 +109,7 @@ function Details() {
                         <Amount />
                      </div>
                      <div >
-                        <button className={s.addToCart}>Add to cart.</button>
+                        <button onClick={handleInToCart} className={s.addToCart}>Add to cart.</button>
                      </div>
                      <div className={s.reviews}>
                         <h2 className={s.reviewsHeader}>

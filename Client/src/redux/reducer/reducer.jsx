@@ -9,11 +9,15 @@ import {
    CLEAR_PRODUCT_DETAILS,
    SEARCH_PRODUCT,
    GET_PRODUCT_CATEGORIES,
+   ADD_TO_CART,
+   CHANGE_QTY_TO_ADD,
    GET_FAVORITE_PRODUCTS,
    DELETE_FAVORITE_PRODUCT
 } from "../actions"
 
 const initialState = {
+   qtyToAdd: 0,
+   cart: [],
    products: [],
    productsBackup: [],
    allProducts: [], //creado solo para filtro de categorias,
@@ -106,6 +110,16 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             categories: action.payload
          }
+      case ADD_TO_CART:
+         return{
+            ...state,
+            cart:[...state.cart, {product: action.payload.product, qty:action.payload.qty}]
+         }   
+      case CHANGE_QTY_TO_ADD:
+         return{
+            ...state,
+            qtyToAdd: action.payload
+         }
       case GET_FAVORITE_PRODUCTS: 
          const findOnFav = state.favoriteProducts.find(e => e._id === action.payload._id) //Buscar si ya existe
          if (!findOnFav) { //Si no esta...
@@ -134,8 +148,6 @@ const rootReducer = (state = initialState, action) => {
                favoriteProducts: filteredFavCookies //Pasa a ser filtrado
             }
          }
-
-      
       default:
          return initialState
    }
