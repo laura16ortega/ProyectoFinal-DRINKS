@@ -1,5 +1,5 @@
 .btn_container {
-    text-align: center;
+    text-align: left;
     margin-bottom: 3rem;
 }
 
@@ -7,19 +7,35 @@
     font-size: 18px;
     text-align: center;
     border-radius: 0.2vh;
-    box-shadow: 0px 5px 6px 0px #b1b1b1;
+    box-shadow: 0px 5px 6px 0px #94929242;
+    background:none;
+    border: black solid;
+    color: black;
 }
 .counter_output {
+    background:none;
     font-size: 30px;
     margin: 0.5rem 0.5rem;
-    background-color: white;
+    
     padding: 0.1rem 0.5rem 0.7rem 0.5rem;
+    
 }
 
 .reset {
     font-size: 18px;
     margin-left: 1rem;
     border-radius: 0.2vh;
-    box-shadow: 0px 5px 6px 0px #b1b1b1;
-    
+    box-shadow: 0px 5px 6px 0px #94929242;
+    border: black solid;
+    color: black;
+    background: none;
+    font-family: Helvetica;
+}
+.reset:hover {
+    border: white solid;
+    color: black;
+}
+.control_btn:hover {
+    border: white solid;
+    color: black;
 }

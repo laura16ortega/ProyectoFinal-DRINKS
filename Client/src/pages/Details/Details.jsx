@@ -5,7 +5,7 @@ import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
 import Amount from "../../components/Amount/Amount";
 import { useEffect } from "react";
-
+import { useAuth0 } from '@auth0/auth0-react';
 import Reviews from "../../components/Reviews/Reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { clearProductDetails, getProductDetails } from "../../redux/actions";
@@ -30,12 +30,6 @@ function Details() {
    const onPointerLeave = () => console.log("Leave");
    const onPointerMove = (value, index) => console.log(value, index);
 
-   /*     const product = useSelector((state) => state.productDetails);
-     const {} = product;
- 
-     const dispatch = useDispatch();
-     const navigate = useNavigate(); 
-   */
 
    useEffect(() => {
       dispatch(getProductDetails(id))
@@ -73,6 +67,7 @@ function Details() {
                            onPointerLeave={onPointerLeave}
                            onPointerMove={onPointerMove}
                            readonly="true"
+                           allowFraction="true"
                            initialValue={product.rating}
 
                         /* Available Props */

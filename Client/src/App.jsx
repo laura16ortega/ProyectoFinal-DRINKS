@@ -10,18 +10,24 @@ import Register from './pages/Register/register'
 import LandingPage from './pages/LandingPage/LandingPage';
 import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
-
-
+import LoginButton from './components/LogginButton/LoginButton';
+import LogoutButton from './components/LogoutButton/LogoutButton';
+import Profile from './pages/Profile/Profile';
+import { useAuth0 } from '@auth0/auth0-react';
 function App() {
-
+  const { isLoading, error } = useAuth0();
   return (
     <div className="App" >
+
       <Navbar /> 
+
       <Footer/>
+
       <Routes>
-        <Route path='/' element={<LandingPage/>}/>
-        <Route path='/products' element={<Home /> } />
+        <Route path='/home' element={<LandingPage/>}/>
+        <Route path='/productos' element={<Home /> } />
         <Route path='/details/:id' element={<Details />} />
+        <Route path='/perfil' element={<Profile />} />
         <Route exact path='/register' element={<Register />} />
       </Routes>
 

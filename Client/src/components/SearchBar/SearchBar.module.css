@@ -8,12 +8,23 @@
     border: none;
     border-color: none;
     position: relative;
+    border-radius: 0.2vh;
+    transition: 0.3s;
+}
+.container input:focus {
+    transition: 0.3s;
+    width: 300px;
+    height: 2rem;
+    position: absolute;
+    margin-left: -44rem;
+    padding: 0 16px 0 0;
+    color:black;
 }
 
 .container button {
     background: none;
     /*position: absolute;*/
-    left: 89%;
+    
     padding: 0 0px;
     height: -webkit-fill-available;
     border: none;

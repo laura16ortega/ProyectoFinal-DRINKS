@@ -9,27 +9,33 @@ body, html {
     justify-content: center;
     margin-top: 11rem;
     font-family: Helvetica;
-    color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
     font-size: 2em;
 }
 
 .imgContainer {
-    box-shadow: 0px 5px 6px 0px #b1b1b1;
+    box-shadow: 0px 5px 6px 0px #94929242;
     width: max-content;
     height: 37.5rem;
+
+
+   
+
 }
 
 .imgContainer img {
     height: 600px;
     width: 500px;
     object-fit: cover;
+
+    position: fixed;
 }
 
 .rightData {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-
+    margin-left: 32rem;
+    
     margin-top: -2.2rem;
     padding-left: 3.5rem;
 }
@@ -50,7 +56,7 @@ body, html {
     font-size: 12px;
     width: 30rem;
     height: 12.4rem;
-    margin-bottom: 4.4rem;
+    margin-bottom: 4.1rem;
 
 }
 .amount {
@@ -62,17 +68,22 @@ body, html {
 }
 .addToCart {
     height: 1rem;
-    
+    background: none;
+    border: black solid;
+    color: black;
+    border-radius: 0.2vh;
     width: 31rem;
     padding-bottom: 3.3rem;
     border-radius: 0.2vh;   
-    box-shadow: 0px 5px 6px 0px #b1b1b1;
-
+    box-shadow: 0px 5px 6px 0px #94929242;
+}
+.addToCart:hover {
+    border: white solid;
 }
 
 
 .reviewsHeader {
-    font-size: 26.5px;
+    font-size: 18px;
     text-align: left;
 }
 .reviews {
@@ -83,5 +94,6 @@ body, html {
     margin-top: 2rem;
     width: 34.8rem;    
     padding-bottom: 6rem;
+    
 
 }

@@ -5,6 +5,8 @@
     align-items: center;
     padding: 2rem 0;
     padding-top: 0; 
+    background: rgb(147,85,139);
+   background: linear-gradient(90deg, rgba(147,85,139,1) 20%, rgba(205,212,36,1) 100%);
 }
 
 .noResults {
@@ -30,6 +32,7 @@
     align-items: center;
     justify-content: center;
     list-style: none;
+    
 }
 
 .page {
@@ -40,6 +43,7 @@
     font-size: 1em;
     text-decoration: none;
     cursor: pointer;
+    
 }
 
 .page a {

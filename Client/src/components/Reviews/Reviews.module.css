@@ -1,0 +1,43 @@
+.allReviews {
+    margin-bottom: 4rem;
+}
+.userReview input{
+    display: flex;
+    flex-direction: column;
+    background-color: #e6e4e4;
+    border: none;
+}
+
+.inputTitle {
+    margin-bottom: 1rem;
+    color:black;
+}
+.inputContent {
+    width: 20rem;
+    height: 6rem;
+    color:black;
+}
+.userBoardBody {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+
+    height: 5rem;
+    width: max-content;
+}
+.image {
+    height: 3rem;
+    border-radius: 0.5vh;
+    margin-bottom: -2rem;
+}
+.nickname {
+    text-indent: left;
+    font-size: 0.9rem;
+    font-weight: lighter;
+    font-family: Helvetica;
+}
+
+select{
+	border: 0;
+    outline: 0;
+}

@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  
+}
+.background {
+    
+    background-color: rgba(81, 85, 88, 0.466);
+    border-radius: 0.2vh;
+    margin-top: 10rem;
+    
+    height: 11rem;
+    padding: 2rem 5rem 5rem 5rem;
+   
+}
+.img {
+    border-radius: 5px;
+    height: 8rem;
+}

@@ -8,6 +8,7 @@
     margin: 2rem 1rem;
     display: flex;
     flex-direction: column;
+    
 }
 
 .categoriesFilter select {
