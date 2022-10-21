@@ -7,9 +7,13 @@ import {
    CLEAR_PRODUCT_DETAILS,
    SEARCH_PRODUCT,
    GET_PRODUCT_CATEGORIES,
+   ADD_TO_CART,
+   CHANGE_QTY_TO_ADD,
 } from "../actions"
 
 const initialState = {
+   qtyToAdd: 0,
+   cart: [],
    products: [],
    productsBackup: [],
    allProducts: [], //creado solo para filtro de categorias,
@@ -100,6 +104,16 @@ const rootReducer = (state = initialState, action) => {
          return {
             ...state,
             categories: action.payload
+         }
+      case ADD_TO_CART:
+         return{
+            ...state,
+            cart:[...state.cart, {product: action.payload.product, qty:action.payload.qty}]
+         }   
+      case CHANGE_QTY_TO_ADD:
+         return{
+            ...state,
+            qtyToAdd: action.payload
          }
       default:
          return initialState

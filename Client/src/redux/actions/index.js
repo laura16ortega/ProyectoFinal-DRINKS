@@ -9,6 +9,8 @@ export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS"
 export const CLEAR_PRODUCT_DETAILS = 'CLEAR_PRODUCT_DETAILS';
 export const GET_PRODUCT_CATEGORIES = "GET_PRODUCT_CATEGORIES"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
+export const ADD_TO_CART = "ADD_TO_CART"
+export const CHANGE_QTY_TO_ADD= "CHANGE_QTY_TO_ADD"
 
 //placeholder
 //import fakeJSON from "../../assets/fakeJson"
@@ -134,5 +136,19 @@ export const sorting = (payload) => {
 export const clearProductDetails = () => {
     return {
         type: CLEAR_PRODUCT_DETAILS
+    }
+}
+
+export const addProductToCart = (payload) => {
+    return {
+        type: ADD_TO_CART,
+        payload
+    }
+}
+
+export const changeQtyToAdd = (payload) => {
+    return {
+        type: CHANGE_QTY_TO_ADD,
+        payload
     }
 }

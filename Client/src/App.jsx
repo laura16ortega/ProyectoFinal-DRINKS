@@ -10,6 +10,7 @@ import Register from './pages/Register/register'
 import LandingPage from './pages/LandingPage/LandingPage';
 import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
+import Cart from './components/Cart/Cart';
 
 
 function App() {
@@ -22,8 +23,10 @@ function App() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path='/home' element={<LandingPage />} />
         <Route path='/products' element={<Home />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path='/details/:id' element={<Details />} />
         <Route exact path='/register' element={<Register />} />
+        
       </Routes>
 
     </div>
