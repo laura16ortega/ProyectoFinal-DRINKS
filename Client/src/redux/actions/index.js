@@ -11,6 +11,8 @@ export const GET_PRODUCT_CATEGORIES = "GET_PRODUCT_CATEGORIES"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
 export const ADD_TO_CART = "ADD_TO_CART"
 export const CHANGE_QTY_TO_ADD= "CHANGE_QTY_TO_ADD"
+export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS"
+export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT"
 
 //placeholder
 //import fakeJSON from "../../assets/fakeJson"
@@ -139,6 +141,7 @@ export const clearProductDetails = () => {
     }
 }
 
+
 export const addProductToCart = (payload) => {
     return {
         type: ADD_TO_CART,
@@ -150,5 +153,27 @@ export const changeQtyToAdd = (payload) => {
     return {
         type: CHANGE_QTY_TO_ADD,
         payload
+        }
+}
+
+export const getFavoriteProducts = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/api/products/${id}`)
+            return dispatch({type: GET_FAVORITE_PRODUCTS, payload: data})
+        } catch (e) {
+            console.log("action fav products error", e)
+        }
+    }
+}
+
+export const deleteFavoriteProduct = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/api/products/${id}`)
+            return dispatch({type: DELETE_FAVORITE_PRODUCT, payload: data})
+        } catch (e) {
+            console.log("action delete fav product error", e)
+        }
     }
 }
