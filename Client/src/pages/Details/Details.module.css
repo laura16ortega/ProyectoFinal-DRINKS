@@ -5,7 +5,9 @@ body, html {
 
 .productContainer {
     display: flex;
-    margin: 4em 5em 1em;
+  /*   margin: 5em 13em 1em; */
+    justify-content: center;
+    margin-top: 11rem;
     font-family: Helvetica;
     color: rgb(35, 35, 35);
     font-size: 2em;
@@ -27,28 +29,46 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    margin-top: -2.2rem;
     padding-left: 3.5rem;
+}
+.title {
+    margin-bottom: -2rem;
+}
+.price {
+    margin-bottom: 1rem;
+
+}
+.rating {
+    margin-left: -0.4rem;
+    margin-bottom: 2rem;
 }
 
 .description {
     text-align: left;
-    font-size: 17px;
+    font-size: 12px;
     width: 30rem;
-    margin-bottom: 4rem;
-}
+    margin-bottom: 4.4rem;
 
+}
+.amount {
+    margin-bottom: 1rem;
+
+
+    height: 2.7rem;
+
+}
 .addToCart {
-    height: 3rem;
-    width: 35rem;
+    height: 1rem;
+    
+    width: 31rem;
     padding-bottom: 3.3rem;
-    border-radius: 0.2vh;
+    border-radius: 0.2vh;   
+    box-shadow: 0px 5px 6px 0px #b1b1b1;
+
 }
 
-.reviews {
-    margin-top: 5rem;
-    color: rgb(35, 35, 35);
-    font-size: 2em;
-}
 
 .reviewsHeader {
     font-size: 26.5px;
@@ -62,4 +82,5 @@ body, html {
     margin-top: 2rem;
     width: 34.8rem;    
     padding-bottom: 6rem;
+
 }
