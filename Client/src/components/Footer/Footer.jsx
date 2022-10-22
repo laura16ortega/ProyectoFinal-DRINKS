@@ -5,20 +5,17 @@ function Footer(props) {
     return (
         <>
 
-        <footer className={s.body} >
+        <footer className={s.navdown} >
             <div className={s.contact}>
-                random
-                random
+            Principal   Productos   Sobre nosotros
             </div>
             <div className={s.social_media}>
-                facebook
-                instagram
-                etc
+                Facebook
+                Instagram
+                Github
             </div>
             <div className={s.github}>
-                aribxax
-                etc etc
-                etcetc
+        Contacto
 
             </div>
             

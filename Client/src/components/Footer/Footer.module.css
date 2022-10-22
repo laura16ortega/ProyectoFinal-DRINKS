@@ -1,20 +1,15 @@
-.body {
-  display:flex;
-  flex-direction: row;
-  justify-content: space-around ;
-  
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: rgb(235, 195, 64);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 3;
-  }
+footer {
+  background: #f5b335;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  transition: bottom 0.2s ease-in-out;
+  width: 100%;
+}
 
-  html,body {
-    margin:0;
-    padding:0;
-    height:100%; /* needed for container min-height */
+.nav-down {
+  bottom: -40px;
+}
+body {
+  margin: 0;
 }

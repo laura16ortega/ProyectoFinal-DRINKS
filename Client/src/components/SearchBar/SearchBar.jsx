@@ -34,7 +34,7 @@ export default function SearchBar() {
 
    return (
       <div className={s.container}>
-         <input type="text" placeholder='Search...' value={input} onChange={e => handleChange(e)} onKeyDown={(e) => handleKeyDown(e)} />
+         <input type="text" placeholder='Buscar...' value={input} onChange={e => handleChange(e)} onKeyDown={(e) => handleKeyDown(e)} />
          <button onClick={e => handleSubmit(e)}>🔍</button>
       </div>
    )

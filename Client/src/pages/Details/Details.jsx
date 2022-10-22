@@ -4,8 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
 import Amount from "../../components/Amount/Amount";
-
-
+import { useAuth0 } from '@auth0/auth0-react';
 import Reviews from "../../components/Reviews/Reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { clearProductDetails, getProductDetails, addProductToCart } from "../../redux/actions";
@@ -86,6 +85,7 @@ function Details() {
                            onPointerLeave={onPointerLeave}
                            onPointerMove={onPointerMove}
                            readonly="true"
+                           allowFraction="true"
                            initialValue={product.rating}
 
                         /* Available Props */

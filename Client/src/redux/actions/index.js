@@ -14,6 +14,7 @@ export const CHANGE_QTY_TO_ADD= "CHANGE_QTY_TO_ADD"
 export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS"
 export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT"
 export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT"
+export const ADD_REVIEW = 'ADD_REVIEW'
 
 //placeholder
 //import fakeJSON from "../../assets/fakeJson"
@@ -26,6 +27,19 @@ export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT"
 //        payload
 //    }
 //}
+
+export const addReview = (payload) => {
+    return async(dispatch) => {
+        try{
+            return dispatch({
+                type:ADD_REVIEW,
+                payload:payload
+            })
+        }catch(err){
+            console.error('review actions error', err);
+        }
+    }
+}
 
 
 export const getProducts = () => {

@@ -1,6 +1,6 @@
 .filterContainer {
     margin: 3rem 0;
-    width: 20%;
+    width: 5%;
     color: #383d42
 }
 
@@ -8,6 +8,7 @@
     margin: 2rem 1rem;
     display: flex;
     flex-direction: column;
+    
 }
 
 .categoriesFilter select {

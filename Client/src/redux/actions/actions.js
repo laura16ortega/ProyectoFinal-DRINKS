@@ -8,7 +8,8 @@ import {
     FILTER_BY_ORDER,
     FILTER_BY_TYPE,
     CLEAR_DETAIL,
-    ADD_PRODUCT
+    ADD_PRODUCT,
+    ADD_REVIEW
 } from './actionsList';
 
 
