@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const reviewSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   rating: {
     type: Number,
@@ -29,18 +29,18 @@ const productSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
       required: true,
     },
+    reviews: [reviewSchema],
     rating: {
       type: Number,
       required: true,
       default: 0,
     },
-    reviews: [reviewSchema],
+
     numReviews: {
       type: Number,
       required: true,

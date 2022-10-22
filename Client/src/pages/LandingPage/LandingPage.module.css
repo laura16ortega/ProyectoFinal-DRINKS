@@ -1,117 +1,131 @@
-html, body {
-    height: 100%; min-height: 100%}
-.loginOut {
-    display: flex;
-    
-
- 
-}
-.carousel {
-    
-    width: 550px;
-    height: 300px;
-    margin-top: 6rem;
-}
-.container2 {
-    display: flex;
-    flex-direction: left;
-    flex-direction: row;
-}
-.container {
-    height: 100vh;
+.bodyContainer {
+    padding-top: 6em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-   /*  justify-content: center; */
-    background: rgb(147,85,139);
-   background: linear-gradient(90deg, rgba(147,85,139,1) 20%, rgba(205,212,36,1) 100%);
-} 
-.buttons {
+}
+
+.separator {
+    /*margin-bottom: 2rem;*/
+}
+
+.featuredContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    z-index: 150;
+    position: relative;
 }
-.btn {
-    z-index: 105;
-    font-size: 0.8rem;
-    margin-top: 0.3rem;
-    background: none;
-    color: black;
-    border: black solid;
-    font-family: manrope-regular;
-    margin-left: 0.5rem;
-    width: 10rem;
+
+.featuredWrapper {
+    display: flex;
+    max-height: 86vh;
 }
-.contents {
+
+.featuredLeft {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #665A48;
+}
+
+.leftContents {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    width: 100vw;
     align-items: flex-start;
+    padding: 64px 48px;
+    height: 100%;
 }
 
-.contents img {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    object-fit: cover;
-    object-position: center top;
-    z-index: 1;
-}
-.logo {
-    font-family: oktaneue-regular;
-    margin-top: 4rem;
-    margin-bottom: -7rem;
-    font-size: 50px;
-    transition: 0.4s;
-    user-select: none;
-    z-index: 150;
-/*     margin-left: 13rem; */
-}
-.logo:hover {
-    transform: skew(-15deg);
-    color: rgb(255, 239, 21);
-    /*height: 2.5rem;*/
-}
-.contents div {
-    z-index: 2;
-    padding-left: 8rem;
+.leftContents p {
     display: flex;
+    margin: 0;
+    letter-spacing: 0px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    color: #EDE4E0;
+}
+
+.titleContainer {
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+.titleContainer h1 {
+    font-size: 80px;
+    letter-spacing: -0.8px;
+    line-height: 96px;
+    color: black;
+    display: flex;
+    text-align: start;
+}
+
+.buttonContainer {
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.buttonContainer a {
+    text-decoration: none;
+}
+
+.buttonDesc {
+    height: 64px;
+    font-size: 20px;
+    background-color: #594545;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+}
+
+.imgContainer {
+    width: 50%;
+}
+
+.imgContainer img {
+    width: -webkit-fill-available; 
+    height: -webkit-fill-available; 
+    object-fit: cover
+}
+
+.downContent {
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-between;
-    height: 67vh;
+    /*padding: 2rem 0;*/
 }
 
-.data h1 {
+.bestRated {
     display: flex;
-    color: rgb(36, 36, 36);
-    font-family: oktaneue-regular;
-    font-size:9.3rem;
-    transition: 0.3s;
-    user-select: none;
-    text-shadow: 1px 1px white;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #9E7676;
 }
 
-.data h1:hover {
-    transform: skew(-7deg);
-    color: rgb(255, 115, 0);
-    /*height: 2.5rem;*/
+.separatorTitle {
+    margin-bottom: 1rem
 }
 
-.data button {
-    border: none;
-    background: none;
-    font-size: 2.3rem;
-    border: 25px solid rgba(255,255,255,.8);
-    border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png") 20;
-    transition: 0.3s;
-    font-family: "Walter Turncoat", cursive;
+.bestRatedProducts {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-.data button:hover {
-    transform: scale(1.1);
+.categories {
+    background-color: #815B5B;
+    padding: 80px 0;
+}
+
+.categories h1 {
+    padding-bottom: 2.5rem;
+}
+
+.categoriesLink {
+    display: flex;
+    justify-content: center;
 }
 
 

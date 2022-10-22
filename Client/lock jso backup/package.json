@@ -9,9 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "@auth0/auth0-react": "^1.12.0",
+=======
     "@emailjs/browser": "^3.7.0",
     "aos": "^2.3.4",
-    "@auth0/auth0-react": "^1.12.0",
+>>>>>>> 08c9e7bb7aad48c4620a9ef15dcd117f22631407
     "axios": "^1.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

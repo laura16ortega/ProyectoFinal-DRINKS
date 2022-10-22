@@ -5,7 +5,7 @@ function Footer(props) {
     return (
         <>
 
-        <footer className={s.body} >
+        <footer className={s.navdown} >
             <div className={s.contact}>
             Principal   Productos   Sobre nosotros
             </div>
