@@ -207,3 +207,25 @@ export const deleteFavoriteProduct = (id) => {
         }
     }
 }
+
+export const userRegister = (payload) => {
+    return async () => {
+        try {
+            const json = await axios.post("http://localhost:3001/api/users/", payload)
+            return json
+        } catch (e) {
+            console.log("register action error: ", e)
+        }
+    }
+}
+
+export const userLogin = (payload) => {
+    return async () => {
+        try {
+            const json = await axios.post("http://localhost:3001/api/users/login", payload)
+            return json
+        } catch (e) {
+            console.log("login action error: ", e)
+        }
+    }
+}
