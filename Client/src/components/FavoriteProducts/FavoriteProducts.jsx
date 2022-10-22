@@ -35,13 +35,12 @@ const FavoriteProducts = () => {
                                 </div>
                                 <div>
                                     <h2>{e[1].price}</h2>
-                                    <button>COMPRAR</button>
                                 </div>
                             </div>
                         </div>
                     )
                 ) : (
-                    <h1>No agregaste productos a tu carrito</h1>
+                    <h1>No agregaste productos a favoritos</h1>
                 )}
             </div>
         </div>

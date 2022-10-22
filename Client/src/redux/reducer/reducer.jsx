@@ -11,6 +11,7 @@ import {
    GET_PRODUCT_CATEGORIES,
    ADD_TO_CART,
    CHANGE_QTY_TO_ADD,
+   DELETE_CART_PRODUCT,
    GET_FAVORITE_PRODUCTS,
    DELETE_FAVORITE_PRODUCT
 } from "../actions"
@@ -38,14 +39,14 @@ const rootReducer = (state = initialState, action) => {
             allProducts: action.payload
          }
 
-      
+
       case PRICE_FILTER:
          //const filteredPrices = state.products.filter(e => e.price >= action.minPrice && e.price <= action.maxPrice)
          return {
             ...state,
             products: state.productsBackup.filter(e => e.price <= action.payload)
          }
-      
+
       case SORTING:
          const allProducts = state.products.filter(e => e.price)
          const sortedPrice = allProducts.sort((a, b) => {
@@ -76,7 +77,7 @@ const rootReducer = (state = initialState, action) => {
             productsBackup: sortedPrice
          }
 
-      
+
       case CATEGORY_FILTER:
          if (action.payload === "all") {
             return {
@@ -90,7 +91,7 @@ const rootReducer = (state = initialState, action) => {
             products: filteredCategory,
             productsBackup: filteredCategory
          }
-      case GET_PRODUCT_DETAILS: 
+      case GET_PRODUCT_DETAILS:
          return {
             ...state,
             productDetails: action.payload
@@ -100,7 +101,7 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             productDetails: {}
          }
-      case SEARCH_PRODUCT: 
+      case SEARCH_PRODUCT:
          return {
             ...state,
             products: action.payload
@@ -110,26 +111,16 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             categories: action.payload
          }
-      case ADD_TO_CART:
-         return{
-            ...state,
-            cart:[...state.cart, {product: action.payload.product, qty:action.payload.qty}]
-         }   
-      case CHANGE_QTY_TO_ADD:
-         return{
-            ...state,
-            qtyToAdd: action.payload
-         }
-      case GET_FAVORITE_PRODUCTS: 
+      case GET_FAVORITE_PRODUCTS:
          const findOnFav = state.favoriteProducts.find(e => e._id === action.payload._id) //Buscar si ya existe
          if (!findOnFav) { //Si no esta...
             const favArray = [...state.favoriteProducts, action.payload] //Creo un array de objetos, sin alterar el estado
             let expirationDate = new Date(Date.now() + 100 * 24 * 3600000) //Setteo una fecha de caducidad
             cookies.set("fav", JSON.stringify(favArray), { path: "/", expires: expirationDate }) //Setteo las cookies, stringify porque cookies aceptan solo strings (Segun alguien en StackOverflow)
-               return {
-                  ...state,
-                  favoriteProducts: favArray //Array de productos pasa a ser el array, sin tener productos repetidos
-               }
+            return {
+               ...state,
+               favoriteProducts: favArray //Array de productos pasa a ser el array, sin tener productos repetidos
+            }
          }
       case DELETE_FAVORITE_PRODUCT:
          const cookieState = cookies.get("fav") //Agarro las cookies de fav
@@ -148,6 +139,48 @@ const rootReducer = (state = initialState, action) => {
                favoriteProducts: filteredFavCookies //Pasa a ser filtrado
             }
          }
+
+      case ADD_TO_CART:
+         /*return {
+            ...state,
+            cart: [...state.cart, { product: action.payload.product, qty: action.payload.qty }]
+         }*/
+
+         const findOnCart = state.cart.find(e => e._id === action.payload._id)
+         if (!findOnCart) {
+            const cartArray = [...state.cart, action.payload]
+            let expirationDate = new Date(Date.now() + 100 * 24 * 3600000)
+            cookies.set("cart", JSON.stringify(cartArray), { path: "/", expires: expirationDate })
+            return {
+               ...state,
+               cart: cartArray 
+            }
+         }
+
+      case DELETE_CART_PRODUCT:
+         const cartCookies = cookies.get("cart")
+         if (!cartCookies) { 
+            const filteredCart = state.cart.filter(e => e._id !== action.payload._id)
+            return {
+               ...state,
+               cart: filteredCart
+            }
+         } else { 
+            const filteredCartCookies = cartCookies.filter(e => e._id !== action.payload._id)
+            let expirationDate = new Date(Date.now() + 100 * 24 * 3600000)
+            cookies.set("cart", JSON.stringify(filteredCartCookies), { path: "/", expires: expirationDate })
+            return {
+               ...state,
+               cart: filteredCartCookies
+            }
+         }
+
+      case CHANGE_QTY_TO_ADD:
+         return {
+            ...state,
+            qtyToAdd: action.payload
+         }
+
       default:
          return initialState
    }

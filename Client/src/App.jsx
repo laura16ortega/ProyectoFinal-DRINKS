@@ -12,6 +12,7 @@ import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import FavoriteProducts from './components/FavoriteProducts/FavoriteProducts';
+import Contact from './components/Contact/Contact';
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/details/:id' element={<Details />} />
         <Route exact path='/register' element={<Register />} />
         <Route path="/liked" element={<FavoriteProducts/>}/>
+        <Route path='/contact' element={<Contact/>}/>
       </Routes>
 
     </div>
