@@ -9,6 +9,7 @@ export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS"
 export const CLEAR_PRODUCT_DETAILS = 'CLEAR_PRODUCT_DETAILS';
 export const GET_PRODUCT_CATEGORIES = "GET_PRODUCT_CATEGORIES"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
+export const ADD_REVIEW = 'ADD_REVIEW'
 
 //placeholder
 //import fakeJSON from "../../assets/fakeJson"
@@ -21,6 +22,19 @@ export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
 //        payload
 //    }
 //}
+
+export const addReview = (payload) => {
+    return async(dispatch) => {
+        try{
+            return dispatch({
+                type:ADD_REVIEW,
+                payload:payload
+            })
+        }catch(err){
+            console.error('review actions error', err);
+        }
+    }
+}
 
 
 export const getProducts = () => {
