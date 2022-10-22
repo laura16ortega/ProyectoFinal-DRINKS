@@ -99,19 +99,20 @@ function Reviews(props) {
         <div>
         <img  className={s.image} src={user?.picture} />
         <h6 className={s.nickname}>{user?.nickname}</h6>
-            </div>   
+            </div> 
+            <div>
+            <Rating onClick={onPointerMove} allowFraction="true"/>
+        </div>  
 
         </div>
           { isAuthenticated ? (<form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
-          <div>
-            <Rating onClick={onPointerMove} allowFraction="true"/>
-        </div>
+
             <input 
             name='title'
 
             onChange={(e) => handleInput(e)} 
             className={s.inputTitle} 
-            placeholder='title'
+            placeholder='Titulo'
              />
               {error.title && <p className={s.alert}>{error.title}</p>}
 
@@ -121,7 +122,7 @@ function Reviews(props) {
             className={s.inputContent} 
             placeholder='My review...'
             />
-            {error.content && <p className={s.alert}>{error.content}</p>}
+            {error.content && <p className={s.contentAlert}>{error.content}</p>}
             <button type='submit' className={s.btn}>Enviar</button>
   
         </form>) : (<div></div>)}      

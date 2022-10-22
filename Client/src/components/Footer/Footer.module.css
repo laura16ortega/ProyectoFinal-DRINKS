@@ -2,7 +2,8 @@
   display:flex;
 
   
-  
+    flex-direction: row;
+    justify-content: space-evenly;
     margin-top: 1rem;
     padding: 1rem;
     background-color: rgb(235, 195, 64);
