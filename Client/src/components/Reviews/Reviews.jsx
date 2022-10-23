@@ -94,7 +94,9 @@ function Reviews(props) {
             
         </div>
 
-        <div className={s.userBoardBody}>
+
+          { isAuthenticated ? (<form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
+          <div className={s.userBoardBody}>
         <div>
         <img  className={s.image} src={user?.picture} />
         <h6 className={s.nickname}>{user?.nickname}</h6>
@@ -104,8 +106,6 @@ function Reviews(props) {
         </div>  
 
         </div>
-          { isAuthenticated ? (<form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
-
            {/*  <input 
             name='title'
 
@@ -118,7 +118,7 @@ function Reviews(props) {
             <textarea
             name='comment'
             onChange={(e) => handleInput(e)} 
-            className={s.inputcomment} 
+            className={s.inputContent} 
             placeholder='My review...'
             />
             {error.comment && <p className={s.commentAlert}>{error.comment}</p>}

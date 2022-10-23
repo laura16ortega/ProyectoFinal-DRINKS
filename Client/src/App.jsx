@@ -25,7 +25,7 @@ function App() {
 
       <Navbar /> 
 
-      <Footer/>
+  {/*     <Footer/> */}
 
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />

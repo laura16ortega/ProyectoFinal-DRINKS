@@ -4,7 +4,7 @@ import s from './LandingPage.module.css'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import { useEffect } from 'react'
 import { getProducts } from '../../redux/actions'
-
+import Footer from '../../components/Footer/Footer'
 import wine from "../../assets/img/WineOneOne.jpg"
 import beer from "../../assets/img/beerOneOne.jpg"
 import vodka from "../../assets/img/vodkaOneOne.jpeg"
@@ -115,6 +115,7 @@ export default function LandingPage() {
                </div>
             </div>
          </div>
+         <Footer />
       </div>
    )
 }

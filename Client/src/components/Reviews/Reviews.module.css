@@ -3,7 +3,7 @@
  
 }
 .userReview {
-    border: black solid;
+
     height: max-content;
 }
 .userReview input{
@@ -53,6 +53,7 @@
     font-size: 0.9rem;
     font-weight: lighter;
     font-family: Helvetica;
+    color:black;
 }
 
 select{
@@ -87,4 +88,5 @@ select{
     border: black solid;
     border-radius: 0.2vh;
     margin-top:0.8rem;
+    color:black;
 }
