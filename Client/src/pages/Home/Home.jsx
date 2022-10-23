@@ -21,7 +21,7 @@ const Home = () => {
 
     return (
         <div>
-            <div style={{ display: "flex", margin: "1rem", marginTop: "7em"}}>
+            <div style={{ display: "flex", margin: "1rem", marginTop: "7em", justifyContent: "center"}}>
                 <Filters />
                 <div className={s.rightContainer}>
                     <Sorting/>

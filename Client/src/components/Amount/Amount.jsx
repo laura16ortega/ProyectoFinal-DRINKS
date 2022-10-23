@@ -1,18 +1,28 @@
 import {React, useState }from 'react';
-import s from './styles/Amount.module.css';
+import s from './Amount.module.css';
+import {useDispatch} from 'react-redux';
+import { changeQtyToAdd } from "../../redux/actions";
+
 
 function Amount(props) {
-    const [counter, setCounter] = useState(0);
+
+     const [counter, setCounter] = useState(0);
+     const dispatch = useDispatch()
 
     const increase = () => {
         setCounter(count => count + 1);
+        dispatch(changeQtyToAdd(counter + 1))
     };
 
     const decrease = () => {
-        if(counter > 0) setCounter(count => count - 1);
+        if(counter > 0){
+            setCounter(count => count - 1);
+            dispatch(changeQtyToAdd(counter - 1))
+        } 
     };
     const reset = () => {
         setCounter(0)
+        dispatch(changeQtyToAdd(0))
     }
 
     return (

@@ -1,0 +1,90 @@
+.allReviews {
+    margin-bottom: 4rem;
+ 
+}
+.userReview {
+    border: black solid;
+    height: max-content;
+}
+.userReview input{
+    display: flex;
+    flex-direction: column;
+    background-color: #e6e4e4;
+    border: none;
+}
+
+.inputTitle {
+    margin-bottom: 1rem;
+    color:black;
+    border-radius: 0.2vh;
+    font-family: Helvetica;
+    height: 1.4rem;
+}
+.inputContent {
+    width: 20rem;
+    height: 6rem;
+    color:black;
+    border-radius: 0.2vh;
+    resize: none;
+    background-color: #e6e4e4;
+    border: none;
+    font-family: Helvetica;
+}
+.inputContent select {
+    border: 0;
+    outline: 0;
+}
+.userBoardBody {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+
+    height: 5rem;
+    width: max-content;
+
+}
+.image {
+    height: 3rem;
+    border-radius: 0.5vh;
+    margin-bottom: -2rem;
+}
+.nickname {
+    text-indent: left;
+    font-size: 0.9rem;
+    font-weight: lighter;
+    font-family: Helvetica;
+}
+
+select{
+	border: 0;
+    outline: 0;
+}
+
+.alert {
+    color:rgb(189, 11, 11);
+    font-size: 1.4vh;
+    font-family: Helvetica;
+    font-weight: 100;
+    margin-top: -1rem;
+    margin-bottom: -0.1rem;
+    text-align: left;
+}
+.contentAlert {
+    color:rgb(189, 11, 11);
+    font-size: 1.4vh;
+    font-family: Helvetica;
+    font-weight: 100;
+    margin-top: 0.1rem;
+    margin-bottom: -1rem;
+    text-align: left;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    background: none;
+    border: black solid;
+    border-radius: 0.2vh;
+    margin-top:0.8rem;
+}

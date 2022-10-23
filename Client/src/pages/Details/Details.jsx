@@ -1,17 +1,22 @@
-import { React, useState } from "react";
+import React, { useState,useEffect } from "react";
 /* import { useDispatch, useSelector } from "react-redux"; */
 import { useParams, useNavigate } from "react-router-dom";
-import s from "./styles/Details.module.css";
+import s from "./Details.module.css";
 import { Rating } from "react-simple-star-rating";
-import Amount from "../components/Amount";
-import { useEffect } from "react";
+import Amount from "../../components/Amount/Amount";
+import { useAuth0 } from '@auth0/auth0-react';
+import Reviews from "../../components/Reviews/Reviews";
 import { useDispatch, useSelector } from "react-redux";
-import { clearProductDetails, getProductDetails } from "../redux/actions";
+import { clearProductDetails, getProductDetails, addProductToCart } from "../../redux/actions";
 
 function Details() {
+
    const { id } = useParams();
    const dispatch = useDispatch()
    const product = useSelector(state => state.productDetails)
+   const cart = useSelector(state => state.cart)
+   const qty = useSelector(state => state.qtyToAdd)
+   console.log(cart)
    console.log("id: ", id)
    console.log("product: ", product)
 
@@ -28,6 +33,11 @@ function Details() {
    const onPointerLeave = () => console.log("Leave");
    const onPointerMove = (value, index) => console.log(value, index);
 
+   const handleInToCart = (e) => {
+      e.preventDefault()
+      dispatch (addProductToCart({product, qty }))
+   }
+
    /*     const product = useSelector((state) => state.productDetails);
      const {} = product;
  
@@ -43,6 +53,10 @@ function Details() {
       }
    }, [dispatch, id])
 
+
+   // console.log(React.Children.toArray())
+ 
+
    return (
       <div>
          {Object.keys(product).length ?
@@ -54,26 +68,33 @@ function Details() {
                         alt="placeholder"
                      />
                   </div>
+
                </div>
                <div>
                   <div className={s.rightData}>
-                     <div>
-                        <h3 style={{ fontSize: "2em" }}>{product.name}</h3>
+                     <div className={s.title}>
+                        <h3 style={{ fontSize: "35px  " }}>{product.name}</h3>
                      </div>
-                     <div>
-                        <p>{`$${product.price}`}</p>
+                     <div className={s.price}>
+                        <p style={{fontSize: "30px"}}>{`$${product.price}`}</p>
                      </div>
-                     <div>
+                     <div className={s.rating}>
                         <Rating
                            onClick={handleRating}
                            onPointerEnter={onPointerEnter}
                            onPointerLeave={onPointerLeave}
                            onPointerMove={onPointerMove}
+                           readonly="true"
+                           allowFraction="true"
+                           initialValue={product.rating}
+
                         /* Available Props */
                         />
                      </div>
                      <div className={s.description}>
-                           <h2>Description:</h2>
+
+                           <h2>Description</h2>
+
                            {product.description? product.description : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                            enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -82,32 +103,30 @@ function Details() {
                            nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                            sunt in culpa qui officia deserunt mollit anim id est laborum.`}
                      </div>
-                     <div>
+
+                     <div  className={s.amount}>
+
                         <Amount />
                      </div>
                      <div >
-                        <button className={s.addToCart}>Add to cart.</button>
+                        <button onClick={handleInToCart} className={s.addToCart}>Add to cart.</button>
                      </div>
+                     <div className={s.reviews}>
+                        <h2 className={s.reviewsHeader}>
+                           Reviews
+                        </h2>
+                           <Reviews />
+                     </div> 
+
                   </div>
                </div>
             </div>
             : <h1>Loading</h1>
          }
-         <div className={s.reviews}>Reviews</div>
+
       </div>
    );
 }
 
 export default Details;
 
-/*
-    height: 3rem;
-    width: 35rem;
-    padding-bottom: 3.3rem;
-    border-radius: 0.2vh;
-
-
-   textDescription
-   style={{height: "3rem", width: "35rem", paddingBottom: "3.3rem", borderRadius: "0.2vh"}}
-
-*/

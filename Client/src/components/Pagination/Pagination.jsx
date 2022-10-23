@@ -38,28 +38,42 @@ const Pagination = ({ allProducts, loaded }) => {
 
       const newOffset = (e.selected * productsPerPage) % allProducts.length;
       setItemOffset(newOffset);
-      window.scrollTo({ behavior: "smooth", top: "0px" });
-      
+      document.querySelector("body").scrollTo({ behavior: "smooth", top: "0px" });
+
    };
 
    return (
-      <div style={{ backgroundColor: "rgb(238, 238, 238)", width: "-webkit-fill-available" }}>
-         <div className={s.productsContainer}>
-            {loaded ?
-               currentItems.length ? currentItems.map(e =>
-                  <ProductCard
-                     key={e.id}
-                     id={e.id}
-                     image={e.image}
-                     name={e.name}
-                     price={e.price}
-                     category={e.category}
-                     numReviews={e.numReviews}
-                     rating={e.rating}
-                  />
-               ) : <h1 className={s.noResults}>No results</h1>
-               : <h1>Loading</h1>}
-         </div>
+      <div className={s.container}>
+
+         {loaded ? (
+            <div className={s.productsContainer}>
+               {currentItems.length ? (
+                  currentItems.map(e => (
+                     <ProductCard
+                        key={e._id}
+                        id={e._id}
+                        image={e.image}
+                        name={e.name}
+                        price={e.price}
+                        category={e.category}
+                        numReviews={e.numReviews}
+                        rating={e.rating}
+                     />
+                  ))
+
+               ) : (
+                  <div>
+                     <h1 className={s.noResults}>No results</h1>
+                  </div>
+               )}
+            </div>
+         ) : (
+            <div>
+               <h1>Loading</h1>
+            </div>
+
+         )}
+
          <div>
             <ReactPaginate
                previousLabel={"Prev"}

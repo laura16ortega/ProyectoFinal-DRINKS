@@ -1,0 +1,15 @@
+footer {
+  background: #f5b335;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  transition: bottom 0.2s ease-in-out;
+  width: 100%;
+}
+
+.nav-down {
+  bottom: -40px;
+}
+body {
+  margin: 0;
+}
