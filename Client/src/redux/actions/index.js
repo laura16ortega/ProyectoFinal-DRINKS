@@ -111,6 +111,7 @@ export const getAllCategories = () => {
 //}
 
 
+
 export const productSearch = (name) => {
     return async (dispatch) => {
         try {

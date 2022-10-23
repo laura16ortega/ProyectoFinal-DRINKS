@@ -14,7 +14,7 @@ import Cart from './components/Cart/Cart';
 import FavoriteProducts from './components/FavoriteProducts/FavoriteProducts';
 import Contact from './components/Contact/Contact';
 
-import LoginButton from './components/LogginButton/LoginButton';
+import LoginButton from './components/LoginButton/LoginButton';
 import LogoutButton from './components/LogoutButton/LogoutButton';
 import Profile from './pages/Profile/Profile';
 import { useAuth0 } from '@auth0/auth0-react';
