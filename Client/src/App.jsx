@@ -30,7 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path='/home' element={<LandingPage />} />
-        <Route path='/products' element={<Home />} />
+        <Route path='/productos' element={<Home />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/details/:id' element={<Details />} />
         <Route path='/perfil' element={<Profile />} />

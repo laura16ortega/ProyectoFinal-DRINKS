@@ -11,8 +11,7 @@ function Reviews(props) {
     const { user, isAuthenticated } = useAuth0();
     const [error, setError ] = useState({});
     const [review, setReview] = useState({
-        title:'',
-        content:'',
+        comment:'',
         rating:''
     });
     console.log(user)
@@ -46,17 +45,17 @@ function Reviews(props) {
     const validate = () => {
         let error = {};
 
-        if(!review.title.length) error.title = 'Agrega un titulo'
+/*         if(!review.title.length) error.title = 'Agrega un titulo'
         if(!review.title) error.title = 'Agrega un titulo'
         if(review.title.length < 3) error.title = 'minimo 3 caracteres'
         if(review.title.length > 20) error.title = 'maximo 20 caracteres'
-        
+         */
         if(review.rating == 0) error.rating = 'ingrese su valoracion'
 
-        if(!review.content.length) error.content = 'Escribe tu reseña'
-        if(!review.content) error.content = 'Escribe tu reseña'
-        if(review.content < 10) error.content = 'minimo 10 caracteres'
-        if(review.content > 60) error.content = 'maximo 60 caracteres'
+        if(!review.comment.length) error.comment = 'Escribe tu reseña'
+        if(!review.comment) error.comment = 'Escribe tu reseña'
+        if(review.comment < 10) error.comment = 'minimo 10 caracteres'
+        if(review.comment > 60) error.comment = 'maximo 60 caracteres'
 
         return error
     }
@@ -78,7 +77,7 @@ function Reviews(props) {
 
     }
     const range = [1,2,3,4,5,6,7,8,9,10];
-    const obj = [{"title":"Not so good", "content":"This is a random text that is just meant to occupy space and give space notion ","username":"aribxax","rating":"★★★★☆"},{"title":"I recommend it!", "content":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Not worth its price :/", "content":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Good packaging!", "content":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Delivery was quick :)", "content":"I loved it","username":"aribxax","rating":"★★★★☆"}]
+    const obj = [{"title":"Not so good", "comment":"This is a random text that is just meant to occupy space and give space notion ","username":"aribxax","rating":"★★★★☆"},{"title":"I recommend it!", "comment":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Not worth its price :/", "comment":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Good packaging!", "comment":"I loved it","username":"aribxax","rating":"★★★★☆"},{"title":"Delivery was quick :)", "comment":"I loved it","username":"aribxax","rating":"★★★★☆"}]
 
 
 
@@ -89,7 +88,7 @@ function Reviews(props) {
             {obj.map((e, i)=> {
             return(
             <div key={i}>
-            <Review title={e.title} content={e.content} username={e.username} rating={e.rating} />
+            <Review title={e.title} comment={e.comment} username={e.username} rating={e.rating} />
             </div>
             )})}
             
@@ -107,22 +106,22 @@ function Reviews(props) {
         </div>
           { isAuthenticated ? (<form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
 
-            <input 
+           {/*  <input 
             name='title'
 
             onChange={(e) => handleInput(e)} 
             className={s.inputTitle} 
             placeholder='Titulo'
              />
-              {error.title && <p className={s.alert}>{error.title}</p>}
+              {error.title && <p className={s.alert}>{error.title}</p>} */}
 
             <textarea
-            name='content'
+            name='comment'
             onChange={(e) => handleInput(e)} 
-            className={s.inputContent} 
+            className={s.inputcomment} 
             placeholder='My review...'
             />
-            {error.content && <p className={s.contentAlert}>{error.content}</p>}
+            {error.comment && <p className={s.commentAlert}>{error.comment}</p>}
             <button type='submit' className={s.btn}>Enviar</button>
   
         </form>) : (<div></div>)}      
