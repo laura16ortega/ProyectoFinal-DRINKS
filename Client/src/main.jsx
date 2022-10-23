@@ -11,6 +11,8 @@ import { Auth0Provider } from '@auth0/auth0-react';
 /* const DOMAIN = process.env.REACT_APP_AUTH0_DOMAIN;
 const CLIENT_ID = process.env.REACT_APP_AUTH0_CLIENT_ID; */
 
+console.log(window.location)
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -18,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <BrowserRouter>
       <Auth0Provider domain={credentials.domain} clientId={credentials.clientId}
-    redirectUri={window.location.origin}>
+    redirectUri={window.location.href} useRefreshTokens cacheLocation="localstorage">
         <App />
         </Auth0Provider>
       </BrowserRouter>

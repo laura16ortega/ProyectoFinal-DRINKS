@@ -58,6 +58,18 @@ userRouter.post(
     }
   })
 );
+/* userRouter.post("/", asyncHandler(async(req,res)=> {
+  try{
+    const { email } = req.body;
+    const userExists = await User.findOne({ email }) 
+    if(userExists) {
+      res.status(200);
+
+    }
+  }catch(err){
+    console.error(err);
+  }
+})) */
 //PROFILE
 userRouter.get(
   "/profile",

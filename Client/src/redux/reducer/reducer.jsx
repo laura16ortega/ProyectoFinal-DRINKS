@@ -102,6 +102,7 @@ const rootReducer = (state = initialState, action) => {
             productDetails: {}
          }
       case SEARCH_PRODUCT:
+         
          return {
             ...state,
             products: action.payload
