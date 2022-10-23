@@ -1,15 +1,18 @@
-footer {
-  background: #f5b335;
-  height: 40px;
-  position: fixed;
-  bottom: 0;
-  transition: bottom 0.2s ease-in-out;
+
+html, body {
+ /*  min-height: 100vh; */
+  height: 100%;
   width: 100%;
 }
 
-.nav-down {
-  bottom: -40px;
+
+
+
+footer {
+  
+  background: #f5b335;
+  height: 10rem;
+  transition: bottom 0.2s ease-in-out;
+
 }
-body {
-  margin: 0;
-}
+

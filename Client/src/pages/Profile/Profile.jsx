@@ -1,11 +1,13 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import s from './Profile.module.css';
+import Footer from '../../components/Footer/Footer';
 
 function Profile(props) {
     const { user, isAuthenticated } = useAuth0();
     console.log(user);
     return (
+     <>
         isAuthenticated && (
             <div className={s.container}>
                 <div className={s.background}>
@@ -28,8 +30,12 @@ function Profile(props) {
                 <ul>
                     {Object.keys(user).map((objKey, i) => <li key={i}> {objKey}:{user[objKey]} </li>)}
                 </ul> */}
+                
             </div>
+            
         )
+        <Footer />
+        </>
         
 
     );

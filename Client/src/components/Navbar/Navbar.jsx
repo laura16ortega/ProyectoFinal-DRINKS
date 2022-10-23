@@ -7,7 +7,7 @@ import heart from "../../assets/img/heart.png";
 import user from "../../assets/img/user.png";
 import { useAuth0 } from '@auth0/auth0-react';
 import SearchBar from "../SearchBar/SearchBar";
-import LoginButton from "../LogginButton/LoginButton";
+import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 
 function Navbar(props) {

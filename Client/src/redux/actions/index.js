@@ -111,6 +111,7 @@ export const getAllCategories = () => {
 //}
 
 
+
 export const productSearch = (name) => {
     return async (dispatch) => {
         try {
@@ -204,6 +205,28 @@ export const deleteFavoriteProduct = (id) => {
             return dispatch({type: DELETE_FAVORITE_PRODUCT, payload: data})
         } catch (e) {
             console.log("action delete fav product error", e)
+        }
+    }
+}
+
+export const userRegister = (payload) => {
+    return async () => {
+        try {
+            const json = await axios.post("http://localhost:3001/api/users/", payload)
+            return json
+        } catch (e) {
+            console.log("register action error: ", e)
+        }
+    }
+}
+
+export const userLogin = (payload) => {
+    return async () => {
+        try {
+            const json = await axios.post("http://localhost:3001/api/users/login", payload)
+            return json
+        } catch (e) {
+            console.log("login action error: ", e)
         }
     }
 }

@@ -7,6 +7,7 @@ import Pagination from '../../components/Pagination/Pagination'
 import fakeJSON from '../../assets/fakeJson'
 import Sorting from '../../components/Sorting/Sorting'
 import s from "./Home.module.css"
+import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -28,6 +29,7 @@ const Home = () => {
                     <Pagination allProducts={allProducts} loaded={loaded} />
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

@@ -6,6 +6,7 @@ import { Rating } from "react-simple-star-rating";
 import Amount from "../../components/Amount/Amount";
 import { useAuth0 } from '@auth0/auth0-react';
 import Reviews from "../../components/Reviews/Reviews";
+import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { clearProductDetails, getProductDetails, addProductToCart } from "../../redux/actions";
 
@@ -123,7 +124,7 @@ function Details() {
             </div>
             : <h1>Loading</h1>
          }
-
+         <Footer />
       </div>
    );
 }
