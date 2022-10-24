@@ -87,7 +87,7 @@ function Navbar(props) {
                   <div className={s.userBtnBodyIn}>
                   <div><LoginButton /></div>
                   <div>
-                  <NavLink to='/cart'>
+                  <NavLink to='/carrito'>
                      <img className={s.userBtn} src={cart} />
                   </NavLink>
                </div>
