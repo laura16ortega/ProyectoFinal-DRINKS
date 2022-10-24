@@ -58,6 +58,28 @@ userRouter.post(
     }
   })
 );
+// AUTH0 REGISTER/LOGIN AUTHENTICATION TOKEN
+
+
+userRouter.post("/", asyncHandler(async(req,res)=> {
+ 
+    const { email } = req.body;
+    const user = await User.findOne({ email }) 
+    if(user) {
+      res.json({
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        token: generateToken(user._id),
+        createdAt: user.createdAt,
+      })
+
+}}))
+
+
+
+
 //PROFILE
 userRouter.get(
   "/profile",

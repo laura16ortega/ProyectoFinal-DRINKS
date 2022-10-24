@@ -1,0 +1,11 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18rem;
+    color:black;
+    font-family: manrope-regular;
+}
+
+

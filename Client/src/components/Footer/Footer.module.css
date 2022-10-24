@@ -1,15 +1,44 @@
-footer {
-  background: #f5b335;
-  height: 40px;
-  position: fixed;
-  bottom: 0;
-  transition: bottom 0.2s ease-in-out;
+
+html, body {
+ /*  min-height: 100vh; */
+  height: 100%;
   width: 100%;
 }
 
-.nav-down {
-  bottom: -40px;
+
+.header {
+  justify-content: center;
+  font-size: 25px;
+  font-family: manrope-regular;
 }
-body {
-  margin: 0;
+
+.contact {
+  display: flex;
+  flex-direction: row;
 }
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+  background: #f5b335;
+  height: 10rem;
+  transition: bottom 0.2s ease-in-out;
+
+}
+.bodyLinks{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bodyLinks a {
+  color:rgb(255, 255, 255);
+}
+.bodyLinks a:hover {
+  color:black;
+}
+
+
+
+
