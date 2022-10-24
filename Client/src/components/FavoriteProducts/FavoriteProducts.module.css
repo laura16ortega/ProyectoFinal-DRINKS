@@ -1,0 +1,29 @@
+.container {
+ padding-top: 7rem;
+ display: flex;
+ justify-content: center;
+ color:black;
+ font-family: manrope-regular;
+ font-size: 10px;
+}
+
+.img {
+    float: left;
+    object-fit: cover;  
+/*     height: 20.5rem;
+    width: 16rem; */
+    height: 10rem;
+    width: 12rem;
+    border-radius: 0.2vh;
+    opacity: 1;
+}
+
+.delete {
+    background: none;
+    border: black solid;
+    color: black;
+
+   
+    z-index: 100;
+
+}

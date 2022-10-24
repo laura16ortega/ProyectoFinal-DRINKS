@@ -131,13 +131,14 @@ userRouter.post("/", (0, _expressAsyncHandler["default"])(function _callee2(req,
   });
 })); // AUTH0 REGISTER/LOGIN AUTHENTICATION TOKEN
 
-userRouter.post("/", (0, _expressAsyncHandler["default"])(function _callee3(req, res) {
-  var email, user;
+userRouter.post("/auth0", (0, _expressAsyncHandler["default"])(function _callee3(req, res) {
+  var _req$body3, fullName, email, password, phone_number, user, newUser;
+
   return regeneratorRuntime.async(function _callee3$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          email = req.body.email;
+          _req$body3 = req.body, fullName = _req$body3.fullName, email = _req$body3.email, password = _req$body3.password, phone_number = _req$body3.phone_number;
           _context3.next = 3;
           return regeneratorRuntime.awrap(_userModel["default"].findOne({
             email: email
@@ -146,18 +147,45 @@ userRouter.post("/", (0, _expressAsyncHandler["default"])(function _callee3(req,
         case 3:
           user = _context3.sent;
 
-          if (user) {
-            res.json({
+          if (!user) {
+            _context3.next = 8;
+            break;
+          }
+
+          res.json({
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            token: (0, _generateToken["default"])(user._id),
+            createdAt: user.createdAt
+          });
+          _context3.next = 12;
+          break;
+
+        case 8:
+          _context3.next = 10;
+          return regeneratorRuntime.awrap(_userModel["default"].create({
+            fullName: fullName,
+            email: email,
+            password: password,
+            phone_number: phone_number
+          }));
+
+        case 10:
+          newUser = _context3.sent;
+
+          if (newUser) {
+            res.status(201).json({
               _id: user._id,
               fullName: user.fullName,
               email: user.email,
               isAdmin: user.isAdmin,
-              token: (0, _generateToken["default"])(user._id),
-              createdAt: user.createdAt
+              token: (0, _generateToken["default"])(user._id)
             });
           }
 
-        case 5:
+        case 12:
         case "end":
           return _context3.stop();
       }

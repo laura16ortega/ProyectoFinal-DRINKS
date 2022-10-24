@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import s from './FavoriteProducts.module.css';
 import Cookies from "universal-cookie";
 import { deleteFavoriteProduct } from '../../redux/actions';
 
@@ -18,19 +18,19 @@ const FavoriteProducts = () => {
     }
 
     return (
-        <div style={{ paddingTop: "6rem", backgroundColor: "black" }}>
+        <div className={s.container} >
             <div>
                 {favProducts.length ? (
                     favProducts.map((e) =>
                         <div key={e[1]._id} >
                             <div>
-                                <button onClick={() => handleDelete(e[1]._id)}>
+                                <button className={s.delete} onClick={() => handleDelete(e[1]._id)}>
                                     X
                                 </button>
                             </div>
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                <div style={{ display: "flex" }}>
-                                    <img src={e[1].image} alt="Imagen no encontrada" style={{ height: "255px" }} />
+                            <div style={{ display: "flex", justifyContent: "space-between",marginBottom:'2rem' }}>
+                                <div style={{ display: "flex"}}>
+                                    <img src={e[1].image} alt="Imagen no encontrada" className={s.img} />
                                     <h1>{e[1].name}</h1>
                                 </div>
                                 <div>
@@ -40,7 +40,7 @@ const FavoriteProducts = () => {
                         </div>
                     )
                 ) : (
-                    <h1>No agregaste productos a favoritos</h1>
+                    <h1 style={{paddingTop:'6rem'}}>Ooops, no hay productos en favoritos</h1>
                 )}
             </div>
         </div>
