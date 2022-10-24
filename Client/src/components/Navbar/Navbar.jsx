@@ -9,30 +9,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 import SearchBar from "../SearchBar/SearchBar";
 import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
+import FavoriteProducts from "../FavoriteProducts/FavoriteProducts";
 
 function Navbar(props) {
    const {isAuthenticated } = useAuth0();
-   /*
-
-   Replaced with the searchbar component
-
-   const [activeSB, setActiveSB] = useState(!true)
-
-   const searchBarHandle = (e) => {
-      e.preventDefault(e);
-      console.log('handled');
-      setActiveSB(!activeSB)
-   }
-   */
-
-
-   /*
-    background-color: rgb(255, 255, 255);
-    height: 5.7rem;
-    margin-top: -6.5rem;
-    top: 1rem;
-    box-shadow: 0px 1px 6px 0px #b1b1b1;
-   */
+   const [showMenu, setShowMenu] = useState(!false);
    
 
    return (
@@ -66,12 +47,14 @@ function Navbar(props) {
                   <NavLink to='/perfil'>
                      <img className={s.userBtn} src={user} />
                   </NavLink>
+
                </div>
 
                <div>
                   <NavLink to='/liked'>
                      <img className={s.userBtn} src={heart} />
                   </ NavLink>
+
                </div>
                <div>
                   <NavLink to='/carrito'>
@@ -126,6 +109,7 @@ function Navbar(props) {
                <SearchBar />
             </div>
          </div>
+         
       </div>
    );
 }

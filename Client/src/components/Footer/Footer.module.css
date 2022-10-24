@@ -1,6 +1,6 @@
 
 html, body {
- /*  min-height: 100vh; */
+  min-height: 100vh;
   height: 100%;
   width: 100%;
 }
@@ -20,7 +20,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
+ 
   background: #f5b335;
   height: 10rem;
   transition: bottom 0.2s ease-in-out;

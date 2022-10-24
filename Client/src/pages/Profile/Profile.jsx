@@ -4,11 +4,12 @@ import s from './Profile.module.css';
 import Footer from '../../components/Footer/Footer';
 
 function Profile(props) {
-    const { user, isAuthenticated } = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
     console.log(user);
     return (
      <>
-        isAuthenticated && (
+        { isAuthenticated ? (
+            <>
             <div className={s.container}>
                 <div className={s.background}>
                 <div>
@@ -32,9 +33,12 @@ function Profile(props) {
                 </ul> */}
                 
             </div>
+            <Footer />
+            </>
             
-        )
-        <Footer />
+        ) : (<div><h1>Not found</h1></div>)
+        
+        }
         </>
         
 

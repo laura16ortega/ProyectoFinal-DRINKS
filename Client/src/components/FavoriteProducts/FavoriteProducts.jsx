@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import s from './FavoriteProducts.module.css';
 import Cookies from "universal-cookie";
 import { addProductToCart, deleteFavoriteProduct } from '../../redux/actions';
 import { priceWithCommas } from '../../assets/helpers';
@@ -50,7 +51,7 @@ const FavoriteProducts = () => {
                         </div>
                     )
                 ) : (
-                    <h1>No agregaste productos a favoritos</h1>
+                    <h1 style={{paddingTop:'6rem'}}>Ooops, no hay productos en favoritos</h1>
                 )}
             </div>
         </div>
