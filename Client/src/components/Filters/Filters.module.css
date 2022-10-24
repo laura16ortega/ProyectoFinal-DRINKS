@@ -1,7 +1,8 @@
 .filterContainer {
     margin: 3rem 0;
     width: 5%;
-    color: #383d42
+    color: #383d42;
+    font-family: manrope-regular;
 }
 
 .categoriesFilter {
@@ -12,8 +13,8 @@
 }
 
 .categoriesFilter select {
-    background-color: #121212;
-    color: azure;
+    background:none;
+    color: rgb(0, 0, 0);
     margin-bottom: 18px;
     border: 1px solid #383d42;
     width: 100%;
@@ -23,6 +24,12 @@
     border-radius: 0.25rem;
     appearance: none;
     cursor: pointer;
+}
+.reset {
+    background:none;
+    border: solid black;
+    color:black;
+    font-family: manrope-regular;
 }
 
 .categoriesFilter h4 {

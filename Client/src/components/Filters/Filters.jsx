@@ -54,7 +54,7 @@ const Filters = () => {
          </div>
 
          <div>
-            <button onClick={e => handleReset(e)}>reset</button>
+            <button className={s.reset} onClick={e => handleReset(e)}>reset</button>
          </div>
 
       </div>
