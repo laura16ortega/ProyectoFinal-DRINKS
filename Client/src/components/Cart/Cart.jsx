@@ -1,7 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from "universal-cookie"
+import { priceWithCommas } from '../../assets/helpers'
 import { deleteCartProduct } from '../../redux/actions'
+import s from "./Cart.module.css"
 
 export default function Cart() {
 
@@ -9,6 +11,7 @@ export default function Cart() {
    let cookies = new Cookies()
    const cartCookies = cookies.get("cart")
    const cartProducts = Object.entries(cartCookies)
+   console.log(cartProducts)
    const cart = useSelector(state => state.cart)
 
    const handleDelete = (id) => {
@@ -16,32 +19,44 @@ export default function Cart() {
       cookies.remove(id)
    }
 
+   const totalPrice = () => {
+      const prices = cartProducts.map(e => e[1].price)
+      const res = prices.reduce((pv, cv) => pv + cv, 0);
+      return priceWithCommas(res)
+   }
+
    return (
-      <div style={{ paddingTop: "6rem", backgroundColor: "black" }}>
-         <div>
+      <div className={s.cartContainer}>
+         <div className={s.cartWrapper}>
             {cartProducts.length ? (
                cartProducts.map((e) =>
-                  <div key={e[1]._id} >
-                     <div style={{ display: "flex", justifyContent: "space-between" }}>
-                     <div>
-                        <button onClick={() => handleDelete(e[1]._id)}>
-                           X
-                        </button>
-                     </div>
-                        <div style={{ display: "flex" }}>
-                           <img src={e[1].image} alt="Imagen no encontrada" style={{ height: "255px" }} />
-                           <h1>{e[1].name}</h1>
-                        </div>
-                        <div>
-                           <h2>{e[1].price}</h2>
-                           <button>COMPRAR</button>
-                        </div>
+                  <div key={e[1]._id} className={s.productsContainer}>
+                     <div className={s.productsWrapper}>
+                           <div className={s.deleteButton}>
+                              <button onClick={() => handleDelete(e[1]._id)}>
+                                 X
+                              </button>
+                           </div>
+                           <div className={s.imgContainer}>
+                              <img src={e[1].image} alt="Imagen no encontrada"/>
+                           </div>
+                           <div className={s.nameContainer}>
+                              <h2>{e[1].name}</h2>
+                           </div>
+                           <div className={s.priceContainer}>
+                              <h2>{`$${priceWithCommas(e[1].price)}`}</h2>
+                           </div>
                      </div>
                   </div>
                )
             ) : (
                <h1>No agregaste productos a tu carrito</h1>
             )}
+            {cartProducts.length ? 
+            <div>
+               <h1>{`Total: $${totalPrice()}`}</h1>
+            </div>
+            : ""}
          </div>
       </div>
    )
