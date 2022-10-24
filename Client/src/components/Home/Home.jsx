@@ -14,7 +14,10 @@ const Home = () => {
     const allProducts = useSelector(state => state.products)
 
     useEffect(() => {
-        dispatch(getProducts(fakeJSON))
+        console.log(window.localStorage.getItem('input'))
+        if(!window.localStorage.getItem('input').length){
+       /*  dispatch(getProducts(fakeJSON)) */
+        }
         setLoaded(true)
     }, [dispatch])
 

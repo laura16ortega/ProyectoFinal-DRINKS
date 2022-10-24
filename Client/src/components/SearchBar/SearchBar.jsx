@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux"
 import { productSearch } from '../../redux/actions'
 import s from './SearchBar.module.css'
 import { useLocation, useNavigate } from 'react-router-dom';
+
+
 export default function SearchBar() {
 
    const [input, setInput] = useState('')
@@ -11,36 +13,35 @@ export default function SearchBar() {
    const params = new URLSearchParams(window.location.pathname);
    const location = useLocation();
    const navigate = useNavigate();
-   console.log(location)
+
    const dispatch = useDispatch()
 
 
-/*    useEffect(() => {
-      setInput((window.localStorage.getItem('input')));
-    }, []);
-  
-    useEffect(() => {
-      window.localStorage.setItem('input', input);
-    }, [input]);
- */
+
+   useEffect(() => {
+      window.localStorage.setItem('input',input)
+      dispatch(productSearch(input))
+   },[input])
+
    function handleChange(e) {
       e.preventDefault()
       setInput(e.target.value)
    }
 
    const handleSubmit = (e) => {
-      /*if (window.location.pathname !== "/products") {
-         window.location.replace("/products")
-         //some alert 
-      }*/
-      e.preventDefault()
-      setInput("")
-      
-      if(location.pathname !== '/productos'){
+
+      if(location.pathname !== '/productos'){    
+      const persistedInput = window.localStorage.getItem('input');
+      dispatch(productSearch(persistedInput))
       navigate('/productos');
-    
+      return
+      }else{
+         e.preventDefault()
+         setInput("") 
+         dispatch(productSearch(input))
       }
-      dispatch(productSearch(input))
+
+
    }
 
    const handleKeyDown = (e) => {

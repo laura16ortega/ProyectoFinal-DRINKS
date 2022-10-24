@@ -8,14 +8,23 @@ import fakeJSON from '../../assets/fakeJson'
 import Sorting from '../../components/Sorting/Sorting'
 import s from "./Home.module.css"
 import Footer from '../../components/Footer/Footer'
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Home = () => {
     const dispatch = useDispatch()
+    const { isAuthenticated } = useAuth0();
     const [loaded, setLoaded] = useState(false)
     const allProducts = useSelector(state => state.products)
 
     useEffect(() => {
-        dispatch(getProducts(fakeJSON))
+
+
+        if(!window.localStorage.getItem('input')){
+            dispatch(getProducts(fakeJSON))
+            window.localStorage.setItem('input','')
+        }else if(isAuthenticated){
+            
+        }
         dispatch(getAllCategories())
         setLoaded(true)
     }, [dispatch])
