@@ -32,7 +32,7 @@ export const ADD_REVIEW = 'ADD_REVIEW'
 export const authenticationAuth0 = (email) => {
     return async(dispatch) => {
         try{
-            const register = await axios.post(`drinksshop.herokuapp.com/`,email)
+            const register = await axios.post(`http://drinksshop.herokuapp.com/`,email)
         }catch(err){
             console.error('auth0 api authtentication error', err);
         }
