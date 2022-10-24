@@ -21,7 +21,13 @@
     transition: 0.3s;
     display: none;
 }
-
+.addFav:active {
+    transform: scale(2, 0.5);
+}
+.addFav:hover {
+    border: black solid;
+    border-radius: 1vh;
+}
 .addCart {
     position: absolute;
     top: 0;
@@ -30,7 +36,13 @@
     transition: 0.3s;
     display: none;
 }
-
+.addCart:active {
+    transform: scale(2, 0.5);
+}
+.addCart:hover {
+    border: black solid;
+    border-radius: 1vh;
+}
 .imgContainer:hover .addCart {
     display: block;
     cursor: pointer;
