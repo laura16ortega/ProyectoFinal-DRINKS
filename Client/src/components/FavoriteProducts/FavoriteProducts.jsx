@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import s from './FavoriteProducts.module.css';
 import Cookies from "universal-cookie";
-import { deleteFavoriteProduct } from '../../redux/actions';
+import { addProductToCart, deleteFavoriteProduct } from '../../redux/actions';
+import { priceWithCommas } from '../../assets/helpers';
+import s from "./FavoriteProducts.module.css"
 
 const FavoriteProducts = () => {
 
@@ -17,24 +18,33 @@ const FavoriteProducts = () => {
         cookies.remove(id)
     }
 
+    const handleCart = (id) => {
+        dispatch(addProductToCart(id))
+     }
+
     return (
-        <div className={s.container} >
-            <div>
+        <div className={s.cartContainer}>
+            <div className={s.cartWrapper}>
                 {favProducts.length ? (
                     favProducts.map((e) =>
-                        <div key={e[1]._id} >
-                            <div>
-                                <button className={s.delete} onClick={() => handleDelete(e[1]._id)}>
-                                    X
-                                </button>
-                            </div>
-                            <div style={{ display: "flex", justifyContent: "space-between",marginBottom:'2rem' }}>
-                                <div style={{ display: "flex"}}>
-                                    <img src={e[1].image} alt="Imagen no encontrada" className={s.img} />
-                                    <h1>{e[1].name}</h1>
+                        <div key={e[1]._id} className={s.productsContainer}>
+                            <div className={s.productsWrapper}>
+                                <div className={s.deleteButton}>
+                                    <button onClick={() => handleDelete(e[1]._id)}>
+                                        X
+                                    </button>
+                                </div>
+                                <div className={s.imgContainer}>
+                                    <img src={e[1].image} alt="Imagen no encontrada" />
+                                </div>
+                                <div className={s.nameContainer}>
+                                    <h2>{e[1].name}</h2>
+                                </div>
+                                <div className={s.priceContainer}>
+                                    <h2>{`$${priceWithCommas(e[1].price)}`}</h2>
                                 </div>
                                 <div>
-                                    <h2>{e[1].price}</h2>
+                                    <button onClick={() => handleCart(e[1]._id)}>Añadir al carrito</button>
                                 </div>
                             </div>
                         </div>
