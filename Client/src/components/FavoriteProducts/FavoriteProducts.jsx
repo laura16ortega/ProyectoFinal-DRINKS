@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import Cookies from "universal-cookie";
 import { addProductToCart, deleteFavoriteProduct } from '../../redux/actions';
 import { priceWithCommas } from '../../assets/helpers';

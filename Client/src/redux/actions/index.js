@@ -33,6 +33,9 @@ export const authenticationAuth0 = (auth) => {
     return async(dispatch) => {
         try{
             const register = await axios.post(`http://drinksshop.herokuapp.com/`,email)
+            const json = await axios.post("http://localhost:3001/api/users/auth0",auth)
+            console.log('hier durchgekommen')
+            return json;
         }catch(err){
             console.error('auth0 api authtentication error', err);
         }
