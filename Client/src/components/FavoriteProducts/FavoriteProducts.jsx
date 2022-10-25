@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import s from './FavoriteProducts.module.css';
 import Cookies from "universal-cookie";
 import { addProductToCart, deleteFavoriteProduct } from '../../redux/actions';
-import { priceWithCommas } from '../../assets/helpers';
-import s from "./FavoriteProducts.module.css"
+import { priceWithCommas, validateCart } from '../../assets/helpers';
 
 const FavoriteProducts = () => {
 
@@ -13,6 +12,7 @@ const FavoriteProducts = () => {
     const favCookies = cookies.get("fav")
     const favProducts = Object.entries(favCookies)
     const favoriteProducts = useSelector(state => state.favoriteProducts) //Sin esto no actualiza, no tocar
+    const cartProducts = useSelector(state => state.cart)
 
     const handleDelete = (id) => {
         dispatch(deleteFavoriteProduct(id))
@@ -45,8 +45,12 @@ const FavoriteProducts = () => {
                                     <h2>{`$${priceWithCommas(e[1].price)}`}</h2>
                                 </div>
                                 <div>
+                                    {validateCart(e[1]._id) ? 
+                                    <button>Ya añadido</button> 
+                                    :
                                     <button onClick={() => handleCart(e[1]._id)}>Añadir al carrito</button>
-                                </div>
+                                    }
+                                </div> {/* Disable */}
                             </div>
                         </div>
                     )
