@@ -19,6 +19,7 @@ import LogoutButton from './components/LogoutButton/LogoutButton';
 import Profile from './pages/Profile/Profile';
 import { useAuth0 } from '@auth0/auth0-react';
 import NotFound from './pages/NotFound/NotFound';
+import Login from './components/Login/Login';
 function App() {
   const { isLoading, error } = useAuth0();
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/details/:id' element={<Details />} />
         <Route path='/perfil' element={<Profile />} />
         <Route exact path='/register' element={<Register />} />
+        <Route exact path='/login' element={<Login />} />
         <Route path="/liked" element={<FavoriteProducts/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='*' element={<NotFound /> } />
