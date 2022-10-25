@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   
     <Provider store={store}>
       <BrowserRouter>
-      <Auth0Provider domain={credentials.domain} clientId={credentials.clientId}
+      <Auth0Provider domain="dev-g4tm1ry2.us.auth0.com" clientId="Tic2aqy90UOHcXUQWmqs30PpMLKEdwh8"
     redirectUri={window.location.href} useRefreshTokens cacheLocation="localstorage">
         <App />
         </Auth0Provider>
