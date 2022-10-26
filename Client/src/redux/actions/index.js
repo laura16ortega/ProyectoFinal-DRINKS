@@ -32,7 +32,7 @@ export const ADD_REVIEW = 'ADD_REVIEW'
 export const authenticationAuth0 = (auth) => {
     return async(dispatch) => {
         try{
-            const register = await axios.post(`http://drinksshop.herokuapp.com/`,email)
+            const register = await axios.post(`https://drinksshop.herokuapp.com/`,email)
             const json = await axios.post("https://drinksshop.herokuapp.com/api/users/auth0",auth)
             console.log('hier durchgekommen')
             return json;
@@ -60,7 +60,7 @@ export const addReview = (payload) => {
 export const getProducts = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get("http://drinksshop.herokuapp.com/api/products")
+            const { data } = await axios.get("https://drinksshop.herokuapp.com/api/products")
             console.log("estoy en data redux", data)
             return dispatch({type: GET_PRODUCTS, payload: data})
         } catch (e) {
