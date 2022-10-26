@@ -28,11 +28,12 @@ export const ADD_REVIEW = 'ADD_REVIEW'
 //    }
 //}
 
+//
 
 export const authenticationAuth0 = (auth) => {
     return async(dispatch) => {
         try{
-            const register = await axios.post(`https://drinksshop.herokuapp.com/`,email)
+            const register = await axios.post(`https://drinksshop.herokuapp.com/email`)
             const json = await axios.post("https://drinksshop.herokuapp.com/api/users/auth0",auth)
             console.log('hier durchgekommen')
             return json;
