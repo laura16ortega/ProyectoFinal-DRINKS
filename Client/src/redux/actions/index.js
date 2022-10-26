@@ -28,11 +28,14 @@ export const ADD_REVIEW = 'ADD_REVIEW'
 //    }
 //}
 
-
-export const authenticationAuth0 = (auth) => {
-    return async(dispatch) => {
+/* export const loginAuth = (payload) => {
+    return asyn
+}
+ */
+export const authenticationAuth0 = (payload) => {
+    return async() => {
         try{
-            const json = await axios.post("http://localhost:3001/api/users/auth0",auth)
+            const json = await axios.post("http://localhost:3001/api/users/auth",payload)
             console.log('hier durchgekommen')
             return json;
         }catch(err){
@@ -235,10 +238,15 @@ export const userRegister = (payload) => {
 }
 
 export const userLogin = (payload) => {
-    return async () => {
+    return async (dispatch) => {
         try {
             const json = await axios.post("http://localhost:3001/api/users/login", payload)
-            return json
+            return dispatch(
+                {
+                    type:'USER_LOGIN',
+                    payload:json
+                }
+            )
         } catch (e) {
             console.log("login action error: ", e)
         }

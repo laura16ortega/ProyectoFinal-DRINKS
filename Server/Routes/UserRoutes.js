@@ -61,7 +61,7 @@ userRouter.post(
 // AUTH0 REGISTER/LOGIN AUTHENTICATION TOKEN
 
 
-userRouter.post("/auth0", asyncHandler(async(req,res)=> {
+userRouter.post("/auth", asyncHandler(async(req,res)=> {
  
     const { fullName, email, password, phone_number } = req.body;
     const user = await User.findOne({ email }) 
@@ -80,7 +80,7 @@ userRouter.post("/auth0", asyncHandler(async(req,res)=> {
         email,
         password,
         phone_number,
-      });
+      })
       if (newUser) {
         res.status(201).json({
           _id: user._id,

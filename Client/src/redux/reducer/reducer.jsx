@@ -24,7 +24,8 @@ const initialState = {
    allProducts: [], //creado solo para filtro de categorias,
    categories: [],
    productDetails: {},
-   favoriteProducts: []
+   favoriteProducts: [],
+   userAuth:{}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -38,8 +39,11 @@ const rootReducer = (state = initialState, action) => {
             productsBackup: action.payload,
             allProducts: action.payload
          }
-
-
+      case 'USER_LOGIN':
+         return {
+            ...state,
+            userAuth:action.payload
+         }
       case PRICE_FILTER:
          //const filteredPrices = state.products.filter(e => e.price >= action.minPrice && e.price <= action.maxPrice)
          return {

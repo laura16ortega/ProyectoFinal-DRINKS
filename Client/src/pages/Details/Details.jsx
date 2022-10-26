@@ -21,8 +21,37 @@ function Details() {
    console.log("id: ", id)
    console.log("product: ", product)
 
-   const [rating, setRating] = useState(0);
+/*    const [rating, setRating] = useState(0); */
 
+   function getMode(array) {
+      
+
+
+      if(!(array.length > 1)){
+         return array;
+      }
+
+      const obj = {};
+      array.forEach(number => {
+        if (!obj[number]) {
+          obj[number] = 1;
+        } else {
+          obj[number] += 1;
+        }
+      });
+    
+      let highestValue = 0;
+      let highestValueKey = -Infinity; 
+    
+      for (let key in obj) {
+        const value = obj[key];
+        if (value >= highestValue && Number(key) > highestValueKey) {
+          highestValue = value;
+          highestValueKey = Number(key);
+        }
+      }
+      return highestValueKey;
+    }
    // Catch Rating value
    const handleRating = (rate) => {
       setRating(rate);
@@ -87,7 +116,7 @@ function Details() {
                            onPointerMove={onPointerMove}
                            readonly="true"
                            allowFraction="true"
-                           initialValue={product.rating}
+                           initialValue={getMode(product.rating)}
 
                         /* Available Props */
                         />

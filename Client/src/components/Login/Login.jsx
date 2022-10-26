@@ -1,8 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useSelector, useEffect } from 'react'
 import loginValidation from './loginValidation'
+import s from './Login.module.css';
 
 const Login = () => {
+
+
     const InitialState = {
         email: "",
         password: ""
@@ -16,21 +19,23 @@ const Login = () => {
     } = loginValidation(InitialState)
 
 
+
+
     return (
-        <div>
-            <form onSubmit={e => handleSubmit(e)}>
+        <div className={s.container}>
+            <form className={s.formBody} onSubmit={e => handleSubmit(e)}>
                 <div>
                     <label>Email</label>
-                    <input value={input.email} name="email" type="email" onChange={e => handleInput(e)}/>
+                    <input className='input' value={input.email} name="email" type="email" onChange={e => handleInput(e)}/>
                     {errors.email && <p>{errors.email}</p>}
                 </div>
                 <div>
                     <label>Contraseña</label>
-                    <input value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
+                    <input className='input' value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
                     {errors.password && <p>{errors.password}</p>}
                 </div>
                 <div>
-                    <button type="submit">Iniciar sesion</button>
+                    <button className={s.btn} type="submit">Iniciar sesion</button>
                 </div>
             </form>
         </div>
