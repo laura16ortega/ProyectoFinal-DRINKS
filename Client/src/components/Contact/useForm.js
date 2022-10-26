@@ -18,7 +18,7 @@ const useForm = (InitialState) => {
         let errors = {}
         
         if (!input.user_name) errors.user_name = "Debe tener nombre"
-        else if (input.user_name.length < 4) errors.user_name = "El nombre no puede ser menor a 3"
+        else if (input.user_name.length < 4) errors.user_name = "El nombre no puede ser menor a 3 caracteres"
         else if (input.user_name.length > 30) errors.user_name = "El nombre no debe tener mas de 30 caracteres"
         else if (!input.user_name.match(nameregex)) errors.user_name = "Nombre debe tener solo letras"
         
