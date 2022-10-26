@@ -36,7 +36,7 @@ function Details() {
 
    const handleInToCart = (e) => {
       e.preventDefault()
-      dispatch (addProductToCart({product, qty }))
+      dispatch (addProductToCart(id))
    }
 
    /*     const product = useSelector((state) => state.productDetails);
