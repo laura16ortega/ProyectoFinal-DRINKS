@@ -131,7 +131,7 @@ userRouter.post("/", (0, _expressAsyncHandler["default"])(function _callee2(req,
   });
 })); // AUTH0 REGISTER/LOGIN AUTHENTICATION TOKEN
 
-userRouter.post("/auth0", (0, _expressAsyncHandler["default"])(function _callee3(req, res) {
+userRouter.post("/auth", (0, _expressAsyncHandler["default"])(function _callee3(req, res) {
   var _req$body3, fullName, email, password, phone_number, user, newUser;
 
   return regeneratorRuntime.async(function _callee3$(_context3) {

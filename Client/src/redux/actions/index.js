@@ -15,14 +15,27 @@ export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS"
 export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT"
 export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT"
 export const ADD_REVIEW = 'ADD_REVIEW'
-export const ERROR = "ERROR"
 
+//placeholder
+//import fakeJSON from "../../assets/fakeJson"
+//import { categories } from "../../assets/fakeJson"
 
-export const authenticationAuth0 = (auth) => {
-    return async(dispatch) => {
+//placeholder
+//export const getProducts = (payload) => {
+//    return {
+//        type: GET_PRODUCTS,
+//        payload
+//    }
+//}
+
+/* export const loginAuth = (payload) => {
+    return asyn
+}
+ */
+export const authenticationAuth0 = (payload) => {
+    return async() => {
         try{
-            const register = await axios.post(`http://drinksshop.herokuapp.com`,email)
-            const json = await axios.post("http://localhost:3001/api/users/auth0",auth)
+            const json = await axios.post("http://localhost:3001/api/users/auth",payload)
             console.log('hier durchgekommen')
             return json;
         }catch(err){
@@ -196,8 +209,12 @@ export const userLogin = (payload) => {
     return async (dispatch) => {
         try {
             const json = await axios.post("http://localhost:3001/api/users/login", payload)
-            console.log("json login", json)
-            return json
+            return dispatch(
+                {
+                    type:'USER_LOGIN',
+                    payload:json
+                }
+            )
         } catch (e) {
             dispatch({
                 type: ERROR,

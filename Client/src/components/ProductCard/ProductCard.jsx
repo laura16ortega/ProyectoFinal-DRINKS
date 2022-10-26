@@ -9,7 +9,7 @@ import cart from "../../assets/img/shopping-cart.png";
 import redHeart from "../../assets/img/redHeart.png"
 import greenCart from "../../assets/img/greenCart.png"
 import Cookies from 'universal-cookie'
-
+import { Rating } from 'react-simple-star-rating';
 
 const ProductCard = ({ id, name, image, price, category, numReviews, rating }) => {
    const cookies = new Cookies()
@@ -17,6 +17,35 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
    const cartProduct = useSelector(state => state.cart)
 
    const dispatch = useDispatch()
+
+   function getMode(rating) {
+
+      if(!(rating.length > 1)){
+         return rating;
+      }
+
+      const obj = {};
+      rating.forEach(number => {
+        if (!obj[number]) {
+          obj[number] = 1;
+        } else {
+          obj[number] += 1;
+        }
+      });
+    
+      let highestValue = 0;
+      let highestValueKey = -Infinity; 
+    
+      for (let key in obj) {
+        const value = obj[key];
+        if (value >= highestValue && Number(key) > highestValueKey) {
+          highestValue = value;
+          highestValueKey = Number(key);
+        }
+      }
+      return highestValueKey;
+    }
+    console.log(getMode(rating))
 
    const handleFav = (id) => {
       dispatch(getFavoriteProducts(id))
@@ -62,7 +91,10 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
                <div className={s.reviews}>
                   {/* Update to star component */}
                   <div className={s.stars}>
-                     <span className={s.blackStars} style={{ color: "#333" }}>☆☆☆☆☆</span>
+                     <Rating allowFraction='true' readonly='true' initialValue={getMode(rating)} size='20'/>
+
+
+                    {/*  <span className={s.blackStars} style={{ color: "#333" }}>☆☆☆☆☆</span>
                      <span className={s.rated} style={{ color: "#ffb400" }}>
                         {[...Array(rating)].map((n, i) => {
                            return (
@@ -72,7 +104,7 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
                            )
                         })
                         }
-                     </span>
+                     </span> */}
                   </div>
                   <span className={s.reviewers}>{`${numReviews} reviews`}</span>
                </div>
