@@ -1,11 +1,9 @@
 .contain{
     display: flex;
+    flex-direction: column;
     justify-content: center
 }
-.inputs{
-    display: flex;
-    flex-direction: column;
-}
+
 .inputs input {
     margin:5px;
     text-align: center;

@@ -40,9 +40,9 @@ const loginValidation = (InitialState) => {
             const token = json.data.token;
             console.log(json);
             localStorage.setItem('jwt',token);
-            
             setInput(InitialState)
             alert("Logueado")
+            document.location.href = '/home';
         }
         } catch (e) {
             console.log("log in error: ", e) //sweetalert algo salio mal

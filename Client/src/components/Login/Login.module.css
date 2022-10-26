@@ -1,3 +1,40 @@
 .container {
-    padding-top: 10rem;
+    font-family:Helvetica;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.formBody {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input {
+    border: none;
+    background-color: rgb(228, 225, 225);
+    border-radius: 0.2h;
+    width: 20rem;
+    height: 2rem;
+    color:black;
+    margin-bottom: 1.3rem;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+input:focus {
+    background-color: rgb(212, 211, 211);
+}
+
+.btn {
+    border: black solid;
+    width: 20.3rem;
+    font-size: 15px;
+    background:none;
+    color: black;
+    font-family: manrope-regular;
+    user-select: none;
+    margin: 1% 25% 25% 0;
+}
+

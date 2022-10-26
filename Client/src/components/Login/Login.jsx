@@ -25,13 +25,13 @@ const Login = () => {
         <div className={s.container}>
             <form className={s.formBody} onSubmit={e => handleSubmit(e)}>
                 <div>
-                    <label>Email</label>
-                    <input className='input' value={input.email} name="email" type="email" onChange={e => handleInput(e)}/>
+                    {/* <label>Email</label> */}
+                    <input placeholder='E-mail' className={s.input} value={input.email} name="email" type="email" onChange={e => handleInput(e)}/>
                     {errors.email && <p>{errors.email}</p>}
                 </div>
                 <div>
-                    <label>Contraseña</label>
-                    <input className='input' value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
+                    {/* <label>Contraseña</label> */}
+                    <input placeholder='Contraseña' className={s.input} value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
                     {errors.password && <p>{errors.password}</p>}
                 </div>
                 <div>

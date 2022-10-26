@@ -81,25 +81,24 @@ export default function Register() {
 
    return (
       <div className={s.container} >
-         <SearchBar />
-         <h3>RUTA DE REGISTRO</h3>
+
          <div className={s.contain}>
             <form onSubmit={e => handleSubmit(e)}>
                <div className={s.inputs}>
-                  <input type="text" placeholder="Nombre completo" value={input.fullName} name='fullName' onChange={e => handleChange(e)} />
+                  <input className={s.input} type="text" placeholder="Nombre completo" value={input.fullName} name='fullName' onChange={e => handleChange(e)} />
                   {errors.fullName && <span>{errors.fullName}</span>}
 
-                  <input type="email" placeholder="Email" value={input.email} name='email' onChange={e => handleChange(e)} />
+                  <input className={s.input} type="email" placeholder="Email" value={input.email} name='email' onChange={e => handleChange(e)} />
                   {errors.email && <span>{errors.email}</span>}
 
-                  <input type="password" placeholder="Contraseña" value={input.password} name='password' onChange={e => handleChange(e)} />
+                  <input className={s.input} type="password" placeholder="Contraseña" value={input.password} name='password' onChange={e => handleChange(e)} />
                   {errors.password && <span>{errors.password}</span>}
 
-                  <input type="text" placeholder="Telefono" value={input.phone_number} name='phone_number' onChange={e => handleChange(e)} />
+                  <input className={s.input} type="text" placeholder="Telefono" value={input.phone_number} name='phone_number' onChange={e => handleChange(e)} />
                   {errors.phone_number && <span>{errors.phone_number}</span>}
 
                </div>
-               <button className={s.button} type="submit">Registrarse</button>
+               <button className={s.btn} type="submit">Registrarse</button>
             </form>
          </div>
       </div>
