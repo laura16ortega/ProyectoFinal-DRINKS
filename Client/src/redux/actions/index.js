@@ -15,6 +15,7 @@ export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS"
 export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT"
 export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT"
 export const ADD_REVIEW = 'ADD_REVIEW'
+export const ERROR = "ERROR"
 
 //placeholder
 //import fakeJSON from "../../assets/fakeJson"

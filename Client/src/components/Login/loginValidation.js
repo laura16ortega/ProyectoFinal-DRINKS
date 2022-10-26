@@ -2,6 +2,7 @@ import { emailregex } from "../../assets/helpers"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { userLogin } from "../../redux/actions"
+import Swal from 'sweetalert2'
 import axios from "axios"
 
 const loginValidation = (InitialState) => {
@@ -44,7 +45,10 @@ const loginValidation = (InitialState) => {
                 setInput(InitialState)
             }
         } catch (e) {
-            console.log("log in error: ", e) //sweetalert algo salio mal
+            Swal.fire({
+                icon: "error",
+                text: `${e.response.data.message}`
+             }) //sweetalert algo salio mal
         }
     }
 

@@ -90,7 +90,7 @@ export default function Register() {
             <h3 className={s.title43232}>RUTA DE REGISTRO</h3>
             <div>
                <form onSubmit={e => handleSubmit(e)} className={s.contain}>
-                  <div className={s.inputs}>
+                  <div className={s.containerForm}>
                      <label>Nombre</label>
                      <input
                         type="text"
