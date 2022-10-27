@@ -1,32 +1,21 @@
-import axios from "axios";
+import axios from "axios"
 
-export const GET_PRODUCTS = "GET_PRODUCTS";
-export const PRICE_FILTER = "PRICE_FILTER";
-export const CATEGORY_FILTER = "CATEGORY_FILTER";
-export const NAME_SORT = "NAME_SORT";
-export const SORTING = "SORTING";
-export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS";
-export const CLEAR_PRODUCT_DETAILS = "CLEAR_PRODUCT_DETAILS";
-export const GET_PRODUCT_CATEGORIES = "GET_PRODUCT_CATEGORIES";
-export const SEARCH_PRODUCT = "SEARCH_PRODUCT";
-export const ADD_TO_CART = "ADD_TO_CART";
-export const CHANGE_QTY_TO_ADD = "CHANGE_QTY_TO_ADD";
-export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS";
-export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT";
-export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT";
-export const ADD_REVIEW = "ADD_REVIEW";
-
-//placeholder
-//import fakeJSON from "../../assets/fakeJson"
-//import { categories } from "../../assets/fakeJson"
-
-//placeholder
-//export const getProducts = (payload) => {
-//    return {
-//        type: GET_PRODUCTS,
-//        payload
-//    }
-//}
+export const GET_PRODUCTS = "GET_PRODUCTS"
+export const PRICE_FILTER = "PRICE_FILTER"
+export const CATEGORY_FILTER = "CATEGORY_FILTER"
+export const NAME_SORT = "NAME_SORT"
+export const SORTING = "SORTING"
+export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS"
+export const CLEAR_PRODUCT_DETAILS = 'CLEAR_PRODUCT_DETAILS';
+export const GET_PRODUCT_CATEGORIES = "GET_PRODUCT_CATEGORIES"
+export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
+export const ADD_TO_CART = "ADD_TO_CART"
+export const CHANGE_QTY_TO_ADD= "CHANGE_QTY_TO_ADD"
+export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS"
+export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT"
+export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT"
+export const ADD_REVIEW = 'ADD_REVIEW'
+export const ERROR = "ERROR"
 
 export const authenticationAuth0 = (auth) => {
   return async (dispatch) => {
@@ -74,16 +63,6 @@ export const getProducts = () => {
   };
 };
 
-//placeholder
-//export const getProductDetails = (id) => {
-//    const productDetail = fakeJSON.find(e => e.id === Number(id))
-//    console.log(productDetail)
-//    return {
-//        type: GET_PRODUCT_DETAILS,
-//        payload: productDetail
-//    }
-//}
-
 export const getProductDetails = (id) => {
   return async (dispatch) => {
     try {
@@ -94,16 +73,8 @@ export const getProductDetails = (id) => {
     } catch (e) {
       console.log("Reducer products DETAIL error", e);
     }
-  };
-};
-
-//placeholder
-//export const getAllCategories = () => {
-//    return {
-//        type: GET_PRODUCT_CATEGORIES,
-//        payload: categories
-//    }
-//}
+}
+}
 
 export const getAllCategories = () => {
   return async (dispatch) => {
@@ -119,15 +90,6 @@ export const getAllCategories = () => {
     }
   };
 };
-
-//placeholder
-//export const productSearch = (payload) => {
-//    const searchFilter = fakeJSON.filter(e => e.name.toLowerCase().includes(payload.toLowerCase()))
-//    return {
-//        type: SEARCH_PRODUCT,
-//        payload: searchFilter
-//    }
-//}
 
 export const productSearch = (name) => {
   return async (dispatch) => {
@@ -244,8 +206,11 @@ export const userRegister = (payload) => {
       );
       return json;
     } catch (e) {
-      console.log("register action error: ", e);
-    }
+      dispatch({
+                type: ERROR,
+                payload: e.response.data
+            })
+        }
   };
 };
 
@@ -258,7 +223,10 @@ export const userLogin = (payload) => {
       );
       return json;
     } catch (e) {
-      console.log("login action error: ", e);
-    }
+      dispatch({
+                type: ERROR,
+                payload: e.response.data
+            })
+      }
   };
 };
