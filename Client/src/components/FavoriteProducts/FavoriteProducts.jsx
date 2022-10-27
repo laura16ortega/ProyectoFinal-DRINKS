@@ -1,6 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import s from './FavoriteProducts.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 import Cookies from "universal-cookie";
 import { addProductToCart, deleteFavoriteProduct } from '../../redux/actions';
 import { priceWithCommas, validateCart } from '../../assets/helpers';
