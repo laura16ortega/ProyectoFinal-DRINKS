@@ -30,22 +30,21 @@ const Login = () => {
     }
 
     return (
-        <div className={s.container}>
-            <form onSubmit={e => handleSubmit(e)} className={s.loginForm}>
-                <h1 className={s.titleh1}>Inicio de sesion</h1>
-                <div style={{width: "100%"}}>
-                <div className={s.formInputMaterial}>
-                    <label>Email</label>
-                    <input value={input.email} name="email" type="text" onChange={e => handleInput(e)}/>
-                    {errors.email && <span className={s.errors}>{errors.email}</span>}
+<div className={s.container}>
+            <form className={s.formBody} onSubmit={e => handleSubmit(e)}>
+                <div>
+                    {/* <label>Email</label> */}
+                    <input placeholder='E-mail' className={s.input} value={input.email} name="email" type="email" onChange={e => handleInput(e)}/>
+                    {errors.email && <p className={s.emailAlert}>{errors.email}</p>}
                 </div>
-                <div className={s.formInputMaterial}>
-                    <label>Contraseña</label>
-                    <input value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
-                    {errors.password && <span className={s.errors}>{errors.password}</span>}
+                <div>
+                    {/* <label>Contraseña</label> */}
+                    <input placeholder='Contraseña' className={s.input} value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
+                    {errors.password && <p className={s.passwordAlert}>{errors.password}</p>}
                 </div>
+                <div>
+                    <button className={s.btn} type="submit">Iniciar sesion</button>
                 </div>
-                <button type="submit" className={s.btn}>Iniciar sesion</button>
             </form>
         </div>
     )

@@ -1,21 +1,25 @@
 .priceSort {
-    margin: .6rem;
+   
     margin-bottom: 0;
+    
+    height: 2rem;
+    background: none;
 }
 
 .priceSort select {
-    background-color: #242424;
-    color: azure;
-    margin-bottom: 18px;
-    border: none;
-    width: 12em;
+    background:none;
+    font-size: 18px;
+    font-family: Helvetica;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 0.2vh;
+    width: 8em;
     padding: .3rem .7rem;
     font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    appearance: none;
-    cursor: pointer;
-    text-align: justify;
+    line-height: 5rem;
+ 
+    padding: 0.300rem 0.5rem 0.375rem 0.3rem;
+    
 }
 
 .priceSort select:focus {
