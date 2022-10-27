@@ -14,7 +14,9 @@ import {
    DELETE_CART_PRODUCT,
    GET_FAVORITE_PRODUCTS,
    DELETE_FAVORITE_PRODUCT,
-   ERROR
+   ERROR,
+   CLEAR_ERROR,
+   GET_USER
 } from "../actions"
 
 const initialState = {
@@ -27,7 +29,8 @@ const initialState = {
    productDetails: {},
    favoriteProducts: [],
    errors: {},
-   userAuth: {}
+   userAuth: {},
+   localUser: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -191,6 +194,16 @@ const rootReducer = (state = initialState, action) => {
          return {
             ...state,
             errors: action.payload
+         }
+      case CLEAR_ERROR: 
+         return {
+            ...state,
+            errors: {}
+         }
+      case GET_USER: 
+         return {
+            ...state,
+            localUser: action.payload
          }
       default:
          return initialState
