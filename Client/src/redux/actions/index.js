@@ -17,6 +17,7 @@ export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT"
 export const ADD_REVIEW = 'ADD_REVIEW'
 export const ERROR = "ERROR"
 
+
 export const authenticationAuth0 = (auth) => {
   return async (dispatch) => {
     try {
@@ -36,6 +37,36 @@ export const authenticationAuth0 = (auth) => {
   };
 };
 
+
+//placeholder
+//import fakeJSON from "../../assets/fakeJson"
+//import { categories } from "../../assets/fakeJson"
+
+//placeholder
+//export const getProducts = (payload) => {
+//    return {
+//        type: GET_PRODUCTS,
+//        payload
+//    }
+//}
+
+//
+
+export const authenticationAuth0 = (auth) => {
+    return async(dispatch) => {
+        try{
+            const register = await axios.post(`https://drinksshop.herokuapp.com/email`)
+            const json = await axios.post("https://drinksshop.herokuapp.com/api/users/auth0",auth)
+            console.log('hier durchgekommen')
+            return json;
+        }catch(err){
+            console.error('auth0 api authtentication error', err);
+        }
+    }
+}
+
+
+
 export const addReview = (payload) => {
   return async (dispatch) => {
     try {
@@ -50,6 +81,7 @@ export const addReview = (payload) => {
 };
 
 export const getProducts = () => {
+
   return async (dispatch) => {
     try {
       const { data } = await axios.get(
@@ -63,6 +95,18 @@ export const getProducts = () => {
   };
 };
 
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get("https://drinksshop.herokuapp.com/api/products")
+            console.log("estoy en data redux", data)
+            return dispatch({type: GET_PRODUCTS, payload: data})
+        } catch (e) {
+            console.log("Reducer products error", e)
+        }
+    }
+}
+
+
 export const getProductDetails = (id) => {
   return async (dispatch) => {
     try {
@@ -74,6 +118,7 @@ export const getProductDetails = (id) => {
       console.log("Reducer products DETAIL error", e);
     }
 }
+
 }
 
 export const getAllCategories = () => {
@@ -90,6 +135,22 @@ export const getAllCategories = () => {
     }
   };
 };
+
+
+
+export const getAllCategories = () => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get("https://drinksshop.herokuapp.com/api/products") //Should be a route only with categories
+            const datamap = data.map(e => e.category)
+            const categories = [...new Set(datamap)]
+            return dispatch({type: GET_PRODUCT_CATEGORIES, payload: categories})
+        } catch (e) {
+            console.log("Actions get categories error", e)
+        }
+    }
+}
+
 
 export const productSearch = (name) => {
   return async (dispatch) => {
@@ -198,6 +259,7 @@ export const deleteFavoriteProduct = (id) => {
 };
 
 export const userRegister = (payload) => {
+
   return async () => {
     try {
       const json = await axios.post(
@@ -207,6 +269,14 @@ export const userRegister = (payload) => {
       return json;
     } catch (e) {
       dispatch({
+
+    return async (dispatch) => {
+        try {
+            const json = await axios.post("https://drinksshop.herokuapp.com/api/users/", payload)
+            return json
+        } catch (e) {
+            dispatch({
+
                 type: ERROR,
                 payload: e.response.data
             })
@@ -229,6 +299,12 @@ export const userLogin = (payload) => {
                 type: ERROR,
                 payload: e.response.data
             })
+
       }
   };
 };
+
+        }
+    }
+}
+

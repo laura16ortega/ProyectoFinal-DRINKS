@@ -40,7 +40,8 @@ function App() {
         <Route exact path='/login' element={<LoginOptions />} />
         <Route path="/liked" element={<FavoriteProducts/>}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='*' element={<NotFound /> } />
+      
+        {/* <Route path='*' element={<NotFound /> } /> */}
       </Routes>
     </div>
   )

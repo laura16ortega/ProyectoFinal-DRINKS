@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Cookies from "universal-cookie";
 import { addProductToCart, deleteFavoriteProduct } from '../../redux/actions';
 import { priceWithCommas, validateCart } from '../../assets/helpers';
-import s from './FavoriteProducts.module.css'
+import s from './FavoriteProducts.module.css' 
+
 
 const FavoriteProducts = () => {
 
