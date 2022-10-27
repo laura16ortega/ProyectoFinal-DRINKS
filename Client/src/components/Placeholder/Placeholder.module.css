@@ -4,7 +4,6 @@
     justify-content: center;  
     width: 80rem;
     padding-top: 0; 
-
         /* background: rgb(147,85,139);
     background: linear-gradient(90deg, rgba(147,85,139,1) 20%, rgba(205,212,36,1) 100%); */
 }
@@ -78,8 +77,4 @@
 
 .disabled {
     display: none;
-}
-.noResults {
-    padding-bottom: 2.5rem;
-    font-family: manrope-regular;
 }

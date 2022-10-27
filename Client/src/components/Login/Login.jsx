@@ -1,8 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
+import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 import loginValidation from './loginValidation'
+import s from "./Login.module.css"
 
 const Login = () => {
+    const error = useSelector(state => state.errors)
+    console.log(error)
+
     const InitialState = {
         email: "",
         password: ""
@@ -16,21 +22,28 @@ const Login = () => {
     } = loginValidation(InitialState)
 
 
+    if (Object.keys(error).length) {
+        Swal.fire({
+           icon: "error",
+           text: `${error.message}`
+        })
+    }
+
     return (
-        <div>
-            <form onSubmit={e => handleSubmit(e)}>
+        <div className={s.container}>
+            <form className={s.formBody} onSubmit={e => handleSubmit(e)}>
                 <div>
-                    <label>Email</label>
-                    <input value={input.email} name="email" type="email" onChange={e => handleInput(e)}/>
-                    {errors.email && <p>{errors.email}</p>}
+                    {/* <label>Email</label> */}
+                    <input placeholder='E-mail' className={s.input} value={input.email} name="email" type="email" onChange={e => handleInput(e)} />
+                    {errors.email && <p className={s.emailAlert}>{errors.email}</p>}
                 </div>
                 <div>
-                    <label>Contraseña</label>
-                    <input value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
-                    {errors.password && <p>{errors.password}</p>}
+                    {/* <label>Contraseña</label> */}
+                    <input placeholder='Contraseña' className={s.input} value={input.password} name="password" type="password" onChange={e => handleInput(e)} />
+                    {errors.password && <p className={s.passwordAlert}>{errors.password}</p>}
                 </div>
                 <div>
-                    <button type="submit">Iniciar sesion</button>
+                    <button className={s.btn} type="submit">Iniciar sesion</button>
                 </div>
             </form>
         </div>
