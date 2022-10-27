@@ -1,0 +1,45 @@
+.container {
+    background-color: #3C4048;
+    padding: 1rem;
+    box-shadow: 13px 1px 33px -13px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 13px 1px 33px -13px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 13px 1px 33px -13px rgba(0,0,0,0.75) inset;
+border-radius: 0 5px 5px 0;
+}
+
+.form {
+    margin: 1rem;
+}
+
+.inputs {
+    margin: 1rem;
+}
+
+.rows {
+    display: flex;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem
+}
+
+.inputContainer label {
+    margin-bottom: 5px;
+}
+
+.inputContainer input {
+    border: none;
+    padding: 13px;
+}
+
+.errors {
+    font-size: .8rem;
+    color: #F96666;
+}
+
+.buttonContainer button {
+    width: 100%;
+    border-radius: 2px;
+}
