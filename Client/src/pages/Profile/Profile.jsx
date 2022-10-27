@@ -101,7 +101,7 @@ function Profile(props) {
                         <EditForm token={token} />
                     </div>
                 </div>
-                : <h1>Here lies a loader</h1>}
+                : <h1>Here lies a loader</h1>} 
         </div>
 
 
