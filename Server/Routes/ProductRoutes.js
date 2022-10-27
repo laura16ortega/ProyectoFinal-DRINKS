@@ -35,7 +35,9 @@ productRoute.post(
   "/:id/review",
   protect,
   asyncHandler(async (req, res) => {
-    const { rating, comment } = req.body;
+
+    const { rating, comment, name } = req.body;
+
     const product = await Product.findById(req.params.id);
     if (product) {
       const alreadyReviewed = product.reviews.find(
@@ -46,6 +48,7 @@ productRoute.post(
         throw new Error("Product already reviewed");
       }
       const review = {
+        name: req.user.fullName,
         fullName: req.user.fullName,
         rating: Number(rating),
         comment,

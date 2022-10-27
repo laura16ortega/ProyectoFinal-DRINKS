@@ -58,44 +58,17 @@ userRouter.post(
     }
   })
 );
-// AUTH0 REGISTER/LOGIN AUTHENTICATION TOKEN
-
-
-userRouter.post("/auth", asyncHandler(async(req,res)=> {
- 
-    const { fullName, email, password, phone_number } = req.body;
-    const user = await User.findOne({ email }) 
-    if(user) {
-      res.json({
-        _id: user._id,
-        fullName: user.fullName,
-        email: user.email,
-        isAdmin: user.isAdmin,
-        token: generateToken(user._id),
-        createdAt: user.createdAt,
-      })
-    }else{
-      const newUser = await User.create({
-        fullName,
-        email,
-        password,
-        phone_number,
-      })
-      if (newUser) {
-        res.status(201).json({
-          _id: user._id,
-          fullName: user.fullName,
-          email: user.email,
-          isAdmin: user.isAdmin,
-          token: generateToken(user._id),
-        });
-      }
+/* userRouter.post("/", asyncHandler(async(req,res)=> {
+  try{
+    const { email } = req.body;
+    const userExists = await User.findOne({ email }) 
+    if(userExists) {
+      res.status(200);
     }
-}))
-
-
-
-
+  }catch(err){
+    console.error(err);
+  }
+})) */
 //PROFILE
 userRouter.get(
   "/profile",
