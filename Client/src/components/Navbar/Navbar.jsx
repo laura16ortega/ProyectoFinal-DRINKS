@@ -29,7 +29,7 @@ function Navbar(props) {
    },[localStorage])
 
    return (
-      <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar}`}>
+      <div className={s.navBar}>
          <div className={s.topContents}>
             <div className={s.categories}>
 {/*                <div className={s.catBtn}>
@@ -80,11 +80,13 @@ function Navbar(props) {
                ) : (
                   <div className={s.userBtnBodyIn}>
                   <div>
+
                      <NavLink to='/login'>
                         <button className={s.accessBtn}>Acceder</button>
                      </NavLink>
                   </div>
                   <div>
+
                   <NavLink to='/carrito'>
                      <img className={s.userBtn} src={cart} />
                   </NavLink>
@@ -99,7 +101,7 @@ function Navbar(props) {
          <div className={s.bottomContents}>
             <ul className={s.bodyLinks}>
                <li className={s.btnBoxSize}>
-                  <NavLink to="/home" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
+                  <NavLink to="/" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
                      principal
                   </NavLink>
                </li>

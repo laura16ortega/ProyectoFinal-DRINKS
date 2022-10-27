@@ -1,3 +1,54 @@
+.cartContainer {
+    padding-top: 4rem;
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.cartWrapper {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productsContainer {
+    padding: 2rem 0;
+    border-top: 1px solid white;
+}
+
+.productsWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.deleteButton {
+    margin: 0 1rem;
+}
+
+.deleteButton button {
+    border: 0;
+    background: none;
+}
+
+.imgContainer img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.nameContainer {
+    width: 500px;
+    padding: 1rem;
+}
+
+.priceContainer {
+    width: 100px;
+    padding: .7rem 2rem;
+}
+
+
 .container {
  padding-top: 7rem;
  display: flex;

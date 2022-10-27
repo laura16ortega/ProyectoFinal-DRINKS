@@ -13,7 +13,8 @@ import {
    CHANGE_QTY_TO_ADD,
    DELETE_CART_PRODUCT,
    GET_FAVORITE_PRODUCTS,
-   DELETE_FAVORITE_PRODUCT
+   DELETE_FAVORITE_PRODUCT,
+   ERROR
 } from "../actions"
 
 const initialState = {
@@ -25,7 +26,8 @@ const initialState = {
    categories: [],
    productDetails: {},
    favoriteProducts: [],
-   userAuth:{}
+   errors: {},
+   userAuth: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -185,7 +187,11 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             qtyToAdd: action.payload
          }
-
+      case ERROR: 
+         return {
+            ...state,
+            errors: action.payload
+         }
       default:
          return initialState
    }

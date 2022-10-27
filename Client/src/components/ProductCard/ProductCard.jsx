@@ -1,14 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import s from "./ProductCard.module.css"
-import { priceWithCommas } from '../../assets/helpers'
-import { useDispatch } from "react-redux"
+import { priceWithCommas, validateCart } from '../../assets/helpers'
+import { useDispatch, useSelector } from "react-redux"
 import { addProductToCart, getFavoriteProducts } from '../../redux/actions'
 import heart from "../../assets/img/heart.png";
 import cart from "../../assets/img/shopping-cart.png";
+import redHeart from "../../assets/img/redHeart.png"
+import greenCart from "../../assets/img/greenCart.png"
+import Cookies from 'universal-cookie'
 import { Rating } from 'react-simple-star-rating';
 
 const ProductCard = ({ id, name, image, price, category, numReviews, rating }) => {
+   const cookies = new Cookies()
+   const favProduct = useSelector(state => state.favoriteProducts)
+   const cartProduct = useSelector(state => state.cart)
 
    const dispatch = useDispatch()
 
@@ -50,16 +56,33 @@ const ProductCard = ({ id, name, image, price, category, numReviews, rating }) =
       dispatch(addProductToCart(id))
    }
 
+   const validateFav = (id) => {
+      const favCookies = cookies.get("fav")
+      if (!favCookies) return false
+      const wasFound = favCookies.find(e => e._id === id)
+
+      if (wasFound) return true
+      return false
+   }
+
    return (
       <div className={s.container}>
          <div className={s.contents}>
 
                <div className={s.imgContainer}>
-                  <img src={heart} alt="asd" className={s.addFav} onClick={() => handleFav(id)}/>
+               {validateFav(id) ?
+                  <img src={redHeart} alt="asd" className={s.addFav} onClick={() => handleFav(id)} />
+                  :
+                  <img src={heart} alt="asd" className={s.addFav} onClick={() => handleFav(id)} />
+               } {/* isAuthenticated? mostrar : no mostrar */}
                   <Link to={`/details/${id}`}>
                   <img src={image} alt={name} className={s.productImage}/>
                   </Link>
-                  <img src={cart} alt="" className={s.addCart} onClick={() => handleCart(id)}/>
+                  {validateCart(id) ?
+                  <img src={greenCart} alt="" className={s.addCart} onClick={() => handleCart(id)} />
+                  :
+                  <img src={cart} alt="" className={s.addCart} onClick={() => handleCart(id)} />
+               }
                </div>
 
             <div className={s.category}>{category}</div>

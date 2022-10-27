@@ -31,8 +31,7 @@ function App() {
   {/*     <Footer/> */}
 
       <Routes>
-        {/* <Route path="/" element={<Navigate to="/home" />} /> */}
-        <Route path='/home' element={<LandingPage />} />
+        <Route path='/' element={<LandingPage />} />
         <Route path='/productos' element={<Home />} />
         <Route path='/carrito' element={<Cart />} />
         <Route path='/details/:id' element={<Details />} />
@@ -43,7 +42,6 @@ function App() {
         <Route path='/contact' element={<Contact/>}/>
         <Route path='*' element={<NotFound /> } />
       </Routes>
-
     </div>
   )
 }

@@ -1,10 +1,13 @@
 import React from 'react'
-import { useState, useSelector, useEffect } from 'react'
+import { useState } from 'react'
+import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 import loginValidation from './loginValidation'
-import s from './Login.module.css';
+import s from "./Login.module.css"
 
 const Login = () => {
-
+    const error = useSelector(state => state.errors)
+    console.log(error)
 
     const InitialState = {
         email: "",
@@ -19,7 +22,12 @@ const Login = () => {
     } = loginValidation(InitialState)
 
 
-
+    if (Object.keys(error).length) {
+        Swal.fire({
+           icon: "error",
+           text: `${error.message}`
+        })
+    }
 
     return (
         <div className={s.container}>
@@ -34,9 +42,8 @@ const Login = () => {
                     <input placeholder='Contraseña' className={s.input} value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
                     {errors.password && <p className={s.passwordAlert}>{errors.password}</p>}
                 </div>
-                <div>
-                    <button className={s.btn} type="submit">Iniciar sesion</button>
                 </div>
+                <button type="submit" className={s.btn}>Iniciar sesion</button>
             </form>
         </div>
     )

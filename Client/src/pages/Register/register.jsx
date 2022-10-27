@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
-import s from "./Register.module.css"
+import s from "./register.module.css"
 import SearchBar from '../../components/SearchBar/SearchBar'
 import { userRegister } from '../../redux/actions'
 
@@ -11,6 +11,8 @@ export default function Register() {
 
    const dispatch = useDispatch()
    const navigate = useNavigate()
+
+   const registerErrors = useSelector(state => state.errors)
 
    const [errors, setError] = useState({})
 
@@ -36,9 +38,10 @@ export default function Register() {
 
       let errors = {}
 
-      if (!input.fullName) errors.fullName = 'Nombre completo requerido';
+      if (!input.fullName) errors.fullName = 'El Nombre completo es requerido';
       else if (input.fullName.length < 6) errors.fullName = "Nombre demasiado corto"
       else if (!/^[a-z ,.'-]+$/i.test(input.fullName)) errors.fullName = "Nombre invalido"
+
       else if (input.fullName.length > 255) errors.fullName = "Nombre muy largo"
 
 
@@ -51,6 +54,7 @@ export default function Register() {
       if (!input.password) errors.password = "ejemplo: usuario123";
       else if (!/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i.test(input.password)) errors.password = '8 caracteres minimo (8,A,a)'
 
+
       if (!input.phone_number) errors.phone_number = "Debes colocar un numero de telefono"
       else if (input.phone_number.length < 10) errors.phone_number = "Minimo 10 caracteres"
       else if (!/^[0-9]*$/.test(input.phone_number)) errors.phone_number = "El numero de telefono solo debe contener numeros"
@@ -59,8 +63,9 @@ export default function Register() {
    }
 
    // function handleSubmit
-   async function handleSubmit(e) {
+   function handleSubmit(e) {
       e.preventDefault()
+
 
       try {
          const validated = validateInput(input)
@@ -82,8 +87,14 @@ export default function Register() {
       }
    }
 
-   return (
+   if (Object.keys(registerErrors).length) {
+      Swal.fire({
+         icon: "error",
+         text: `${registerErrors.message}`
+      })
+   }
 
+   return (
 
          <div className={s.container}>
             <form className={s.form} onSubmit={e => handleSubmit(e)}>
@@ -102,6 +113,7 @@ export default function Register() {
 
                <button className={s.btn} type="submit">Registrarse</button>
             </form>
+
          </div>
    )
 }
