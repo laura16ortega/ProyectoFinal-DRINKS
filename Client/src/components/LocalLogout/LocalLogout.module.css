@@ -1,0 +1,9 @@
+.btn {
+    z-index: 105;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    background: none;
+    color: black;
+    border: black solid;
+    font-family: manrope-regular;
+}

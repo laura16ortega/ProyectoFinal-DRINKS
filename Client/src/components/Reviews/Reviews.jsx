@@ -12,9 +12,21 @@ function Reviews(props) {
     const [error, setError ] = useState({});
     const [review, setReview] = useState({
         comment:'',
-        rating:''
+        rating:'',
+        user:''
     });
     console.log(user)
+
+    const [auth, setAuth] = useState(!true);
+
+
+
+
+    useEffect(() => {
+       setAuth(!auth);
+       const userToken = localStorage.getItem('jwt');
+    },[localStorage.getItem('jwt')])
+ 
 
 
     useEffect(() => {
@@ -67,7 +79,8 @@ function Reviews(props) {
             setReview({
                 ...review,
                 username:user.nickname,
-                profile_img:user.picture
+                profile_img:user.picture,
+                user:userToken
             })
             console.log(review);
             dispatch(addReview(review));
@@ -95,7 +108,7 @@ function Reviews(props) {
         </div>
 
 
-          { isAuthenticated ? (<form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
+          { isAuthenticated || auth ? (<form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
           <div className={s.userBoardBody}>
         <div>
         <img  className={s.image} src={user?.picture} />

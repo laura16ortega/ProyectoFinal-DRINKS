@@ -5,6 +5,7 @@ import fakeJSON from '../../assets/fakeJson'
 import s from "./Filters.module.css"
 import { categoryFilter, getProducts, priceFilter } from '../../redux/actions'
 import { priceWithCommas } from '../../assets/helpers'
+import Sorting from '../Sorting/Sorting'
 
 const Filters = () => {
 
@@ -35,26 +36,31 @@ const Filters = () => {
 
    return (
       <div className={s.filterContainer}>
-         <h1>FILTERS</h1>
+         
 
          <div className={s.categoriesFilter}>
-            <h4>Categories</h4>
+            
             <select onChange={handleCategory}>
-               <option value={"all"}>All</option>
+               <option value={"all"}>Categorias</option>
                {categories.map(c =>
                   <option key={c} style={{ cursor: "pointer" }} value={c}>{c}</option>
                )}
             </select>
+            <div>
+            <Sorting />
+            </div>
          </div>
-
          <div className={s.priceFilter}>
-            <h4>Price</h4>
-            <input type="range" value={rangePrice} onChange={e => handleRange(e)} min="0" max="625000" step="25000" />
-            <h3>{`$${priceWithCommas(rangePrice)}`}</h3>
-         </div>
-
-         <div>
-            <button className={s.reset} onClick={e => handleReset(e)}>reset</button>
+           <p className={s.priceRange}>Rango</p>
+           
+           <input className={s.range} type="range" value={rangePrice} onChange={e => handleRange(e)} min="0" max="625000" step="25000" />
+           <h3 className={s.rangeNum}>{`$${priceWithCommas(rangePrice)}`}</h3>
+          
+        </div>
+                  
+         
+         <div >
+            <button className={s.reset} onClick={e => handleReset(e)}>Reset</button>
          </div>
 
       </div>
