@@ -42,7 +42,6 @@ const Login = () => {
                     <input placeholder='Contraseña' className={s.input} value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
                     {errors.password && <p className={s.passwordAlert}>{errors.password}</p>}
                 </div>
-                </div>
                 <button type="submit" className={s.btn}>Iniciar sesion</button>
             </form>
         </div>

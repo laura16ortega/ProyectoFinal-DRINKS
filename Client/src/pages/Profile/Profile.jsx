@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
+import pencilEdit from "../../assets/img/pencilEdit.svg"
 
 function Profile(props) {
     const { isAuthenticated, user } = useAuth0();
@@ -15,6 +16,7 @@ function Profile(props) {
     const dispatch = useDispatch()
     const token = window.localStorage.getItem("jwt")
     const localUser = useSelector(state => state.localUser)
+    const placeholderBackground = "https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80"
 
     useEffect(() => {
         dispatch(getUser(token))
@@ -29,38 +31,14 @@ function Profile(props) {
             {/* auth0 */}
             {isAuthenticated ? (
                 <>
-                    {/*<div className={s.container}>
-                        <div className={s.background}>
-                            <div>
-                                {user?.picture && <img className={s.img} src={user.picture} alt={user?.name} />}
-                            </div>
-                            <div>
-                                @{user?.nickname}
-                            </div>
-                            <div>
-                                <h2>
-                                    {user?.name}
-                                </h2>
-                            </div>
-                        </div>
-
-
-                                         {user?.picture && <img className={s.img} src={user.picture} alt={user?.name} />}
-                <h2>{user?.name}</h2>
-                <ul>
-                    {Object.keys(user).map((objKey, i) => <li key={i}> {objKey}:{user[objKey]} </li>)}
-                </ul> 
-                    </div>*/}
-
                     <div className={s.background2}>
                         <div className={s.innerProfile}>
                             <div className={s.profileInfo}>
-                                <button className={s.editButton} onClick={() => handleEdit()}>Editar perfil</button>
                                 <div className={s.backgroundImage}>
-                                    <img src="" alt="" />
+                                    <img className={s.imgFit} src={placeholderBackground} alt="nada" />
                                 </div>
                                 <div className={s.profilePhoto}>
-                                    <img className={s.img2} src={user.picture ? user.picture : defaultImage} alt={user?.name} />
+                                    <img className={s.imgFit} src={user.picture ? user.picture : defaultImage} alt={user?.name} />
                                 </div>
                                 <div className={s.profileData}>
                                     <span className={s.userEmail}>{`@${user?.nickname}`}</span>
@@ -69,13 +47,10 @@ function Profile(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className={edit ? s.posrel : s.posabs} >
-                            <EditForm token={token}/>
-                        </div>
                     </div>
                 </>
 
-            ) : (<div style={{ display: "none" }}><h1>Not found</h1></div>)
+            ) : (<div className={token && s.hidden}><h1>Not found</h1></div>)
             }
 
             {/* local */}
@@ -83,12 +58,12 @@ function Profile(props) {
                 <div className={s.background2}>
                     <div className={s.innerProfile}>
                         <div className={s.profileInfo}>
-                            <button className={s.editButton} onClick={() => handleEdit()}>Editar perfil</button>
+                            <img className={s.editButton} onClick={() => handleEdit()} src={pencilEdit} alt="pencil" />
                             <div className={s.backgroundImage}>
-                                <img src="" alt="" />
+                                <img className={s.imgFit} src={localUser.backgroundImg ? localUser.backgroundImg : placeholderBackground} alt="nada" />
                             </div>
                             <div className={s.profilePhoto}>
-                                <img className={s.img2} src={localUser.picture ? localUser.picture : defaultImage} alt={localUser?.fullName} />
+                                <img className={s.imgFit} src={localUser.profilePic ? localUser.profilePic : defaultImage} alt={localUser?.fullName} style={{ width: "120px", height: "120px" }} />
                             </div>
                             <div className={s.profileData}>
                                 <span className={s.userEmail}>{`@${localUser?.email.slice(0, localUser.email.indexOf("@"))}`}</span>
@@ -101,7 +76,7 @@ function Profile(props) {
                         <EditForm token={token} />
                     </div>
                 </div>
-                : <h1>Here lies a loader</h1>} 
+                : <h1 className={isAuthenticated && s.hidden}>Here lies a loader</h1>}
         </div>
 
 
