@@ -215,15 +215,17 @@ export const userRegister = (payload) => {
 };
 
 export const userLogin = (payload) => {
-  return async () => {
-    try {
-      const json = await axios.post(
-        "https://drinksshop.herokuapp.com/api/users/login",
-        payload
-      );
-      return json;
-    } catch (e) {
-      dispatch({
+    return async (dispatch) => {
+        try {
+            const json = await axios.post("https://drinksshop.herokuapp.com/api/users/login", payload)
+            return dispatch(
+                {
+                    type:'USER_LOGIN',
+                    payload:json
+                }
+            )
+        } catch (e) {
+            dispatch({
                 type: ERROR,
                 payload: e.response.data
             })

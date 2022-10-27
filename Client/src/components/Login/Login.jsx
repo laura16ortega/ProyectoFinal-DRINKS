@@ -7,6 +7,7 @@ import s from "./Login.module.css"
 
 const Login = () => {
     const error = useSelector(state => state.errors)
+    console.log(error)
 
     const InitialState = {
         email: "",

@@ -64,7 +64,6 @@ userRouter.post(
     const userExists = await User.findOne({ email }) 
     if(userExists) {
       res.status(200);
-
     }
   }catch(err){
     console.error(err);
