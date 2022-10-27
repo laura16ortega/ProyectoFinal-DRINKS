@@ -49,7 +49,7 @@ function Navbar(props) {
                </div> */}
             </div>
             <div className={s.logo}>
-               <h3>drinks.</h3>
+               <h3>drinks</h3>
             </div>
             <div >
 
@@ -85,7 +85,7 @@ function Navbar(props) {
                      </NavLink>
                   </div>
                   <div>
-                  <NavLink to='/cart'>
+                  <NavLink to='/carrito'>
                      <img className={s.userBtn} src={cart} />
                   </NavLink>
                </div>

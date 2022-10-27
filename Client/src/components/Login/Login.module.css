@@ -38,3 +38,13 @@ input:focus {
     margin: 1% 25% 25% 0;
 }
 
+.passwordAlert {
+    color: red;
+    font-size: 12px;
+    margin-top: -1.3rem;
+}
+.emailAlert {
+    color: red;
+    font-size: 12px;
+    margin-top: -1.3rem;
+}

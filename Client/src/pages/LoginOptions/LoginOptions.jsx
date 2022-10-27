@@ -8,7 +8,9 @@ function LoginOptions(props) {
     return (
         <>
         <div className={s.container}>
+            
             <div className={s.body}>
+            <h3 style={{color:'black',margin:'0 auto',fontFamily:'manrope-regular', fontSize:'30px',marginBottom:'3rem', userSelect:'none'}}>Ingresar</h3>
             <Login />
             <LoginButton />
 

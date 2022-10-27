@@ -27,12 +27,12 @@ const Login = () => {
                 <div>
                     {/* <label>Email</label> */}
                     <input placeholder='E-mail' className={s.input} value={input.email} name="email" type="email" onChange={e => handleInput(e)}/>
-                    {errors.email && <p>{errors.email}</p>}
+                    {errors.email && <p className={s.emailAlert}>{errors.email}</p>}
                 </div>
                 <div>
                     {/* <label>Contraseña</label> */}
                     <input placeholder='Contraseña' className={s.input} value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
-                    {errors.password && <p>{errors.password}</p>}
+                    {errors.password && <p className={s.passwordAlert}>{errors.password}</p>}
                 </div>
                 <div>
                     <button className={s.btn} type="submit">Iniciar sesion</button>
