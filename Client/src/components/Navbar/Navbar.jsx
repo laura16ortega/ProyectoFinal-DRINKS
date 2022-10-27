@@ -10,6 +10,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import FavoriteProducts from "../FavoriteProducts/FavoriteProducts";
+import LocalLogout from "../LocalLogout/LocalLogout";
 
 function Navbar(props) {
    const {isAuthenticated } = useAuth0();
@@ -21,8 +22,11 @@ function Navbar(props) {
 
 
    useEffect(() => {
-      setAuth(!auth);
-   },[localStorage.getItem('jwt')])
+/*       if(localStorage.getItem('jwt') == null){
+         setAuth(false);
+      }
+      setAuth(!auth); */
+   },[localStorage])
 
    return (
       <div className={s.navBar}>
@@ -45,17 +49,16 @@ function Navbar(props) {
                </div> */}
             </div>
             <div className={s.logo}>
-               <h3>drinks.</h3>
+               <h3>drinks</h3>
             </div>
             <div >
 
-               {isAuthenticated || auth ? (
+               {isAuthenticated || !(localStorage.getItem('jwt') == null) ? (
                   <div className={s.userBtnBodyIn}>
                <div>
                   <NavLink to='/perfil'>
                      <img className={s.userBtn} src={user} />
                   </NavLink>
-
                </div>
 
                <div>
@@ -70,14 +73,20 @@ function Navbar(props) {
                   </NavLink>
                </div>
                <div>
-               <LogoutButton />
+                  { isAuthenticated ? (<div><LogoutButton /> </div> ) : (<div><LocalLogout /></div>)}
                </div>
                
                </div>
                ) : (
                   <div className={s.userBtnBodyIn}>
-                  <div><LoginButton /></div>
                   <div>
+
+                     <NavLink to='/login'>
+                        <button className={s.accessBtn}>Acceder</button>
+                     </NavLink>
+                  </div>
+                  <div>
+
                   <NavLink to='/carrito'>
                      <img className={s.userBtn} src={cart} />
                   </NavLink>
@@ -106,7 +115,7 @@ function Navbar(props) {
                      sobre nosotros
                   </NavLink>
                </li>
-               { isAuthenticated || auth ?
+               { isAuthenticated || !(localStorage.getItem('jwt') == null) ?
 (               <li className={s.btnBoxSize}>
                   <NavLink to="/perfil" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
                      mi perfil

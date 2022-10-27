@@ -58,7 +58,7 @@ export default function LandingPage() {
                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae rerum cupiditate distinctio deserunt amet vel mollitia saepe quos dignissimos? Nihil labore repudiandae fugiat mollitia ut quidem. Aspernatur facere repellat dolor.</p>
                         </div>
                         <div className={s.buttonContainer}>
-                           <Link to="/products">
+                           <Link to="/productos">
                               <div className={s.buttonDesc}>
                                  <div>VER PRODUCTOS</div>
                               </div>
