@@ -15,6 +15,7 @@ export const GET_FAVORITE_PRODUCTS = "GET_FAVORITE_PRODUCTS"
 export const DELETE_FAVORITE_PRODUCT = "DELETE_FAVORITE_PRODUCT"
 export const DELETE_CART_PRODUCT = "DELETE_CART_PRODUCT"
 export const ADD_REVIEW = 'ADD_REVIEW'
+export const ERROR = "ERROR"
 
 //placeholder
 //import fakeJSON from "../../assets/fakeJson"
@@ -70,18 +71,6 @@ export const getProducts = () => {
     }
 }
 
-
-//placeholder
-//export const getProductDetails = (id) => {
-//    const productDetail = fakeJSON.find(e => e.id === Number(id))
-//    console.log(productDetail)
-//    return {
-//        type: GET_PRODUCT_DETAILS,
-//        payload: productDetail
-//    }
-//}
-
-
 export const getProductDetails = (id) => {
     return async (dispatch) => {
         try {
@@ -92,17 +81,6 @@ export const getProductDetails = (id) => {
         }
     }
 }
-
-
-//placeholder
-//export const getAllCategories = () => {
-//    return {
-//        type: GET_PRODUCT_CATEGORIES,
-//        payload: categories
-//    }
-//}
-
-
 
 export const getAllCategories = () => {
     return async (dispatch) => {
@@ -116,18 +94,6 @@ export const getAllCategories = () => {
         }
     }
 }
-
-
-//placeholder 
-//export const productSearch = (payload) => {
-//    const searchFilter = fakeJSON.filter(e => e.name.toLowerCase().includes(payload.toLowerCase()))
-//    return {
-//        type: SEARCH_PRODUCT,
-//        payload: searchFilter
-//    }
-//}
-
-
 
 export const productSearch = (name) => {
     return async (dispatch) => {
@@ -227,23 +193,34 @@ export const deleteFavoriteProduct = (id) => {
 }
 
 export const userRegister = (payload) => {
-    return async () => {
+    return async (dispatch) => {
         try {
             const json = await axios.post("https://drinksshop.herokuapp.com/api/users/", payload)
             return json
         } catch (e) {
-            console.log("register action error: ", e)
+            dispatch({
+                type: ERROR,
+                payload: e.response.data
+            })
         }
     }
 }
 
 export const userLogin = (payload) => {
-    return async () => {
+    return async (dispatch) => {
         try {
             const json = await axios.post("https://drinksshop.herokuapp.com/api/users/login", payload)
-            return json
+            return dispatch(
+                {
+                    type:'USER_LOGIN',
+                    payload:json
+                }
+            )
         } catch (e) {
-            console.log("login action error: ", e)
+            dispatch({
+                type: ERROR,
+                payload: e.response.data
+            })
         }
     }
 }

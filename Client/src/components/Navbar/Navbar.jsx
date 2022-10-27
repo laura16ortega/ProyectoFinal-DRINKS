@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import s from "./Navbar.module.css";
 import cart from "../../assets/img/shopping-cart.png";
 import heart from "../../assets/img/heart.png";
@@ -13,11 +13,19 @@ import FavoriteProducts from "../FavoriteProducts/FavoriteProducts";
 
 function Navbar(props) {
    const {isAuthenticated } = useAuth0();
-   const [showMenu, setShowMenu] = useState(!false);
-   
+  /*  const [showMenu, setShowMenu] = useState(!false); */
+   console.log(localStorage.getItem('jwt'))
+   const [auth, setAuth] = useState(!true);
+
+
+
+
+   useEffect(() => {
+      setAuth(!auth);
+   },[localStorage.getItem('jwt')])
 
    return (
-      <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar}`}>
+      <div className={s.navBar}>
          <div className={s.topContents}>
             <div className={s.categories}>
 {/*                <div className={s.catBtn}>
@@ -41,7 +49,7 @@ function Navbar(props) {
             </div>
             <div >
 
-               {isAuthenticated ? (
+               {isAuthenticated || auth ? (
                   <div className={s.userBtnBodyIn}>
                <div>
                   <NavLink to='/perfil'>
@@ -84,7 +92,7 @@ function Navbar(props) {
          <div className={s.bottomContents}>
             <ul className={s.bodyLinks}>
                <li className={s.btnBoxSize}>
-                  <NavLink to="/home" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
+                  <NavLink to="/" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
                      principal
                   </NavLink>
                </li>
@@ -98,7 +106,7 @@ function Navbar(props) {
                      sobre nosotros
                   </NavLink>
                </li>
-               { isAuthenticated ?
+               { isAuthenticated || auth ?
 (               <li className={s.btnBoxSize}>
                   <NavLink to="/perfil" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
                      mi perfil
