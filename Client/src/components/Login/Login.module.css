@@ -1,46 +1,50 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url("https://cdn.discordapp.com/attachments/783048528128770108/1032273193861390406/drink-1666146671616-9625.jpg");
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center;
-}
-
-.formInputMaterial {
-    margin: 12px 0;
+    font-family:Helvetica;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
-.formInputMaterial input {
-    border: none;
-    padding: 8px;
-    width: 100%;
-}
-
-.loginForm {
+.formBody {
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px 40px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
+    flex-direction: column;
+
+}
+
+.input {
+    border: none;
+    background-color: rgb(228, 225, 225);
+    border-radius: 0.2h;
+    width: 20rem;
+    height: 2rem;
+    color:black;
+    margin-bottom: 1.3rem;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+input:focus {
+    background-color: rgb(212, 211, 211);
 }
 
 .btn {
-    width: 100%;
-    margin: 18px 0 9px 0;
+    border: black solid;
+    width: 20.3rem;
+    font-size: 15px;
+    background:none;
+    color: black;
+    font-family: manrope-regular;
+    user-select: none;
+    margin: 1% 25% 25% 0;
 }
 
-.titleh1 {
-    margin: 0 0 24px 0;
+.passwordAlert {
+    color: red;
+    font-size: 12px;
+    margin-top: -1.3rem;
 }
-
-.errors {
-    color: #E0144C;
+.emailAlert {
+    color: red;
+    font-size: 12px;
+    margin-top: -1.3rem;
 }
