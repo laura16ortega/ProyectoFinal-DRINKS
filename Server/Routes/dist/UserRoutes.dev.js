@@ -129,26 +129,35 @@ userRouter.post("/", (0, _expressAsyncHandler["default"])(function _callee2(req,
       }
     }
   });
-})); // AUTH0 REGISTER/LOGIN AUTHENTICATION TOKEN
+}));
+/* userRouter.post("/", asyncHandler(async(req,res)=> {
+  try{
+    const { email } = req.body;
+    const userExists = await User.findOne({ email }) 
+    if(userExists) {
+      res.status(200);
 
-userRouter.post("/auth0", (0, _expressAsyncHandler["default"])(function _callee3(req, res) {
-  var _req$body3, fullName, email, password, phone_number, user, newUser;
+    }
+  }catch(err){
+    console.error(err);
+  }
+})) */
+//PROFILE
 
+userRouter.get("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler["default"])(function _callee3(req, res) {
+  var user;
   return regeneratorRuntime.async(function _callee3$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          _req$body3 = req.body, fullName = _req$body3.fullName, email = _req$body3.email, password = _req$body3.password, phone_number = _req$body3.phone_number;
-          _context3.next = 3;
-          return regeneratorRuntime.awrap(_userModel["default"].findOne({
-            email: email
-          }));
+          _context3.next = 2;
+          return regeneratorRuntime.awrap(_userModel["default"].findById(req.user._id));
 
-        case 3:
+        case 2:
           user = _context3.sent;
 
           if (!user) {
-            _context3.next = 8;
+            _context3.next = 7;
             break;
           }
 
@@ -157,44 +166,25 @@ userRouter.post("/auth0", (0, _expressAsyncHandler["default"])(function _callee3
             fullName: user.fullName,
             email: user.email,
             isAdmin: user.isAdmin,
-            token: (0, _generateToken["default"])(user._id),
             createdAt: user.createdAt
           });
-          _context3.next = 12;
+          _context3.next = 9;
           break;
 
-        case 8:
-          _context3.next = 10;
-          return regeneratorRuntime.awrap(_userModel["default"].create({
-            fullName: fullName,
-            email: email,
-            password: password,
-            phone_number: phone_number
-          }));
+        case 7:
+          res.status(404);
+          throw new Error("User not found");
 
-        case 10:
-          newUser = _context3.sent;
-
-          if (newUser) {
-            res.status(201).json({
-              _id: user._id,
-              fullName: user.fullName,
-              email: user.email,
-              isAdmin: user.isAdmin,
-              token: (0, _generateToken["default"])(user._id)
-            });
-          }
-
-        case 12:
+        case 9:
         case "end":
           return _context3.stop();
       }
     }
   });
-})); //PROFILE
+})); //UPDATE PROFILE
 
-userRouter.get("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler["default"])(function _callee4(req, res) {
-  var user;
+userRouter.put("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler["default"])(function _callee4(req, res) {
+  var user, updateUser;
   return regeneratorRuntime.async(function _callee4$(_context4) {
     while (1) {
       switch (_context4.prev = _context4.next) {
@@ -206,46 +196,7 @@ userRouter.get("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler[
           user = _context4.sent;
 
           if (!user) {
-            _context4.next = 7;
-            break;
-          }
-
-          res.json({
-            _id: user._id,
-            fullName: user.fullName,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            createdAt: user.createdAt
-          });
-          _context4.next = 9;
-          break;
-
-        case 7:
-          res.status(404);
-          throw new Error("User not found");
-
-        case 9:
-        case "end":
-          return _context4.stop();
-      }
-    }
-  });
-})); //UPDATE PROFILE
-
-userRouter.put("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler["default"])(function _callee5(req, res) {
-  var user, updateUser;
-  return regeneratorRuntime.async(function _callee5$(_context5) {
-    while (1) {
-      switch (_context5.prev = _context5.next) {
-        case 0:
-          _context5.next = 2;
-          return regeneratorRuntime.awrap(_userModel["default"].findById(req.user._id));
-
-        case 2:
-          user = _context5.sent;
-
-          if (!user) {
-            _context5.next = 13;
+            _context4.next = 13;
             break;
           }
 
@@ -256,11 +207,11 @@ userRouter.put("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler[
             user.password = req.body.password;
           }
 
-          _context5.next = 9;
+          _context4.next = 9;
           return regeneratorRuntime.awrap(user.save());
 
         case 9:
-          updateUser = _context5.sent;
+          updateUser = _context4.sent;
           res.json({
             _id: updateUser._id,
             fullName: updateUser.fullName,
@@ -269,7 +220,7 @@ userRouter.put("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler[
             createdAt: updateUser.createdAt,
             token: (0, _generateToken["default"])(updateUser._id)
           });
-          _context5.next = 15;
+          _context4.next = 15;
           break;
 
         case 13:
@@ -278,7 +229,7 @@ userRouter.put("/profile", _AuthMiddleware["default"], (0, _expressAsyncHandler[
 
         case 15:
         case "end":
-          return _context5.stop();
+          return _context4.stop();
       }
     }
   });
