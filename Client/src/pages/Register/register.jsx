@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import s from "./register.module.css"
 import SearchBar from '../../components/SearchBar/SearchBar'
-import { userRegister } from '../../redux/actions'
+import { clearErrors, userRegister } from '../../redux/actions'
 
 
 export default function Register() {
@@ -51,7 +51,7 @@ export default function Register() {
 
 
       if (!input.password) errors.password = "La contraseña es requerida";
-      else if (!/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i.test(input.password)) errors.password = 'Debe contener almenos 8 caracteres, incluyendo algun numero'
+      /*else if (!/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i.test(input.password)) errors.password = 'Debe contener almenos 8 caracteres, incluyendo algun numero'*/
 
       if (!input.phone_number) errors.phone_number = "Debes colocar un numero de telefono"
       else if (input.phone_number.length < 10) errors.phone_number = "El numero de telefono debe tener minimo 10 caracteres"
@@ -82,6 +82,7 @@ export default function Register() {
          icon: "error",
          text: `${registerErrors.message}`
       })
+      dispatch(clearErrors())
    }
 
    return (
