@@ -38,7 +38,6 @@ export const GET_USER = "GET_USER"
  */
 
 
-
 export const authenticationAuth0 = (auth) => {
    return async (dispatch) => {
       try {

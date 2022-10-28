@@ -92,7 +92,7 @@ const ProfileEdit = ({ token }) => {
             dispatch(editProfile(input, token))
             setInput({
                 fullName: '',
-                email: '',
+                password: '',
                 passwordConfirm: ''
             })
             setErrors({})

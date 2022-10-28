@@ -53,10 +53,16 @@ input:-webkit-autofill:active{
     box-shadow: 0 0 0 30px white inset !important;
 }
 
+
+.containerner input {
+    margin-bottom: 15px;
+    color: black;
+
 .alert {
     color:red;
     margin-top: -1.3rem;
     font-size: 12px;
+
 }
 
 /* input:-webkit-autofill,
