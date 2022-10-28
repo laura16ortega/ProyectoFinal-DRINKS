@@ -50,7 +50,7 @@ function Profile(props) {
                     </div>
                 </>
 
-            ) : (<div className={token && s.hidden}><h1>Not found</h1></div>)
+            ) : (<div className={token ? s.hidden : s.loader}></div>)
             }
 
             {/* local */}
@@ -63,7 +63,7 @@ function Profile(props) {
                                 <img className={s.imgFit} src={localUser.backgroundImg ? localUser.backgroundImg : placeholderBackground} alt="nada" />
                             </div>
                             <div className={s.profilePhoto}>
-                                <img className={s.imgFit} src={localUser.profilePic ? localUser.profilePic : defaultImage} alt={localUser?.fullName} style={{ width: "120px", height: "120px" }} />
+                                <img className={s.imgFit} src={localUser.image ? localUser.image : defaultImage} alt={localUser?.fullName} style={{ width: "120px", height: "120px" }} />
                             </div>
                             <div className={s.profileData}>
                                 <span className={s.userEmail}>{`@${localUser?.email.slice(0, localUser.email.indexOf("@"))}`}</span>
@@ -76,7 +76,8 @@ function Profile(props) {
                         <EditForm token={token} />
                     </div>
                 </div>
-                : <h1 className={isAuthenticated && s.hidden}>Here lies a loader</h1>}
+                : <div className={isAuthenticated ? s.hidden : s.loader}>
+                </div>}
         </div>
 
 
