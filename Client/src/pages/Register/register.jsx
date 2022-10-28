@@ -54,12 +54,6 @@ export default function Register() {
       if (!input.password) errors.password = "ejemplo: usuario123";
       else if (!/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i.test(input.password)) errors.password = '8 caracteres minimo (8,A,a)'
 
-
-      if (!input.password) errors.password = "La contraseña es requerida";
-      /*else if (!/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i.test(input.password)) errors.password = 'Debe contener almenos 8 caracteres, incluyendo algun numero'*/
-
-
-
       if (!input.phone_number) errors.phone_number = "Debes colocar un numero de telefono"
       else if (input.phone_number.length < 10) errors.phone_number = "Minimo 10 caracteres"
       else if (!/^[0-9]*$/.test(input.phone_number)) errors.phone_number = "El numero de telefono solo debe contener numeros"

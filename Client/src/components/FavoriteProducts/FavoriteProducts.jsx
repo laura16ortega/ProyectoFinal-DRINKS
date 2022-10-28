@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Cookies from "universal-cookie";
 import { addProductToCart, deleteFavoriteProduct } from '../../redux/actions';
 import { priceWithCommas, validateCart } from '../../assets/helpers';
+import s from "./FavoriteProducts.module.css"
 
 const FavoriteProducts = () => {
 
@@ -45,7 +46,7 @@ const FavoriteProducts = () => {
                                 </div>
                                 <div>
                                     {validateCart(e[1]._id) ? 
-                                    <button>Ya añadido</button> 
+                                    <button>Ya añadido al carrito</button> 
                                     :
                                     <button onClick={() => handleCart(e[1]._id)}>Añadir al carrito</button>
                                     }
