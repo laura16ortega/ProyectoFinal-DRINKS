@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import { addProduct } from "../../redux/actions"
 
-const loginValidation = (InitialState) => {
+const loginValidation = (InitialState, token) => {
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState(InitialState)
     const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const loginValidation = (InitialState) => {
             [e.target.name]: e.target.value
         })
     }
-    
+
     const widgetConfig = {
         cloudName: 'dayt0wtlk',
         uploadPreset: 'gmykq3nv',
@@ -74,17 +75,16 @@ const loginValidation = (InitialState) => {
         const validated = validation(input)
         if (Object.keys(validated).length > 0) setErrors(validated)
         else {
-        /*     dispatch(postProduct(input)) */
-        console.log({
-            name: input.name,
-            image: input.image,
-            description: input.description,
-            price: Number(input.price),
-            stock: Number(input.stock),
-            category: input.category
-        }, "input")
-        setInput(InitialState)
-        setErrors({})
+            dispatch(addProduct({
+                name: input.name,
+                image: input.image,
+                description: input.description,
+                price: Number(input.price),
+                stock: Number(input.stock),
+                category: input.category
+            }, token))
+            setInput(InitialState)
+            setErrors({})
         }
     }
 

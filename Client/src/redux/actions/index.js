@@ -317,3 +317,17 @@ export const getUser = (token) => {
       }
    }
 }
+
+export const addProduct = (payload, token) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.post(
+            "https://drinksshop.herokuapp.com/api/products/add", 
+            payload, 
+            { headers: { Authorization: `Bearer ${token}` } })
+         return data
+      } catch (err) {
+         console.log("Add product error", err)
+      }
+   }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import { priceWithCommas } from '../../assets/helpers'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCategories } from '../../redux/actions'
+import { getAllCategories, getUser } from '../../redux/actions'
 import useForm from "./useForm"
 import s from "./FormProduct.module.css"
 import vodka from "../../assets/img/vodkaOneOne.jpeg"
@@ -19,9 +19,11 @@ const FormProduct = () => {
 
    const categories = useSelector(state => state.categories)
    const dispatch = useDispatch()
+   const token = window.localStorage.getItem("jwt")
 
    useEffect(() => {
       dispatch(getAllCategories())
+      dispatch(getUser(token))
    }, [dispatch])
 
    const {
@@ -30,7 +32,7 @@ const FormProduct = () => {
       widgetDisplay,
       handleInput,
       handleSubmit
-   } = useForm(initialState)
+   } = useForm(initialState, token)
 
    return (
       <div className={s.container}>
@@ -103,13 +105,3 @@ const FormProduct = () => {
 }
 
 export default FormProduct
-
-/*
-const productSchema = mongoose.Schema(
-  {
-   reviews: [reviewSchema], 
-   rating: type: Number, default: 0 required
-   numReviews: type: Number, default: 0 required
-  },
-);
-*/
