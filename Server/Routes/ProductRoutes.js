@@ -30,6 +30,25 @@ productRoute.get(
   })
 );
 
+//ADD PRODUCT
+productRoute.post(
+  "/add",
+  protect,
+  asyncHandler(async (req, res) => {
+    const { name, image, description, stock, category, price } = req.body;
+    const product = await new Product({
+      name,
+      image,
+      description,
+      stock,
+      category,
+      price,
+    });
+    await product.save();
+    res.status(201).json({ message: "Product added" });
+  })
+);
+
 //PRODUCT REVIEW
 productRoute.post(
   "/:id/review",
