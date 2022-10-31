@@ -2,6 +2,7 @@ import express from "express";
 import asyncHandler from "express-async-handler";
 import Product from "../src/models/productModel.js";
 import protect from "../Middleware/AuthMiddleware.js";
+import mongoose from "mongoose";
 
 const productRoute = express.Router();
 
@@ -36,6 +37,7 @@ productRoute.post(
   protect,
   asyncHandler(async (req, res) => {
     const { name, image, description, stock, category, price } = req.body;
+
     const product = await new Product({
       name,
       image,
@@ -46,6 +48,25 @@ productRoute.post(
     });
     await product.save();
     res.status(201).json({ message: "Product added" });
+  })
+);
+
+//DELETE PRODUCT
+productRoute.delete(
+  "/delete",
+  protect,
+  asyncHandler(async (req, res) => {
+    const { id } = req.body;
+    const product = await Product.findById(id);
+    if (!product) {
+      res.status(404);
+      throw new Error("Invalid id");
+    } else {
+      const resultado = await Product.deleteOne({
+        _id: mongoose.Types.ObjectId(id),
+      });
+      res.status(201).json({ message: "Product deleted" });
+    }
   })
 );
 
