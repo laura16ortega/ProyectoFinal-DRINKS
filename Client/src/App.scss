@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Freehand&family=Nunito:wght@600;800;900&display=swap');
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+$light: #ffffff;
+$gray: #e7e9eb;
+
+.flex {
+  display: flex;
+}
+
+.navbar{
+  background-color: $light;
+  padding:  1rem 2rem;
+  border-bottom: 1px solid $gray;
+}
+
+.sidebar {
+  width: 14rem;
+  height: calc(100vh - 52px);
+  border-right: 1px solid $gray;
+
+  ul{
+    list-style: none;
+    padding: 1rem 2rem;
+
+    li{
+      margin-bottom: 1rem;
+
+      a{
+        text-decoration: none;
+        // &.active{
+        //   background-color: $gray;
+        // }
+      }
+    }
+  }
+}
