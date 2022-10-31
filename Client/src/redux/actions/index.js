@@ -57,7 +57,7 @@ export const authenticationAuth0 = (auth) => {
    };
 };
 
-export const addReview = (payload) => {
+/*export const addReview = (payload) => {
    return async (dispatch) => {
       try {
          return dispatch({
@@ -68,7 +68,34 @@ export const addReview = (payload) => {
          console.error("review actions error", err);
       }
    };
-};
+};*/
+
+
+export const addReview = (id, token, payload) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.post(
+            `http://localhost:3001/api/products/${id}/review`, 
+            payload, 
+            { headers: { Authorization: `Bearer ${token}` } })
+         return data
+         /*
+         const json = await axios.put(
+            "https://drinksshop.herokuapp.com/api/users/profile",
+            payload,
+            { headers: { Authorization: `Bearer ${token}` } }
+         )
+         return json
+
+         */
+      } catch (err) {
+         console.log("Review actions error", err)
+      }
+   }
+}
+
+/*productRoute.post(
+  "/:id/review", */
 
 export const getProducts = () => {
    return async (dispatch) => {
@@ -268,7 +295,7 @@ export const editProfile = (payload, token) => {
    return async () => {
       try {
          const json = await axios.put(
-            "http://localhost:3001/api/users/profile",
+            "https://drinksshop.herokuapp.com/api/users/profile",
             payload,
             { headers: { Authorization: `Bearer ${token}` } }
          )
@@ -282,10 +309,24 @@ export const editProfile = (payload, token) => {
 export const getUser = (token) => {
    return async (dispatch) => {
       try {
-         const { data } = await axios.get("http://localhost:3001/api/users/profile", { headers: { Authorization: `Bearer ${token}` } })
+         const { data } = await axios.get("https://drinksshop.herokuapp.com/api/users/profile", { headers: { Authorization: `Bearer ${token}` } })
          return dispatch({ type: GET_USER, payload: data })
       } catch (e) {
          console.log("get user action error", e)
+      }
+   }
+}
+
+export const addProduct = (payload, token) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.post(
+            "https://drinksshop.herokuapp.com/api/products/add", 
+            payload, 
+            { headers: { Authorization: `Bearer ${token}` } })
+         return data
+      } catch (err) {
+         console.log("Add product error", err)
       }
    }
 }

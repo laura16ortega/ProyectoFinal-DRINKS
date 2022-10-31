@@ -11,8 +11,7 @@ const ProfileEdit = ({ token }) => {
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
         fullName: "",
-        backgroundImg: "",
-        profilePic: "",
+        image: "",
         password: "",
         passwordConfirm: ""
     })
@@ -91,9 +90,10 @@ const ProfileEdit = ({ token }) => {
         else {
             dispatch(editProfile(input, token))
             setInput({
-                fullName: '',
-                password: '',
-                passwordConfirm: ''
+                fullName: "",
+                image: "",
+                password: "",
+                passwordConfirm: ""
             })
             setErrors({})
         }
@@ -110,15 +110,9 @@ const ProfileEdit = ({ token }) => {
                                 <input name='fullName' value={input.fullName} type="text" onChange={e => handleChange(e)} />
                                 {errors.fullName && <span className={s.errors}>{errors.fullName}</span>}
                             </div>
-                        </div>
-                        <div className={s.rows}>
-                            <div className={s.inputContainer}>
-                                <label>Imagen de fondo</label>
-                                <button name="backgroundImg" onClick={(e) => widgetDisplay(e)}>Seleccionar imagen</button>
-                            </div>
                             <div className={s.inputContainer}>
                                 <label>Imagen de perfil</label>
-                                <button name="profilePic" onClick={(e) => widgetDisplay(e)}>Seleccionar imagen</button>
+                                <button name="image" onClick={(e) => widgetDisplay(e)}>{input.image? input.image.slice((-1, input.image.lastIndexOf("/") + 1)) : `Seleccionar imagen`}</button>
                             </div>
                         </div>
                         <div className={s.rows}>
