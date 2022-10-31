@@ -35,9 +35,23 @@ border-radius: 0 5px 5px 0;
     padding: 13px;
 }
 
+.inputContainer input:focus {
+    background-color: #3B3B3B;
+}
+
+.inputContainer button {
+    border-radius: 2px;
+}
+
+.inputContainer button:hover {
+    border-color: transparent;
+    background-color: #777;
+}
+
 .errors {
     font-size: .8rem;
     color: #F96666;
+    text-align: center;
 }
 
 .buttonContainer button {

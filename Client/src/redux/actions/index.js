@@ -331,10 +331,3 @@ export const addProduct = (payload, token) => {
       }
    }
 }
-
-export const reviewsFilter = (payload) => {
-   return {
-      type: REVIEWS_FILTER,
-      payload,
-   };
-};

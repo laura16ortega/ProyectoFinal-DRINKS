@@ -36,17 +36,14 @@ html { height: 100%; }
     justify-content: center;
 
 
-    background: url("https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-0.3.5&s=4222852e25e0f57d9485f7889957e99a&auto=format&fit=crop&w=2000&q=80");
-    background-size: cover;
-    background: #ccc;
     background-position: 0 50%;
     background: #DEB493;
     position: relative;
 }
 
 .profileContainer {
-    height: 450px; /*card-height*/
-    max-width: 300px; /*card-width*/
+    height: 450px;
+    max-width: 300px;
     margin: 0 auto;
     position: relative;
 
@@ -58,22 +55,11 @@ html { height: 100%; }
     margin: 0 auto;
     border-radius: 5px;
     font-weight: 400;
-    color: #071011; /* black */
-    font-size: 1rem;
-    text-align: center;
-    transition: 0.6s ease;
-}
-
-/*.innterProfileLeft {
-    margin: 0 auto;
-    border-radius: 5px;
-    font-weight: 400;
     color: #071011;
     font-size: 1rem;
     text-align: center;
     transition: 0.6s ease;
-    translate: -100%;
-}*/
+}
 
 .profileInfo {
     display: flex;
@@ -99,6 +85,10 @@ html { height: 100%; }
     z-index: 1;
     opacity: 0;
     transition: 0.5s ease;
+    padding: .7rem;
+    cursor: pointer;
+    filter: invert(100%) sepia(100%) saturate(18%) hue-rotate(337deg) brightness(106%) contrast(104%);
+    width: 20px;
 }
 
 .profileInfo:hover .editButton{
@@ -109,9 +99,9 @@ html { height: 100%; }
     position: relative;
   height: 250px;
   width: 500px;
-  background: url("https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80")
+  /*background: url("https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80")
     no-repeat;
-  background-size: cover;
+  background-size: cover;*/
   backface-visibility: hidden;
   overflow: hidden;
   border-top-right-radius: 5px;
@@ -129,10 +119,10 @@ html { height: 100%; }
   overflow: hidden;
 }
 
-.img2 {
-    width: 100%; 
-    max-width: 120px; 
-    height: auto; 
+.imgFit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .profileData {
@@ -173,3 +163,33 @@ html { height: 100%; }
 .posrel {
     position: relative;
 }
+
+.hidden {
+    display: none;
+}
+
+.loader {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .loader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loader 1.2s linear infinite;
+  }
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
