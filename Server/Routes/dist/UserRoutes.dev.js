@@ -129,6 +129,7 @@ userRouter.post("/", (0, _expressAsyncHandler["default"])(function _callee2(req,
       }
     }
   });
+
 }));
 /* userRouter.post("/", asyncHandler(async(req,res)=> {
   try{
@@ -136,6 +137,63 @@ userRouter.post("/", (0, _expressAsyncHandler["default"])(function _callee2(req,
     const userExists = await User.findOne({ email }) 
     if(userExists) {
       res.status(200);
+
+})); // AUTH0 REGISTER/LOGIN AUTHENTICATION TOKEN
+
+userRouter.post("/auth", (0, _expressAsyncHandler["default"])(function _callee3(req, res) {
+  var _req$body3, fullName, email, password, phone_number, user, newUser;
+
+  return regeneratorRuntime.async(function _callee3$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          _req$body3 = req.body, fullName = _req$body3.fullName, email = _req$body3.email, password = _req$body3.password, phone_number = _req$body3.phone_number;
+          _context3.next = 3;
+          return regeneratorRuntime.awrap(_userModel["default"].findOne({
+            email: email
+          }));
+
+        case 3:
+          user = _context3.sent;
+
+          if (!user) {
+            _context3.next = 8;
+            break;
+          }
+
+          res.json({
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            token: (0, _generateToken["default"])(user._id),
+            createdAt: user.createdAt
+          });
+          _context3.next = 12;
+          break;
+
+        case 8:
+          _context3.next = 10;
+          return regeneratorRuntime.awrap(_userModel["default"].create({
+            fullName: fullName,
+            email: email,
+            password: password,
+            phone_number: phone_number
+          }));
+
+        case 10:
+          newUser = _context3.sent;
+
+          if (newUser) {
+            res.status(201).json({
+              _id: user._id,
+              fullName: user.fullName,
+              email: user.email,
+              isAdmin: user.isAdmin,
+              token: (0, _generateToken["default"])(user._id)
+            });
+          }
+
 
     }
   }catch(err){

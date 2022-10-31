@@ -30,7 +30,7 @@ const Login = () => {
     }
 
     return (
-        <div className={s.container}>
+<div className={s.container}>
             <form className={s.formBody} onSubmit={e => handleSubmit(e)}>
                 <div>
                     {/* <label>Email</label> */}
@@ -42,8 +42,9 @@ const Login = () => {
                     <input placeholder='Contraseña' className={s.input} value={input.password} name="password" type="password" onChange={e => handleInput(e)}/>
                     {errors.password && <p className={s.passwordAlert}>{errors.password}</p>}
                 </div>
+                <div>
+                    <button className={s.btn} type="submit">Iniciar sesion</button>
                 </div>
-                <button type="submit" className={s.btn}>Iniciar sesion</button>
             </form>
         </div>
     )
