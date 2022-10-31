@@ -61,6 +61,7 @@ const productSchema = mongoose.Schema(
       required: true,
       enum: ["Vino", "Cerveza", "Spirits"],
     },
+    isDeleted: { type: Boolean, default: false },
   },
   {
     timestamps: true,
