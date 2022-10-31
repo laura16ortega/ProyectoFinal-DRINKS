@@ -6,7 +6,7 @@ html { height: 100%; }
     align-items: center;
     min-height: 80vh;
     width: 100%;
-
+    background-color: brown;
 
   
 }
@@ -23,4 +23,153 @@ html { height: 100%; }
 .img {
     border-radius: 5px;
     height: 8rem;
+}
+
+
+
+
+
+.background2 {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    background: url("https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-0.3.5&s=4222852e25e0f57d9485f7889957e99a&auto=format&fit=crop&w=2000&q=80");
+    background-size: cover;
+    background: #ccc;
+    background-position: 0 50%;
+    background: #DEB493;
+    position: relative;
+}
+
+.profileContainer {
+    height: 450px; /*card-height*/
+    max-width: 300px; /*card-width*/
+    margin: 0 auto;
+    position: relative;
+
+    perspective: 900px;
+    perspective-origin: 50% calc(50% - 18em);
+}
+
+.innerProfile {
+    margin: 0 auto;
+    border-radius: 5px;
+    font-weight: 400;
+    color: #071011; /* black */
+    font-size: 1rem;
+    text-align: center;
+    transition: 0.6s ease;
+}
+
+/*.innterProfileLeft {
+    margin: 0 auto;
+    border-radius: 5px;
+    font-weight: 400;
+    color: #071011;
+    font-size: 1rem;
+    text-align: center;
+    transition: 0.6s ease;
+    translate: -100%;
+}*/
+
+.profileInfo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #fff; /* white */
+    backface-visibility: hidden;
+    border-radius: 5px;
+    box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.editButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+.profileInfo:hover .editButton{
+    opacity: 1;
+}
+
+.backgroundImage {
+    position: relative;
+  height: 250px;
+  width: 500px;
+  background: url("https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80")
+    no-repeat;
+  background-size: cover;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.profilePhoto {
+    position: relative;
+  top: -60px;
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  overflow: hidden;
+}
+
+.img2 {
+    width: 100%; 
+    max-width: 120px; 
+    height: auto; 
+}
+
+.profileData {
+    position: relative;
+  top: -55px;
+  margin: 0 auto;
+  font-family: "Montserrat";
+  font-size: 18px;
+  backface-visibility: hidden;
+}
+
+.userEmail {
+    position: relative;
+    top: -5px;
+
+    color: #000;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+}
+
+.userName {
+    font-weight: 700;
+    font-family: 'oktaneue-regular';
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+
+
+.posabs {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.posrel {
+    position: relative;
 }
