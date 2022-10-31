@@ -11,27 +11,42 @@ const ProfileEdit = ({ token }) => {
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
         fullName: "",
-        images: "",
+        image: "",
         password: "",
         passwordConfirm: ""
     })
 
-    console.log(input)
+
+    const widgetConfig = {
+        cloudName: 'dayt0wtlk',
+        uploadPreset: 'ouspesfa',
+        sources: [
+            "local",
+            "camera",
+            "url",
+            "facebook",
+            "instagram",
+            "google_drive",
+            "image_search",
+            "dropbox"
+        ],
+        showAdvancedOptions: false,
+        cropping: true,
+        multiple: false,
+    }
 
     const widgetDisplay = (e) => {
         e.preventDefault()
-        var myWidget = window.cloudinary.createUploadWidget({
-            cloudName: 'dayt0wtlk',
-            uploadPreset: 'ouspesfa'
-        }, (error, result) => {
-            if (!error && result && result.event === "success") {
-                console.log(result, "result")
-                setInput({
-                    ...input,
-                    images: result.info.url
-                })
+        let myWidget = window.cloudinary.createUploadWidget(
+            widgetConfig,
+            (error, result) => {
+                if (!error && result && result.event === "success") {
+                    setInput({
+                        ...input,
+                        [e.target.name]: result.info.url
+                    })
+                }
             }
-        }
         )
         myWidget.open()
     }
@@ -75,10 +90,10 @@ const ProfileEdit = ({ token }) => {
         else {
             dispatch(editProfile(input, token))
             setInput({
-                fullName: '',
-                email: '',
-                password: '',
-                passwordConfirm: ''
+                fullName: "",
+                image: "",
+                password: "",
+                passwordConfirm: ""
             })
             setErrors({})
         }
@@ -96,12 +111,8 @@ const ProfileEdit = ({ token }) => {
                                 {errors.fullName && <span className={s.errors}>{errors.fullName}</span>}
                             </div>
                             <div className={s.inputContainer}>
-                                {/*<label>Email</label>
-                                <input name='email' value={input.email} type="text" onChange={e => handleChange(e)}/>
-                                {errors.email && <span className={s.errors}>{errors.email}</span>}*/}
-                                <label>Profile picture</label>
-                                <img src={input.images? input.images : ""} alt="" style={{width: "30px"}}/>
-                                <button onClick={(e) => widgetDisplay(e)}>Select</button>
+                                <label>Imagen de perfil</label>
+                                <button name="image" onClick={(e) => widgetDisplay(e)}>{input.image? input.image.slice((-1, input.image.lastIndexOf("/") + 1)) : `Seleccionar imagen`}</button>
                             </div>
                         </div>
                         <div className={s.rows}>
@@ -127,9 +138,3 @@ const ProfileEdit = ({ token }) => {
 }
 
 export default ProfileEdit
-
-/*
-
-
-
-*/

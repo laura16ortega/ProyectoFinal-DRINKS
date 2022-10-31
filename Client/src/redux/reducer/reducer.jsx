@@ -16,7 +16,8 @@ import {
    DELETE_FAVORITE_PRODUCT,
    ERROR,
    CLEAR_ERROR,
-   GET_USER
+   GET_USER,
+   REVIEWS_FILTER
 } from "../actions"
 
 const initialState = {
@@ -205,6 +206,19 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             localUser: action.payload
          }
+         case REVIEWS_FILTER:
+            if (action.payload === "All") {
+               return {
+                  ...state,
+                  products: state.allProducts
+               }
+            }
+            const filteredReviews = state.allProducts.filter(e => e.reviews.length)
+            return {
+               ...state,
+               products: filteredReviews,
+               productsBackup: filteredReviews
+            }
       default:
          return initialState
    }

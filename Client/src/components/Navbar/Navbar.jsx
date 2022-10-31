@@ -22,19 +22,14 @@ function Navbar(props) {
 
 
    useEffect(() => {
-
 /*       if(localStorage.getItem('jwt') == null){
          setAuth(false);
       }
       setAuth(!auth); */
    },[localStorage])
 
-      setAuth(!auth);
-   },[localStorage.getItem('jwt')])
-
-
    return (
-      <div className={s.navBar}>
+      <div className={window.location.pathname.includes("dashboard") ? s.noDisplay : s.navBar}>
          <div className={s.topContents}>
             <div className={s.categories}>
 {/*                <div className={s.catBtn}>
@@ -58,11 +53,7 @@ function Navbar(props) {
             </div>
             <div >
 
-
                {isAuthenticated || !(localStorage.getItem('jwt') == null) ? (
-
-               {isAuthenticated || auth ? (
-
                   <div className={s.userBtnBodyIn}>
                <div>
                   <NavLink to='/perfil'>
@@ -124,11 +115,7 @@ function Navbar(props) {
                      sobre nosotros
                   </NavLink>
                </li>
-
                { isAuthenticated || !(localStorage.getItem('jwt') == null) ?
-
-               { isAuthenticated || auth ?
-
 (               <li className={s.btnBoxSize}>
                   <NavLink to="/perfil" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
                      mi perfil
