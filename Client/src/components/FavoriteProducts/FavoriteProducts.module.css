@@ -21,6 +21,7 @@
 .productsWrapper {
     display: flex;
     align-items: center;
+    color: white;
 }
 
 .deleteButton {
@@ -44,7 +45,6 @@
 }
 
 .priceContainer {
-    width: 100px;
     padding: .7rem 2rem;
 }
 
