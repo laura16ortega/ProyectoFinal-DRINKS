@@ -37,13 +37,13 @@ const productSchema = mongoose.Schema(
     reviews: [reviewSchema],
     rating: {
       type: Number,
-      required: true,
+      required: false,
       default: 0,
     },
 
     numReviews: {
       type: Number,
-      required: true,
+      required: false,
       default: 0,
     },
     price: {
@@ -61,6 +61,7 @@ const productSchema = mongoose.Schema(
       required: true,
       enum: ["Vino", "Cerveza", "Spirits"],
     },
+    isDeleted: { type: Boolean, default: false },
   },
   {
     timestamps: true,
