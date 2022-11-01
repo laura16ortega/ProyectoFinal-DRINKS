@@ -76,8 +76,8 @@ export const addReview = (id, token, payload) => {
    return async (dispatch) => {
       try {
          const data = await axios.post(
-            `http://localhost:3001/api/products/${id}/review`, 
-            payload, 
+            `http://localhost:3001/api/products/${id}/review`,
+            payload,
             { headers: { Authorization: `Bearer ${token}` } })
          return data
          /*
@@ -322,8 +322,8 @@ export const addProduct = (payload, token) => {
    return async (dispatch) => {
       try {
          const data = await axios.post(
-            "https://drinksshop.herokuapp.com/api/products/add", 
-            payload, 
+            "https://drinksshop.herokuapp.com/api/products/add",
+            payload,
             { headers: { Authorization: `Bearer ${token}` } })
          return data
       } catch (err) {
@@ -333,8 +333,42 @@ export const addProduct = (payload, token) => {
 }
 
 export const reviewsFilter = (payload) => {
-  return {
-     type: REVIEWS_FILTER,
-     payload,
-  };
+   return {
+      type: REVIEWS_FILTER,
+      payload,
+   };
 };
+
+export const deleteProduct = (token, productId) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.delete(
+            "http://localhost:3001/api/products/delete", {
+            headers: {
+               Authorization: `Bearer ${token}`,
+            },
+            data: {
+               id : productId,
+            },
+         })
+         return data
+      } catch (err) {
+         console.log("Delete product error: ", err)
+      }
+   }
+}
+
+export const deleteUser = (token, userId) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.delete(
+            "http://localhost:3001/api/users/delete", {
+            headers: { Authorization: `Bearer ${token}`,},
+            data: { id : userId,},
+         })
+         return data
+      } catch (err) {
+         console.log("Delete user error: ", err)
+      }
+   }
+}

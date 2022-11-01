@@ -5,7 +5,7 @@ import * as FaIcons from 'react-icons/fa'
 const Sidebar = () => {
   return (
     <div className="sidebar bg-light">
-        <ul>
+        <ul style={{display: "flex", flexDirection: "column"}}>
             <li>
                 <NavLink to="/dashboard"  className="text-dark" ><FaIcons.FaHome  className="me-2"/> Inicio</NavLink>
             </li>

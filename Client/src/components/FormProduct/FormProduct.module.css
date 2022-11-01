@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .wrapper {
@@ -17,7 +18,7 @@
 .previewContainer {
     padding: 1rem;
     background-color: #EAEAEA;
-    max-width: 213px;
+    max-width: 242px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -65,10 +66,12 @@
 .onlyRow textarea {
     border: none;
     resize: none;
+    padding: 10px;
 }
 
 .onlyRow textarea:focus {
     outline: none;
+    background-color: #2e2e2e;
 }
 
 .formInput {

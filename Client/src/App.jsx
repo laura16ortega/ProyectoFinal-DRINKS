@@ -26,6 +26,7 @@ import Dashboard from './components/Dashboard/MainDashboard/MainDashboard';
 import AdminProducts from "./components/Dashboard/Products/Products"
 import AdminHome from "./components/Dashboard/Home/Home"
 import AdminUsers from "./components/Dashboard/Users/Users"
+import FormProduct from './components/FormProduct/FormProduct';
 import './App.scss';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path='' element={<AdminHome />} />
           <Route path='products' element={<AdminProducts />} />
           <Route path='users' element={<AdminUsers />} />
+          <Route path='createProduct' element={<FormProduct />} />
         </Route>
         <Route path='/carrito' element={<Cart />} />
         <Route path='/details/:id' element={<Details />} />

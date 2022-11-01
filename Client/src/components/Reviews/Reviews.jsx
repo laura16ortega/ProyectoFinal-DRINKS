@@ -133,7 +133,7 @@ function Reviews() {
                 {productReviews.length ? productReviews.map((e, i) => {
                     return (
                         <div key={i}>
-                            <Review username={e.username} userImage={e.userImage} comment={e.comment} rating={e.rating} />
+                            <Review id={e._id} username={e.username? e.username : e.name} userImage={e.userImage} comment={e.comment} rating={e.rating} />
                         </div>
                     )
                 }) : <div><h3 style={{ fontSize: "1.6rem", margin: "0", color: "#7F8487" }}>Sin reviews</h3></div>}

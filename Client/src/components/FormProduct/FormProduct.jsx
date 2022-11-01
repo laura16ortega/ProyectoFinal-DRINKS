@@ -50,7 +50,7 @@ const FormProduct = () => {
             </div>
             <div>
                <div style={{ margin: "2rem" }}>
-                  <form onSubmit={handleSubmit} style={{ padding: "1rem" }}>
+                  <form onSubmit={handleSubmit} style={{ padding: "1rem", color: "white" }}>
                      <div className={s.row}>
                         <div className={s.formInput}>
                            <label>Nombre</label>
@@ -91,7 +91,7 @@ const FormProduct = () => {
                      <div className={s.onlyRow}>
                         <div className={s.formInput}>
                            <label>Descripcion</label>
-                           <textarea name="description" value={input.description} cols="50" rows="10" onChange={e => handleInput(e)} />
+                           <textarea name="description" value={input.description} cols="50" rows="7" onChange={e => handleInput(e)} />
                            {errors.description && <span className={s.errors}>{errors.description}</span>}
                         </div>
                      </div>

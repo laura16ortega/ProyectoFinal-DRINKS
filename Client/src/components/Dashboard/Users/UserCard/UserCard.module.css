@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 15px;
+    margin: 15px;
 }
 
 .innerProfile {
@@ -35,30 +35,36 @@
     transition: 0.3s ease;
 }
 
-.banButton {
-    opacity: 0;
-    pointer-events: none;
+.deleteButton {
+    cursor: pointer;
     z-index: 3;
     position: absolute;
-    font-size: 2rem;
-    border-radius: 2px;
-    transition: 0.3s ease;
-    bottom: 50%;
-    right: 23%;
-
-    width: 10rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+    right: 0;
+    top: 0;
+    height: 3rem;
+    transition: 0.3s;
+    opacity: 0;
 }
 
-.profileInfo:hover {
-    filter: blur(1px);
+.innerProfile:hover .deleteButton {
+    opacity: 100%;
+}
+
+.banButton {
+    cursor: pointer;
+    position: absolute;
+    transition: 0.3s;
+    opacity: 0;
+
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
 }
 
 .innerProfile:hover .banButton {
     opacity: 100%;
-
 }
 
 .backgroundImage {
@@ -115,6 +121,20 @@
     font-size: 20px;
 }
 
+.statusContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.statusContainer h1 {
+    margin: 5px;
+    font-size: 1.5rem;
+    padding: 5px;
+    background-color: #B73E3E;
+    color: white;
+    border-radius: 2px;
+}
 
 
 .loader {
@@ -144,3 +164,18 @@
         transform: rotate(360deg);
     }
 }
+
+.ban {
+    padding: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    background-color: #B73E3E;
+    color: white;
+  }
+  
+  .unBan {
+    padding: 5px;
+    border-radius: 3px;
+    margin: 3px;
+    background-color: #5BB318;
+  }
