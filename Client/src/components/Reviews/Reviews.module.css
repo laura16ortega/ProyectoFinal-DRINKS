@@ -36,24 +36,33 @@
 }
 .userBoardBody {
     display: flex;
-    flex-direction: row;
-    margin-bottom: 0.5rem;
-
-    height: 5rem;
+    flex-direction: column;
     width: max-content;
+}
 
+.userDataContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-.image {
+
+.userDataContainer img {
     height: 3rem;
-    border-radius: 0.5vh;
-    margin-bottom: -2rem;
+    width: 3rem;
+    border-radius: 100%;
 }
-.nickname {
-    text-indent: left;
+
+.userDataContainer p {
+    text-indent: 0.6rem;
     font-size: 0.9rem;
-    font-weight: lighter;
     font-family: Helvetica;
+    margin: 0;
+    font-weight: lighter;
     color:black;
+}
+
+.ratingContainer {
+    margin: 10px 0;
 }
 
 select{

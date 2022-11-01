@@ -21,7 +21,7 @@ const Home = () => {
 
 
 
-    useEffect(()=> {
+/*     useEffect(()=> {
         if(isAuthenticated){
         setAuth({
             fullName:user.name,
@@ -31,7 +31,7 @@ const Home = () => {
         })
         dispatch(authenticationAuth0(auth))
     }
-    },[isAuthenticated])
+    },[isAuthenticated]) */
 
     useEffect(() => {
         if(!window.localStorage.getItem('input')){
@@ -43,16 +43,17 @@ const Home = () => {
     }, [dispatch])
 
     return (
-        <div>
-            <div style={{ display: "flex", margin: "1rem", marginTop: "7em", justifyContent: "center"}}>
-                <Filters />
-                <div className={s.rightContainer}>
-                    <Sorting/>
-                    <Pagination allProducts={allProducts} loaded={loaded} />
-                </div>
+        <>
+        <div className={s.container}>
+            <div className={s.filtersBody}>
+            <Filters />
             </div>
-            <Footer />
+            <div>
+            <Pagination allProducts={allProducts} loaded={loaded} />
+            </div>
         </div>
+        <Footer />
+        </>
     )
 }
 

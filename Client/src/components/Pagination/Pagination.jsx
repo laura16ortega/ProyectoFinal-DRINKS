@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ProductCard from '../ProductCard/ProductCard'
 import ReactPaginate from 'react-paginate';
 import s from "./Pagination.module.css"
+import Placeholder from '../Placeholder/Placeholder';
 
 
 const Pagination = ({ allProducts, loaded }) => {
@@ -64,13 +65,14 @@ const Pagination = ({ allProducts, loaded }) => {
 
                ) : (
                   <div>
+                   {/*   <Placeholder /> */}
                      <h1 className={s.noResults}>No results</h1>
                   </div>
                )}
             </div>
          ) : (
             <div>
-               <h1>Loading</h1>
+               
             </div>
 
          )}
