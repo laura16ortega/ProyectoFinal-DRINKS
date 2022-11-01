@@ -91,7 +91,7 @@ html {
   z-index: 1;
   opacity: 0;
   transition: 0.5s ease;
-  padding: .7rem;
+  margin: .7rem;
   cursor: pointer;
   filter: invert(100%) sepia(100%) saturate(18%) hue-rotate(337deg) brightness(106%) contrast(104%);
   width: 20px;
