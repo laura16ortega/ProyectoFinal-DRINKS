@@ -17,12 +17,17 @@ const FormProduct = () => {
       category: ""
    }
 
-   const categories = useSelector(state => state.categories)
+   const categories = [
+      "Cerveza",
+      "Vino",
+      "Vodka",
+      "Whiskey"
+   ]
+
    const dispatch = useDispatch()
    const token = window.localStorage.getItem("jwt")
 
    useEffect(() => {
-      dispatch(getAllCategories())
       dispatch(getUser(token))
    }, [dispatch])
 

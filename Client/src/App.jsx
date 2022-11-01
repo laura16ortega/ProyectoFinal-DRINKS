@@ -28,6 +28,7 @@ import AdminHome from "./components/Dashboard/Home/Home"
 import AdminUsers from "./components/Dashboard/Users/Users"
 import FormProduct from './components/FormProduct/FormProduct';
 import './App.scss';
+import EditProduct from './components/Dashboard/EditProduct/EditProduct';
 
 function App() {
   const { isLoading, error } = useAuth0();
@@ -46,6 +47,7 @@ function App() {
           <Route path='products' element={<AdminProducts />} />
           <Route path='users' element={<AdminUsers />} />
           <Route path='createProduct' element={<FormProduct />} />
+          <Route path='editProduct/:id' element={<EditProduct/>}/>
         </Route>
         <Route path='/carrito' element={<Cart />} />
         <Route path='/details/:id' element={<Details />} />

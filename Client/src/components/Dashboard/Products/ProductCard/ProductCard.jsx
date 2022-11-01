@@ -20,7 +20,9 @@ const ProductCard = ({ id, name, image, price, category, numComments, rating, st
       <div className={s.container}>
          <div className={s.contents}>
             <div className={s.imgContainer}>
+               <Link to={`/dashboard/editProduct/${id}`}>
                <img src={pencilEdit} alt="asd" className={s.addFav} />
+               </Link>
                <Link to={`/details/${id}`}>
                   <img src={image} alt={name} className={s.productImage} />
                </Link>
