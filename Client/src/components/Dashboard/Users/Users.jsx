@@ -39,7 +39,7 @@ const Users = () => {
                         backgroundImage={e.backgroundImage}
                         profileImage={e.profileImage}
                         email={e.email}
-                        username={e.username}
+                        username={e.fullName}
                         createdAt={e.createdAt}
                         banned={e.isBanned} />
                 )

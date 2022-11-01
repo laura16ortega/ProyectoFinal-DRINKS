@@ -1,5 +1,4 @@
 import axios from "axios"
-import usersplaceholder from "../../assets/fakeJson"
 
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const PRICE_FILTER = "PRICE_FILTER"
@@ -378,8 +377,8 @@ export const deleteUser = (token, userId) => {
 export const getAllUsers = () => {
    return async (dispatch) => {
       try {
-         //const { data } = await axios.get("https://drinksshop.herokuapp.com/api/users/", { headers: { Authorization: `Bearer ${token}` } })
-         return dispatch({ type: GET_ALL_USERS, payload: usersplaceholder })
+         const { data } = await axios.get("http://localhost:3001/api/users/all")
+         return dispatch({ type: GET_ALL_USERS, payload: data })
       } catch (e) {
          console.log("get all users action error", e)
       }

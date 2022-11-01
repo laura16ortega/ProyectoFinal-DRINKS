@@ -1,28 +1,32 @@
+html {
+  height: 100%;
+}
 
-html { height: 100%; }
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 80vh;
-    width: 100%;
-    background-color: brown;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  width: 100%;
+  background-color: brown;
 
-  
+
 }
+
 .background {
-    
-    background-color: rgba(81, 85, 88, 0.466);
-    border-radius: 0.2vh;
-    margin-top: 10rem;
-    
-    height: 11rem;
-    padding: 2rem 5rem 5rem 5rem;
-   
+
+  background-color: rgba(81, 85, 88, 0.466);
+  border-radius: 0.2vh;
+  margin-top: 10rem;
+
+  height: 11rem;
+  padding: 2rem 5rem 5rem 5rem;
+
 }
+
 .img {
-    border-radius: 5px;
-    height: 8rem;
+  border-radius: 5px;
+  height: 8rem;
 }
 
 
@@ -30,73 +34,75 @@ html { height: 100%; }
 
 
 .background2 {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 
-    background-position: 0 50%;
-    background: #DEB493;
-    position: relative;
+  background-position: 0 50%;
+  background: #DEB493;
+  position: relative;
 }
 
 .profileContainer {
-    height: 450px;
-    max-width: 300px;
-    margin: 0 auto;
-    position: relative;
+  height: 450px;
+  max-width: 300px;
+  margin: 0 auto;
+  position: relative;
 
-    perspective: 900px;
-    perspective-origin: 50% calc(50% - 18em);
+  perspective: 900px;
+  perspective-origin: 50% calc(50% - 18em);
 }
 
 .innerProfile {
-    margin: 0 auto;
-    border-radius: 5px;
-    font-weight: 400;
-    color: #071011;
-    font-size: 1rem;
-    text-align: center;
-    transition: 0.6s ease;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-weight: 400;
+  color: #071011;
+  font-size: 1rem;
+  text-align: center;
+  transition: 0.6s ease;
+  max-width: fit-content;
 }
 
 .profileInfo {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: #fff; /* white */
-    backface-visibility: hidden;
-    border-radius: 5px;
-    box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #fff;
+  /* white */
+  backface-visibility: hidden;
+  border-radius: 5px;
+  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
     0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .editButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    opacity: 0;
-    transition: 0.5s ease;
-    padding: .7rem;
-    cursor: pointer;
-    filter: invert(100%) sepia(100%) saturate(18%) hue-rotate(337deg) brightness(106%) contrast(104%);
-    width: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: 0.5s ease;
+  padding: .7rem;
+  cursor: pointer;
+  filter: invert(100%) sepia(100%) saturate(18%) hue-rotate(337deg) brightness(106%) contrast(104%);
+  width: 20px;
 }
 
-.profileInfo:hover .editButton{
-    opacity: 1;
+.profileInfo:hover .editButton {
+  opacity: 1;
 }
 
 .backgroundImage {
-    position: relative;
+  position: relative;
   height: 250px;
   width: 500px;
   /*background: url("https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80")
@@ -109,7 +115,7 @@ html { height: 100%; }
 }
 
 .profilePhoto {
-    position: relative;
+  position: relative;
   top: -60px;
   height: 120px;
   width: 120px;
@@ -120,13 +126,13 @@ html { height: 100%; }
 }
 
 .imgFit {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .profileData {
-    position: relative;
+  position: relative;
   top: -55px;
   margin: 0 auto;
   font-family: "Montserrat";
@@ -135,61 +141,63 @@ html { height: 100%; }
 }
 
 .userEmail {
-    position: relative;
-    top: -5px;
+  position: relative;
+  top: -5px;
 
-    color: #000;
-    font-size: 14px;
-    letter-spacing: 0.4px;
-    font-weight: 400;
-    font-family: "Montserrat", sans-serif;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
 }
 
 .userName {
-    font-weight: 700;
-    font-family: 'oktaneue-regular';
-    text-transform: uppercase;
-    font-size: 20px;
+  font-weight: 700;
+  font-family: 'oktaneue-regular';
+  text-transform: uppercase;
+  font-size: 20px;
 }
 
 
 
 .posabs {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .posrel {
-    position: relative;
+  position: relative;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .loader {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.loader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
   }
-  .loader:after {
-    content: " ";
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border: 6px solid #fff;
-    border-color: #fff transparent #fff transparent;
-    animation: loader 1.2s linear infinite;
+
+  100% {
+    transform: rotate(360deg);
   }
-  @keyframes loader {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
+}
