@@ -22,6 +22,7 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isBanned: { type: Boolean, required: true, default: false },
     phone_number: {
       type: Number,
       required: true,

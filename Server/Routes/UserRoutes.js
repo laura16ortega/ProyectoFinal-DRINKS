@@ -98,6 +98,17 @@ userRouter.get(
     }
   })
 );
+//GET ALL USERS
+userRouter.get(
+  "/all",
+  asyncHandler(async (req, res) => {
+    const keyword = req.query.keyword
+      ? { name: { $regex: req.query.keyword, $options: "i" } }
+      : {};
+    const users = await User.find({ ...keyword });
+    res.json(users);
+  })
+);
 
 //UPDATE PROFILE
 userRouter.put(
