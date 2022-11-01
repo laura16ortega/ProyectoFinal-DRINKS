@@ -6,6 +6,7 @@ import { Rating } from 'react-simple-star-rating';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addReview, getUser } from '../../redux/actions';
 import { Link } from "react-router-dom"
+import placeholderImage from "../../assets/img/user.png"
 
 function Reviews() {
     const dispatch = useDispatch();
@@ -163,7 +164,7 @@ function Reviews() {
                 <form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
                     <div className={s.userBoardBody}>
                         <div className={s.userDataContainer}>
-                            <img src={localUser?.image} alt="" />
+                            <img src={localUser?.image ? localUser.image : placeholderImage} alt="" />
                             <p>{localUser?.fullName}</p>
                         </div>
                         <div className={s.ratingContainer}>

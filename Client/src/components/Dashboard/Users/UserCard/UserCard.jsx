@@ -29,15 +29,6 @@ const UserCard = ({ id, backgroundImage, profileImage, email, username, createdA
                             ) : (
                                 <div style={{padding: "0 10px", paddingTop: "1px"}}>BAN</div>
                             )}
-                            {/*banned ? (
-                                <div>
-                                    <BsFillHandThumbsUpFill size="20px" />
-                                </div>
-                            ) : (
-                                <div>
-                                    <FaBan size="20px" />
-                                </div>
-                            )*/}
                         </div>
                     </button>
                 </div>
@@ -54,8 +45,8 @@ const UserCard = ({ id, backgroundImage, profileImage, email, username, createdA
                         <h2 className={s.userName}>{username}</h2>
                         <p>{`Usuario desde: ${createdAt.slice(0, createdAt.indexOf("T"))}`}</p>
                         <div className={s.statusContainer}>
-                            <div>{`Status: `}</div>
-                            {banned ? <h1 style={{ backgroundColor: "#B73E3E" }}>Banned</h1> : <h1 style={{ backgroundColor: "#5BB318" }}>Active</h1>}
+                            <div>{`Estado: `}</div>
+                            {banned ? <h1 style={{ backgroundColor: "#B73E3E" }}>Baneado</h1> : <h1 style={{ backgroundColor: "#5BB318" }}>Activo</h1>}
                         </div>
                     </div>
                 </div>
@@ -65,32 +56,3 @@ const UserCard = ({ id, backgroundImage, profileImage, email, username, createdA
 }
 
 export default UserCard
-
-
-
-/*
-
-<div className={`${styles.container_Button}`}>
-    <button onClick={() => handleBan(e.id)} className={`${e.ban === true ? styles.unBan : styles.ban}`}>
-        <div className="d-flex">
-            {e.ban === true ? (
-                <div className={`${styles.unbanSpan}`}>UNBAN</div>
-            ) : (
-                <div className={`${styles.banSpan}`}>BAN</div>
-            )}
-            {e.ban === true ? (
-                <div>
-                    <BsFillHandThumbsUpFill size="20px" /> 
-                </div>
-            ) : (
-                <div>
-                    <FaBan size="20px" />
-                </div>
-            )}
-        </div>
-    </button>
-</div>
-
-RES = UNBAN ( ._.)b
-RES = BAN O
-*/

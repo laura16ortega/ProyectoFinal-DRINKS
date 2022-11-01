@@ -1,17 +1,23 @@
 import React from 'react'
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts, reviewsFilter } from '../../../redux/actions'
 import ProductCard from './ProductCard/ProductCard'
 import { Link } from 'react-router-dom'
+import s from "../ReusableStyles.module.css"
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const Products = () => {
   const allProducts = useSelector(state => state.products)
   const dispatch = useDispatch()
+  const [loaded, setLoaded] = useState(false)
   const token = window.localStorage.getItem("jwt")
 
   useEffect(() => {
-    dispatch(getProducts())
+    if (!allProducts) {
+      dispatch(getProducts()).then(
+        (res) => typeof res === "object" && setLoaded(true))
+    }
   }, [dispatch])
 
   const handleSelect = (e) => {
@@ -19,16 +25,20 @@ const Products = () => {
   }
 
   return (
-    <div style={{ margin: "2rem", display: "flex", flexDirection: "column"}}>
-      <div style={{display: "flex", margin: "1rem", alignItems: "center", justifyContent: "space-around"}}>
+    <div style={{ margin: "2rem", display: "flex", flexDirection: "column" }}>
+      <div className={s.filtersContainer}>
         <select onChange={(e) => handleSelect(e)}>
-          <option value="All">All</option>
-          <option value="With comments">With comments</option>
+          <option value="All">Todos los productos</option>
+          <option value="With comments">Con comentarios</option>
         </select>
-        <Link to="/dashboard/createProduct">Create product</Link>
+        <Link to="/dashboard/createProduct" style={{ textDecoration: "none" }}>
+          <button style={{ border: "none", outline: "none" }}>
+            Crear producto
+          </button>
+        </Link>
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
-        {allProducts.length ? allProducts.map(e =>
+      <div className={s.renderContainer}>
+        {allProducts ? allProducts.map(e =>
           <ProductCard
             key={e._id}
             id={e._id}
@@ -39,8 +49,9 @@ const Products = () => {
             numComments={e.reviews.length}
             rating={e.rating}
             stock={e.stock}
-            token={token}
-          />) : <h1>asddafadfaf</h1>}
+            token={token} />
+        ) : <div className={s.loader}></div>
+        }
       </div>
     </div>
   )
