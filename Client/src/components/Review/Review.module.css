@@ -4,10 +4,23 @@
     margin-bottom: -0.5rem;
     transition: 0.2s;
     padding: 10px;
+    position: relative;
 }
 
 .body:hover {
     background-color: rgba(255, 255, 255, 0.364);
+}
+
+.deleteCross {
+    opacity: 0;
+    width: 3rem;
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+}
+
+.body:hover .deleteCross {
+    opacity: 100%;
 }
 
 .content {
@@ -29,6 +42,7 @@
     text-indent: 0.6rem;
     font-size: 0.9rem;
     font-family: Helvetica;
+    margin: 14px 0;
 }
 
 .img {

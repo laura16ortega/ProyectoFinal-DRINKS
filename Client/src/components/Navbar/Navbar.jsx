@@ -29,7 +29,7 @@ function Navbar(props) {
    },[localStorage])
 
    return (
-      <div className={s.navBar}>
+      <div className={window.location.pathname.includes("dashboard") ? s.noDisplay : s.navBar}>
          <div className={s.topContents}>
             <div className={s.categories}>
 {/*                <div className={s.catBtn}>

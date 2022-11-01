@@ -16,7 +16,10 @@ import {
    DELETE_FAVORITE_PRODUCT,
    ERROR,
    CLEAR_ERROR,
-   GET_USER
+   GET_USER,
+   REVIEWS_FILTER, 
+   GET_ALL_USERS,
+   DASHBOARD_USER_FILTER
 } from "../actions"
 
 const initialState = {
@@ -30,7 +33,9 @@ const initialState = {
    favoriteProducts: [],
    errors: {},
    userAuth: {},
-   localUser: {}
+   localUser: {},
+   allUsers: [],
+   allUsersBackup: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -205,6 +210,33 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             localUser: action.payload
          }
+         case REVIEWS_FILTER:
+            if (action.payload === "All") {
+               return {
+                  ...state,
+                  products: state.allProducts
+               }
+            }
+            const filteredReviews = state.allProducts.filter(e => e.reviews.length)
+            return {
+               ...state,
+               products: filteredReviews,
+               productsBackup: filteredReviews
+            }
+         case GET_ALL_USERS: 
+            return {
+               allUsers: action.payload,
+               allUsersBackup: action.payload
+            }
+         case DASHBOARD_USER_FILTER:
+            const filteredUsers = action.payload === "All" ? state.allUsersBackup
+            : action.payload === "Banned" ? state.allUsersBackup.filter(e => e.isBanned)
+              : state.allUsersBackup.filter(e => !e.isBanned)
+   
+            return {
+               ...state,
+               allUsers: filteredUsers
+            }
       default:
          return initialState
    }

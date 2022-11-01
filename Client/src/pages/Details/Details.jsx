@@ -9,6 +9,7 @@ import Reviews from "../../components/Reviews/Reviews";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { clearProductDetails, getProductDetails, addProductToCart } from "../../redux/actions";
+import { priceWithCommas } from "../../assets/helpers"
 
 function Details() {
 
@@ -103,10 +104,10 @@ function Details() {
                <div>
                   <div className={s.rightData}>
                      <div className={s.title}>
-                        <h3 style={{ fontSize: "35px  " }}>{product.name}</h3>
+                        <h3 style={{ fontSize: "35px  ", margin: "35px 0" }}>{product.name}</h3>
                      </div>
                      <div className={s.price}>
-                        <p style={{fontSize: "30px"}}>{`$${product.price}`}</p>
+                        <p style={{fontSize: "30px", margin: "30px 0"}}>{`$${priceWithCommas(product.price)}`}</p>
                      </div>
                      <div className={s.rating}>
                         <Rating

@@ -1,0 +1,182 @@
+.background2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 15px;
+}
+
+.innerProfile {
+    margin: 0 auto;
+    border-radius: 5px;
+    font-weight: 400;
+    color: #071011;
+    font-size: 1rem;
+    text-align: center;
+    transition: 0.6s ease;
+    max-width: fit-content;
+}
+
+.profileInfo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #fff;
+    /* white */
+    backface-visibility: hidden;
+    border-radius: 5px;
+    box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(0, 0, 0, 0.1) inset;
+    transition: 0.3s ease;
+}
+
+.deleteButton {
+    cursor: pointer;
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 3rem;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.innerProfile:hover .deleteButton {
+    opacity: 100%;
+}
+
+.banButton {
+    cursor: pointer;
+    position: absolute;
+    transition: 0.3s;
+    opacity: 0;
+
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
+}
+
+.innerProfile:hover .banButton {
+    opacity: 100%;
+}
+
+.backgroundImage {
+    position: relative;
+    height: 150px;
+    width: 300px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.profilePhoto {
+    position: relative;
+    top: -60px;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    overflow: hidden;
+}
+
+.imgFit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profileData {
+    position: relative;
+    top: -55px;
+    margin: 0 auto;
+    font-family: "Montserrat";
+    font-size: 18px;
+    backface-visibility: hidden;
+}
+
+.userEmail {
+    position: relative;
+    top: -5px;
+
+    color: #000;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+}
+
+.userName {
+    font-weight: 700;
+    font-family: 'oktaneue-regular';
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.statusContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.statusContainer h1 {
+    margin: 5px;
+    font-size: 1.5rem;
+    padding: 5px;
+    background-color: #B73E3E;
+    color: white;
+    border-radius: 2px;
+}
+
+
+.loader {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.loader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ban {
+    padding: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    background-color: #B73E3E;
+    color: white;
+  }
+  
+  .unBan {
+    padding: 5px;
+    border-radius: 3px;
+    margin: 3px;
+    background-color: #5BB318;
+  }

@@ -6,6 +6,7 @@ import { Rating } from 'react-simple-star-rating';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addReview, getUser } from '../../redux/actions';
 import { Link } from "react-router-dom"
+import placeholderImage from "../../assets/img/user.png"
 
 function Reviews() {
     const dispatch = useDispatch();
@@ -133,7 +134,7 @@ function Reviews() {
                 {productReviews.length ? productReviews.map((e, i) => {
                     return (
                         <div key={i}>
-                            <Review username={e.username} userImage={e.userImage} comment={e.comment} rating={e.rating} />
+                            <Review id={e._id} username={e.username? e.username : e.name} userImage={e.userImage} comment={e.comment} rating={e.rating} />
                         </div>
                     )
                 }) : <div><h3 style={{ fontSize: "1.6rem", margin: "0", color: "#7F8487" }}>Sin reviews</h3></div>}
@@ -163,7 +164,7 @@ function Reviews() {
                 <form className={s.userReview} onSubmit={(e) => handleNewReview(e)}>
                     <div className={s.userBoardBody}>
                         <div className={s.userDataContainer}>
-                            <img src={localUser?.image} alt="" />
+                            <img src={localUser?.image ? localUser.image : placeholderImage} alt="" />
                             <p>{localUser?.fullName}</p>
                         </div>
                         <div className={s.ratingContainer}>

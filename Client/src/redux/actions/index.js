@@ -18,6 +18,9 @@ export const ADD_REVIEW = 'ADD_REVIEW'
 export const ERROR = "ERROR"
 export const CLEAR_ERROR = "CLEAR_ERROR"
 export const GET_USER = "GET_USER"
+export const REVIEWS_FILTER = "REVIEWS_FILTER"
+export const GET_ALL_USERS = "GET_ALL_USERS"
+export const DASHBOARD_USER_FILTER = "DASHBOARD_USER_FILTER"
 
 
 //placeholder
@@ -75,8 +78,8 @@ export const addReview = (id, token, payload) => {
    return async (dispatch) => {
       try {
          const data = await axios.post(
-            `http://localhost:3001/api/products/${id}/review`, 
-            payload, 
+            `http://localhost:3001/api/products/${id}/review`,
+            payload,
             { headers: { Authorization: `Bearer ${token}` } })
          return data
          /*
@@ -103,7 +106,6 @@ export const getProducts = () => {
          const { data } = await axios.get(
             "https://drinksshop.herokuapp.com/api/products"
          );
-         console.log("estoy en data redux", data);
          return dispatch({ type: GET_PRODUCTS, payload: data });
       } catch (e) {
          console.log("Reducer products error", e);
@@ -321,12 +323,71 @@ export const addProduct = (payload, token) => {
    return async (dispatch) => {
       try {
          const data = await axios.post(
-            "https://drinksshop.herokuapp.com/api/products/add", 
-            payload, 
+            "https://drinksshop.herokuapp.com/api/products/add",
+            payload,
             { headers: { Authorization: `Bearer ${token}` } })
          return data
       } catch (err) {
          console.log("Add product error", err)
       }
+   }
+}
+
+export const reviewsFilter = (payload) => {
+   return {
+      type: REVIEWS_FILTER,
+      payload,
+   };
+};
+
+export const deleteProduct = (token, productId) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.delete(
+            "http://localhost:3001/api/products/delete", {
+            headers: {
+               Authorization: `Bearer ${token}`,
+            },
+            data: {
+               id : productId,
+            },
+         })
+         return data
+      } catch (err) {
+         console.log("Delete product error: ", err)
+      }
+   }
+}
+
+export const deleteUser = (token, userId) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.delete(
+            "http://localhost:3001/api/users/delete", {
+            headers: { Authorization: `Bearer ${token}`,},
+            data: { id : userId,},
+         })
+         return data
+      } catch (err) {
+         console.log("Delete user error: ", err)
+      }
+   }
+}
+
+export const getAllUsers = () => {
+   return async (dispatch) => {
+      try {
+         const { data } = await axios.get("http://localhost:3001/api/users/all")
+         return dispatch({ type: GET_ALL_USERS, payload: data })
+      } catch (e) {
+         console.log("get all users action error", e)
+      }
+   }
+}
+
+export const dashboardUsersFilter = (payload) => {
+   return {
+      type: DASHBOARD_USER_FILTER,
+      payload
    }
 }

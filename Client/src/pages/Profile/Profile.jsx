@@ -63,7 +63,7 @@ function Profile(props) {
                                 <img className={s.imgFit} src={localUser.backgroundImg ? localUser.backgroundImg : placeholderBackground} alt="nada" />
                             </div>
                             <div className={s.profilePhoto}>
-                                <img className={s.imgFit} src={localUser.image ? localUser.image : defaultImage} alt={localUser?.fullName} style={{ width: "120px", height: "120px" }} />
+                                <img className={s.imgFit} src={localUser.image ? localUser.image : defaultImage} alt={localUser?.fullName} />
                             </div>
                             <div className={s.profileData}>
                                 <span className={s.userEmail}>{`@${localUser?.email.slice(0, localUser.email.indexOf("@"))}`}</span>

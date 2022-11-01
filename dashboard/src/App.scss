@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Freehand&family=Nunito:wght@600;800;900&display=swap');
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+$light: #ffffff;
+$gray: #e7e9eb;
+$lightblue: #ADD8E6;
+
+.flex {
+  display: flex;
+}
+
+
+
+.navbar{
+  background-color: $light;
+  padding:  1rem 2rem;
+  border-bottom: 2px solid $gray;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+
+  .wrapper{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    background-color: $gray;
+
+    .search{
+      display: flex;
+      align-items: center;
+      border: 0.5px solid $lightblue;
+      padding: 3px;
+
+      input{
+        border: none;
+        outline: none;
+        background-color: $gray;
+
+        &::placeholder{
+          font-size: 12px;
+        }
+      }
+    }
+
+    .items{
+      display: flex;
+      align-items: center;
+
+      .item{
+        display: flex;
+        align-items: center;
+        margin: 20px;
+
+        .icon{
+          font-size: 20px;
+        }
+
+        .counter{
+          width: 15px;
+          height: 15px;
+          background-color: red;
+          border-radius: 50%;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+}
+
+.sidebar {
+  width: 14rem;
+  height: calc(100vh - 52px);
+  border-right: 1px solid $gray;
+  display: flex;
+  
+
+
+
+  ul{
+    list-style: none;
+    padding: 1rem 2rem;
+
+    li{
+      margin-bottom: 1rem;
+
+      a{
+        text-decoration: none;
+        // &.active{
+        //   background-color: $gray;
+        // }
+      }
+    }
+  }
+}
