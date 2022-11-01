@@ -1,37 +1,28 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import Users from './pages/Users'
-// import Widget from './components/Widget';
-
-
-
+import Home from "./pages/home/Home";
+import Sidebar from "./components/sidebar/Sidebar";
+import Topbar from "./components/topbar/Tobbar";
+import Users from "./pages/Users/Users"
+import Products from './pages/Products/Products';
+import "./App.css"
 
 function App() {
-  return (
+  return ( 
     <Router>
-      <div className="flex">  
-      <Sidebar />       
-        <div className="content w-100">
-           <Navbar />
-           <div className="appContainer">Home</div>  
-           {/* <div className="widgets">
-             <widget />
-             <widget />
-             <widget />
-             <widget />
-            </div>  */}
-          <Routes>
+    <div>
+      <Topbar />
+      <div className="container">
+        <Sidebar />
+        <Home />
+        <Routes>
             <Route path="/" exact={true} component={Home} />
             <Route path="/products" exact={true} component={Products} />
             <Route path="/users" exact={true} component={Users} />
           </Routes>
-        </div>
       </div>
+    </div>
     </Router>
-  );
+  )
 }
 
 export default App;
