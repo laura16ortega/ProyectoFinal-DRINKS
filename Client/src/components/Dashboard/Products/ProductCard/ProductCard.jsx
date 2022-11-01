@@ -5,15 +5,20 @@ import { priceWithCommas } from '../../../../assets/helpers'
 import { useDispatch, useSelector } from "react-redux"
 import pencilEdit from "../../../../assets/img/pencilEdit.svg";
 import deleteCross from "../../../../assets/img/redCross.png"
-import cart from "../../../../assets/img/shopping-cart.png";
 import { Rating } from 'react-simple-star-rating';
 import { deleteProduct } from '../../../../redux/actions'
+import Swal from 'sweetalert2'
 
 const ProductCard = ({ id, name, image, price, category, numComments, rating, stock, token }) => {
    const dispatch = useDispatch()
 
    const handleDelete = (id) => {
       dispatch(deleteProduct(token, id))
+      window.location.reload()
+      Swal.fire({
+         icon: "success",
+         text: "Eliminado con exito"
+      })
    }
 
    return (
