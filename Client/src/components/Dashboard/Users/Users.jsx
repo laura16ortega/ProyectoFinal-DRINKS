@@ -1,69 +1,38 @@
 import React from 'react'
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import ProfileCard from './UserCard/UserCard'
+import { dashboardUsersFilter, getAllUsers } from '../../../redux/actions'
+import { useEffect } from 'react'
+import s from "../ReusableStyles.module.css"
+import { useState } from 'react'
 
 const Users = () => {
-    const usersplaceholder = [
-        {
-            _id: 1,
-            backgroundImage: "https://img.itch.zone/aW1nLzEwMDg0NTk5LnBuZw==/315x250%23c/SAxj8t.png",
-            profileImage: "https://img.itch.zone/aW1hZ2UvOTYzMzY4LzU1MDE0NDUuanBn/347x500/LhWq8l.jpg",
-            email: "asddfsfsdfs@fdsjfsd.com",
-            username: "asdasdasd",
-            createdAt: "asdadsafdTT65FGDFG",
-            banned: true
-        },
-        {
-            _id: 2,
-            backgroundImage: "https://img.itch.zone/aW1nLzEwMDg0NTk5LnBuZw==/315x250%23c/SAxj8t.png",
-            profileImage: "https://img.itch.zone/aW1nLzgyNzQzNjEucG5n/315x250%23c/MvTIEA.png",
-            email: "asddfsfsdfs@fdsjfsd.com",
-            username: "dasdadasdas",
-            createdAt: "asdadsafdTT65FGDFG",
-            banned: false
-        },
-        {
-            _id: 3,
-            backgroundImage: "https://img.itch.zone/aW1nLzE5Njc3MDcucG5n/315x250%23c/bwGgYQ.png",
-            profileImage: "https://img.itch.zone/aW1hZ2UvOTYzMzY4LzU1MDE0NDUuanBn/347x500/LhWq8l.jpg",
-            email: "asddfsfsdfs@fdsjfsd.com",
-            username: "asdasdasd",
-            createdAt: "asdadsafdTT65FGDFG",
-            banned: false
-        },
-        {
-            _id: 4,
-            backgroundImage: "https://img.itch.zone/aW1nLzEwMDg0NTk5LnBuZw==/315x250%23c/SAxj8t.png",
-            profileImage: "https://img.itch.zone/aW1hZ2UvOTYzMzY4LzU1MDE0NDUuanBn/347x500/LhWq8l.jpg",
-            email: "asddfsfsdfs@fdsjfsd.com",
-            username: "asdasdasdas",
-            createdAt: "asdadsafdTT65FGDFG",
-            banned: false
-        },
-        {
-            _id: 5,
-            backgroundImage: "https://img.itch.zone/aW1hZ2UvOTYzMzY4LzU1MDE0NDUuanBn/347x500/LhWq8l.jpg",
-            profileImage: "https://img.itch.zone/aW1nLzEwMDg0NTk5LnBuZw==/315x250%23c/SAxj8t.png",
-            email: "asddfsfsdfs@fdsjfsd.com",
-            username: "asdasdasdasdas",
-            createdAt: "asdadsafdTT65FGDFG",
-            banned: true
-        },
-        {
-            _id: 6,
-            backgroundImage: "https://img.itch.zone/aW1nLzEwMDg0NTk5LnBuZw==/315x250%23c/SAxj8t.png",
-            profileImage: "https://img.itch.zone/aW1hZ2UvOTYzMzY4LzU1MDE0NDUuanBn/347x500/LhWq8l.jpg",
-            email: "asddfsfsdfs@fdsjfsd.com",
-            username: "asdaddffd",
-            createdAt: "asdadsafdTT65FGDFG",
-            banned: false
-        },
-    ]
+    const allUsers = useSelector(state => state.allUsers)
+    const dispatch = useDispatch()
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        if (!allUsers) {
+            dispatch(getAllUsers()).then(
+                (res) => typeof res === "object" && setLoaded(true))
+        }
+    }, [dispatch])
+
+    const handleSelect = (e) => {
+        dispatch(dashboardUsersFilter(e.target.value))
+    }
 
     return (
-        <div style={{ margin: "2rem" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
-                {usersplaceholder.length ? usersplaceholder.map((e, i) =>
+        <div style={{ margin: "2rem", display: "flex", flexDirection: "column" }}>
+            <div className={s.filtersContainer}>
+                <select onChange={(e) => handleSelect(e)}>
+                    <option value="All">Todos los usuarios</option>
+                    <option value="Banned">Baneados</option>
+                    <option value="Active">Activos</option>
+                </select>
+            </div>
+            <div className={s.renderContainer}>
+                {allUsers ? !loaded ? allUsers.map((e, i) =>
                     <ProfileCard
                         key={i}
                         id={e._id}
@@ -72,8 +41,10 @@ const Users = () => {
                         email={e.email}
                         username={e.username}
                         createdAt={e.createdAt}
-                        banned={e.banned} />
-                ) : <h1>No users</h1>}
+                        banned={e.isBanned} />
+                )
+                    : <div className={s.loader}></div> :
+                    <div className={s.noResults}><h1>SIN USUARIOS</h1></div>}
             </div>
         </div>
     )

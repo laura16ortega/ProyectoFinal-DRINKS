@@ -1,4 +1,5 @@
 import axios from "axios"
+import usersplaceholder from "../../assets/fakeJson"
 
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const PRICE_FILTER = "PRICE_FILTER"
@@ -19,6 +20,8 @@ export const ERROR = "ERROR"
 export const CLEAR_ERROR = "CLEAR_ERROR"
 export const GET_USER = "GET_USER"
 export const REVIEWS_FILTER = "REVIEWS_FILTER"
+export const GET_ALL_USERS = "GET_ALL_USERS"
+export const DASHBOARD_USER_FILTER = "DASHBOARD_USER_FILTER"
 
 
 //placeholder
@@ -104,7 +107,6 @@ export const getProducts = () => {
          const { data } = await axios.get(
             "https://drinksshop.herokuapp.com/api/products"
          );
-         console.log("estoy en data redux", data);
          return dispatch({ type: GET_PRODUCTS, payload: data });
       } catch (e) {
          console.log("Reducer products error", e);
@@ -370,5 +372,23 @@ export const deleteUser = (token, userId) => {
       } catch (err) {
          console.log("Delete user error: ", err)
       }
+   }
+}
+
+export const getAllUsers = () => {
+   return async (dispatch) => {
+      try {
+         //const { data } = await axios.get("https://drinksshop.herokuapp.com/api/users/", { headers: { Authorization: `Bearer ${token}` } })
+         return dispatch({ type: GET_ALL_USERS, payload: usersplaceholder })
+      } catch (e) {
+         console.log("get all users action error", e)
+      }
+   }
+}
+
+export const dashboardUsersFilter = (payload) => {
+   return {
+      type: DASHBOARD_USER_FILTER,
+      payload
    }
 }
