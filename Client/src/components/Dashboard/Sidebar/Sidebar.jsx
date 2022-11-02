@@ -18,14 +18,14 @@ export default function Sidebar() {
                         Home
                     </NavLink>
                     </li>
-                    <li className="sidebarListItem">
+                    {/* <li className="sidebarListItem">
                         <Timeline className="sidebarIcon"/>
                         Analytics
-                    </li>
-                    <li className="sidebarListItem">
+                    </li> */}
+                    {/* <li className="sidebarListItem">
                         <TrendingUp className="sidebarIcon"/>
                         Sales
-                    </li>
+                    </li> */}
                 </ul>
             </div>
             <div className="sidebarMenu">
@@ -43,17 +43,17 @@ export default function Sidebar() {
                         Products
                         </NavLink>
                     </li>
-                    <li className="sidebarListItem">
+                    {/* <li className="sidebarListItem">
                         <Paid className="sidebarIcon"/>
                         Transactions
                     </li>
                     <li className="sidebarListItem">
                         <Assessment className="sidebarIcon"/>
                         Reports
-                    </li>
+                    </li> */}
                 </ul>
             </div>
-            <div className="sidebarMenu">
+            {/* <div className="sidebarMenu">
                 <h3 className="sidebarTitle">Notificaciones</h3>
                 <ul className="sidebarList">
                     <li className="sidebarListItem">
@@ -86,7 +86,7 @@ export default function Sidebar() {
                         Reports
                     </li>
                 </ul>
-            </div>
+            </div> */}
         </div>
     </div>
     
