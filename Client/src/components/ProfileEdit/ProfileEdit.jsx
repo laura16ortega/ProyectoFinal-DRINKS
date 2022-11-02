@@ -1,17 +1,19 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
-import { useDispatch } from "react-redux"
-import { editProfile } from '../../redux/actions'
+import { useDispatch, useSelector } from "react-redux"
+import { editProfile, getUser } from '../../redux/actions'
 import s from "./ProfileEdit.module.css"
 
-const ProfileEdit = ({ token }) => {
+const ProfileEdit = ({ token, forceUpdate }) => {
 
     const dispatch = useDispatch()
+    const loggedUser = useSelector(state => state.localUser)
 
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
-        fullName: "",
-        image: "",
+        fullName: loggedUser.fullName || "",
+        image: loggedUser.image || "",
         password: "",
         passwordConfirm: ""
     })
@@ -96,6 +98,9 @@ const ProfileEdit = ({ token }) => {
                 passwordConfirm: ""
             })
             setErrors({})
+            setTimeout(() => {
+                forceUpdate()
+            }, 500);
         }
     }
 
@@ -117,7 +122,7 @@ const ProfileEdit = ({ token }) => {
                         </div>
                         <div className={s.rows}>
                             <div className={s.inputContainer}>
-                                <label>Nueva contraseña</label>
+                                <label>Contraseña</label>
                                 <input name='password' value={input.password} type="password" onChange={e => handleChange(e)} />
                                 {errors.password && <span className={s.errors}>{errors.password}</span>}
                             </div>

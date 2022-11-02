@@ -7,10 +7,12 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { addReview, getUser } from '../../redux/actions';
 import { Link } from "react-router-dom"
 import placeholderImage from "../../assets/img/user.png"
+import Swal from 'sweetalert2';
 
-function Reviews() {
+function Reviews({forceUpdate}) {
     const dispatch = useDispatch();
     const product = useSelector(state => state.productDetails)
+    const actionErrors = useSelector(state => state.errors)
     const { user, isAuthenticated } = useAuth0();
     const token = window.localStorage.getItem("jwt")
     const localUser = useSelector(state => state.localUser)
@@ -18,11 +20,20 @@ function Reviews() {
     const [review, setReview] = useState({
         userId: '',
         userImage: '',
-        username: '',
+        name: '',
         comment: '',
         rating: ''
     });
     const productReviews = product.reviews
+
+    const setData = () => {
+        setReview({
+            ...review,
+            userId: isAuthenticated ? user.email : localUser._id,
+            userImage: isAuthenticated ? user.picture : localUser.image,
+            name: isAuthenticated ? user.name : localUser.fullName
+        })
+    } 
 
     useEffect(() => {
         dispatch(getUser(token))
@@ -30,10 +41,12 @@ function Reviews() {
 
 
     useEffect(() => {
+        setData()
+    }, [review.rating])
 
-    }, [review])
     const handleInput = (e) => {
         e.preventDefault();
+        setData()
         setReview({
             ...review,
             [e.target.name]: e.target.value
@@ -71,31 +84,35 @@ function Reviews() {
 
         return error
     }
-    const handleNewReview = (e) => {
+
+    const handleNewReview = async (e) => {
         e.preventDefault(e);
-        setReview({
-            ...review,
-            userId: isAuthenticated ? user.email : localUser._id,
-            userImage: isAuthenticated ? user.picture : localUser.image,
-            username: isAuthenticated ? user.name : localUser.fullName
-        })
-        if (Object.keys(error).length > 0) {
+        const validator = validate()
+        if (Object.keys(validator).length > 0) {
             alert('Completa los campos correctamente')
         } else {
             console.log("Review del submit: ", review);
-            dispatch(addReview(product._id, token, review));
-            alert('review added');
+            dispatch(addReview(product._id, token, review))
             setReview({
                 userId: '',
                 userImage: '',
-                username: '',
+                name: '',
                 comment: '',
-                rating: ''
+                rating: 0
             })
+            setTimeout(() => {
+                forceUpdate()
+            }, 500);
         }
-
-
     }
+
+    if (Object.keys(actionErrors).length) {
+        Swal.fire({
+           icon: "error",
+           text: `${actionErrors.message}`
+        })
+    }
+
     const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const obj = [{
         "userImage": "https://img.itch.zone/aW1nLzEwMzg2NTc3LnBuZw==/original/lqeJ%2FW.png",

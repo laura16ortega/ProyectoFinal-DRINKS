@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import s from "./register.module.css"
 import SearchBar from '../../components/SearchBar/SearchBar'
 import { clearErrors, userRegister } from '../../redux/actions'
+import axios from 'axios'
+import emailjs from "@emailjs/browser"
 
 
 export default function Register() {
@@ -34,9 +36,12 @@ export default function Register() {
 
    // function validateInput
 
-   function validateInput(input) {
+   async function validateInput(input) {
 
       let errors = {}
+
+      const { data } = await axios.get(`https://emailvalidation.abstractapi.com/v1/?api_key=c9ab08d7f7454894a79375736420bc4a&email=${input.email}`)
+      console.log("data; ", data)
 
       if (!input.fullName) errors.fullName = 'El Nombre completo es requerido';
       else if (input.fullName.length < 6) errors.fullName = "Nombre demasiado corto"
@@ -49,6 +54,7 @@ export default function Register() {
       else if (input.email.length < 6) errors.email = "Email demasiado corto"
       else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(input.email)) errors.email = 'Direccion de email incorrecta';
       else if (input.email.length > 255) errors.email = "Email demasiado largo"
+      else if (data.deliverability !== "DELIVERABLE") errors.email = "Email invalido"
 
 
       if (!input.password) errors.password = "ejemplo: usuario123";
@@ -62,12 +68,12 @@ export default function Register() {
    }
 
    // function handleSubmit
-   function handleSubmit(e) {
+   async function handleSubmit(e) {
       e.preventDefault()
 
 
       try {
-         const validated = validateInput(input)
+         const validated = await validateInput(input)
          if (Object.keys(validated).length > 0) setError(validated)
          else {
             dispatch(userRegister(input))
@@ -77,6 +83,8 @@ export default function Register() {
                password: '',
                phone_number: ''
             })
+            await emailjs.sendForm("service_5tiq3vl","template_v0jyxss", e.target, "vnap6grHJcb-IalvP");
+            setError({})
             alert('Registrado con exito!')
             document.location.href = '/login'
          }

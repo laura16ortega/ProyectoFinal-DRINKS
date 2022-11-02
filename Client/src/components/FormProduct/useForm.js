@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { addProduct } from "../../redux/actions"
+import { addProduct, getProducts } from "../../redux/actions"
+import { useNavigate } from "react-router-dom"
 
 const loginValidation = (InitialState, token) => {
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState(InitialState)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleInput = (e) => {
         e.preventDefault();
@@ -85,6 +87,7 @@ const loginValidation = (InitialState, token) => {
             }, token))
             setInput(InitialState)
             setErrors({})
+            navigate("/dashboard/products")
         }
     }
 

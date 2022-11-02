@@ -8,14 +8,16 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Reviews from "../../components/Reviews/Reviews";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { clearProductDetails, getProductDetails, addProductToCart } from "../../redux/actions";
+import { clearProductDetails, getProductDetails, addProductToCart, clearErrors } from "../../redux/actions";
 import { priceWithCommas } from "../../assets/helpers"
+import { useReducer } from "react";
 
 function Details() {
 
    const { id } = useParams();
    const dispatch = useDispatch()
    const product = useSelector(state => state.productDetails)
+   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
    const cart = useSelector(state => state.cart)
    const qty = useSelector(state => state.qtyToAdd)
    console.log(cart)
@@ -81,8 +83,9 @@ function Details() {
       window.scrollTo(0, 0)
       return () => {
          dispatch(clearProductDetails())
+         dispatch(clearErrors())
       }
-   }, [dispatch, id])
+   }, [dispatch, id, reducerValue])
 
 
    // console.log(React.Children.toArray())
@@ -146,7 +149,7 @@ function Details() {
                         <h2 className={s.reviewsHeader}>
                            Reviews
                         </h2>
-                           <Reviews />
+                           <Reviews forceUpdate={forceUpdate}/>
                      </div> 
 
                   </div>

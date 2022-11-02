@@ -53,11 +53,14 @@
 
 .titleContainer h1 {
     font-size: 80px;
+    font-weight: 900;
     letter-spacing: -0.8px;
     line-height: 96px;
     color: black;
     display: flex;
     text-align: start;
+    font-family: 'oktaneue-regular';
+    text-transform: uppercase;
 }
 
 .buttonContainer {
@@ -105,7 +108,9 @@
 }
 
 .separatorTitle {
-    margin-bottom: 1rem
+    margin-bottom: 1rem;
+    margin: 40px;
+    text-align: center;
 }
 
 .bestRatedProducts {
@@ -117,6 +122,7 @@
 .categories {
     background-color: #815B5B;
     padding: 80px 0;
+    text-align: center;
 }
 
 .categories h1 {

@@ -9,10 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
 import pencilEdit from "../../assets/img/pencilEdit.svg"
+import { useReducer } from 'react';
 
 function Profile(props) {
     const { isAuthenticated, user } = useAuth0();
     const [edit, setEdit] = useState(false)
+    const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
     const dispatch = useDispatch()
     const token = window.localStorage.getItem("jwt")
     const localUser = useSelector(state => state.localUser)
@@ -20,7 +22,7 @@ function Profile(props) {
 
     useEffect(() => {
         dispatch(getUser(token))
-    }, [dispatch])
+    }, [dispatch, reducerValue])
 
     const handleEdit = () => {
         setEdit(!edit)
@@ -73,7 +75,7 @@ function Profile(props) {
                         </div>
                     </div>
                     <div className={edit ? s.posrel : s.posabs} >
-                        <EditForm token={token} />
+                        <EditForm token={token} forceUpdate={forceUpdate} />
                     </div>
                 </div>
                 : <div className={isAuthenticated ? s.hidden : s.loader}>
