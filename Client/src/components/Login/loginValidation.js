@@ -44,13 +44,37 @@ const loginValidation = (InitialState) => {
         if (Object.keys(validated).length > 0) setErrors(validated)
         else {
         /*     dispatch(userLogin(input)) */
-            const json = await axios.post("http://localhost:3001/api/users/login", input)
+            const json = await axios.post("https://drinksshop.herokuapp.com/api/users/login", input)
             const token = json.data.token;
             localStorage.setItem('jwt',token);
             setInput(InitialState)
             alert("Logueado")
-            document.location.href = '/home';
+            document.location.href = '/';
         }
+
+        /*
+        export const userLogin = (payload) => {
+   return async (dispatch) => {
+      try {
+         const json = await axios.post("", payload)
+         return dispatch(
+            {
+               type: 'USER_LOGIN',
+               payload: json
+            }
+         )
+      } catch (e) {
+         dispatch({
+            type: ERROR,
+            payload: e.response.data
+         })
+
+      }
+   }
+}
+        
+        
+        */
         } catch (e) {
             alert('El usuario o la contraseña son incorrectos')
             console.log("log in error: ", e) //sweetalert algo salio mal
