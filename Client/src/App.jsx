@@ -43,7 +43,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/productos' element={<Home />} />
         <Route path='dashboard' element={<Dashboard />}>
-          <Route path='' element={<AdminHome />} />
+          <Route path='home' element={<AdminHome />} />
           <Route path='products' element={<AdminProducts />} />
           <Route path='users' element={<AdminUsers />} />
           <Route path='createProduct' element={<FormProduct />} />
