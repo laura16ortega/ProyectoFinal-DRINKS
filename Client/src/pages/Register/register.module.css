@@ -1,4 +1,6 @@
-.contain{
+
+
+.container {
     display: flex;
     justify-content: center
 }
@@ -13,9 +15,58 @@
     width:200px;
     border-radius:5px;
 }
-
-
-.button{
-    background-color: rgba(72, 162, 197, 0.795);
-    margin: 10px
+/* .inputs {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    margin: 0 auto;
+    
+   
+} */
+.input {
+    border: none;
+    background-color: rgb(228, 225, 225);
+    border-radius: 0.2h;
+    width: 20rem;
+    height: 2rem;
+    color:black;
+    margin-bottom: 1.3rem;
+    font-size: 18px;
+    transition: 0.3s;
+    text-indent: 0.3rem;
 }
+input:-webkit-autofill{
+    -webkit-text-fill-color: black !important;
+  
+}
+input:-webkit-autofill:active{
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+.containerner input {
+    margin-bottom: 15px;
+    color: black;
+}
+.alert {
+    color:red;
+    margin-top: -1.3rem;
+    font-size: 12px;
+
+}
+
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid rgb(0, 0, 0);
+  -webkit-text-fill-color: rgb(0, 0, 0);
+  -webkit-box-shadow: 0 0 0px 1000px rgb(160, 160, 160) inset;
+  transition: background-color 5000s ease-in-out 0s;
+} */
+

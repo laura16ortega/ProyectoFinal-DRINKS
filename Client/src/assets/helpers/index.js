@@ -11,6 +11,8 @@ export const emailregex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
 
 export const nameregex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g
 
+export const token = window.localStorage.getItem("jwt")
+
 export const validateCart = (id) => {
     const cartCookies = cookies.get("cart")
     if (!cartCookies) return false

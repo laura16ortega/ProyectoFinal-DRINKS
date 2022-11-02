@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
 
 .productsContainer {
@@ -44,6 +45,11 @@
 }
 
 .priceContainer {
-    width: 100px;
     padding: .7rem;
 }
+.paypal{
+    
+
+    overflow: hidden;
+    height: 30rem;
+    }

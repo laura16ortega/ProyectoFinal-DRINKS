@@ -28,7 +28,7 @@ const loginValidation = (InitialState) => {
 
         if (!input.password) errors.password = "*Necesita una contraseña"
         else if (input.password.length > 20) errors.password = "*Contraseña demasiada larga"
-=======
+
         if (!input.password) errors.password = "Necesita una contraseña"
         else if (input.password.length > 255) errors.password = "Contraseña demasiada larga"
 
@@ -64,12 +64,6 @@ const loginValidation = (InitialState) => {
                 localStorage.setItem('jwt', token);
                 setInput(InitialState)
             }
-        } catch (e) {
-
-            Swal.fire({
-                icon: "error",
-                text: `${e.response.data.message}`
-             }) //sweetalert algo salio mal
         }
     }
 
