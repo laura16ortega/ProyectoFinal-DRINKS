@@ -59,7 +59,7 @@ const productSchema = mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["Vino", "Cerveza", "Spirits"],
+      enum: ["Vino", "Cerveza", "Whiskey", "Vodka"],
     },
     isDeleted: { type: Boolean, default: false },
   },
