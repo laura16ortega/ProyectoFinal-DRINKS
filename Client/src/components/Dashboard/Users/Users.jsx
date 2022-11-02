@@ -34,7 +34,7 @@ const Users = () => {
                         key={i}
                         id={e._id}
                         backgroundImage={e.backgroundImage}
-                        profileImage={e.profileImage}
+                        profileImage={e.image}
                         email={e.email}
                         username={e.fullName}
                         createdAt={e.createdAt}

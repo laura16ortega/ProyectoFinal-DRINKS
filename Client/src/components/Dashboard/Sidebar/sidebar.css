@@ -4,12 +4,13 @@
     background-color: rgba(220, 251, 251, 0.371);
     position: sticky;
     top: 50px;
-    
+
 }
 
 .sidebarWrapper{
     padding: 20px;
     color: #555;
+    background-color: #F2FEFE;
 }
 
 .sidebarMenu{

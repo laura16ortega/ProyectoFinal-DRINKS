@@ -22,7 +22,7 @@ const Dashboard = () => {
       <Topbar/>
         <div style={{display: "flex"}}>
             <Sidebar/>
-            <div className="content w-100" style={{marginTop: "10px"}}>
+            <div className="content w-100" style={{paddingTop: "10px", backgroundColor: "white"}}>
                 <Outlet/>
             </div>
         </div>
