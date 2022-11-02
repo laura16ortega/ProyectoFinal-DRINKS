@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import s from "./Navbar.module.css";
 import cart from "../../assets/img/shopping-cart.png";
 import heart from "../../assets/img/heart.png";
@@ -10,14 +10,26 @@ import SearchBar from "../SearchBar/SearchBar";
 import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import FavoriteProducts from "../FavoriteProducts/FavoriteProducts";
+import LocalLogout from "../LocalLogout/LocalLogout";
 
 function Navbar(props) {
    const {isAuthenticated } = useAuth0();
-   const [showMenu, setShowMenu] = useState(!false);
-   
+  /*  const [showMenu, setShowMenu] = useState(!false); */
+   console.log(localStorage.getItem('jwt'))
+   const [auth, setAuth] = useState(!true);
+
+
+
+
+   useEffect(() => {
+/*       if(localStorage.getItem('jwt') == null){
+         setAuth(false);
+      }
+      setAuth(!auth); */
+   },[localStorage])
 
    return (
-      <div className={window.location.pathname === "/" ? `${s.noDisplay}` : `${s.navBar}`}>
+      <div className={s.navBar}>
          <div className={s.topContents}>
             <div className={s.categories}>
 {/*                <div className={s.catBtn}>
@@ -37,17 +49,16 @@ function Navbar(props) {
                </div> */}
             </div>
             <div className={s.logo}>
-               <h3>drinks.</h3>
+               <h3>drinks</h3>
             </div>
             <div >
 
-               {isAuthenticated ? (
+               {isAuthenticated || !(localStorage.getItem('jwt') == null) ? (
                   <div className={s.userBtnBodyIn}>
                <div>
                   <NavLink to='/perfil'>
                      <img className={s.userBtn} src={user} />
                   </NavLink>
-
                </div>
 
                <div>
@@ -62,14 +73,20 @@ function Navbar(props) {
                   </NavLink>
                </div>
                <div>
-               <LogoutButton />
+                  { isAuthenticated ? (<div><LogoutButton /> </div> ) : (<div><LocalLogout /></div>)}
                </div>
                
                </div>
                ) : (
                   <div className={s.userBtnBodyIn}>
-                  <div><LoginButton /></div>
                   <div>
+
+                     <NavLink to='/login'>
+                        <button className={s.accessBtn}>Acceder</button>
+                     </NavLink>
+                  </div>
+                  <div>
+
                   <NavLink to='/carrito'>
                      <img className={s.userBtn} src={cart} />
                   </NavLink>
@@ -84,7 +101,7 @@ function Navbar(props) {
          <div className={s.bottomContents}>
             <ul className={s.bodyLinks}>
                <li className={s.btnBoxSize}>
-                  <NavLink to="/home" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
+                  <NavLink to="/" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
                      principal
                   </NavLink>
                </li>
@@ -98,7 +115,7 @@ function Navbar(props) {
                      sobre nosotros
                   </NavLink>
                </li>
-               { isAuthenticated ?
+               { isAuthenticated || !(localStorage.getItem('jwt') == null) ?
 (               <li className={s.btnBoxSize}>
                   <NavLink to="/perfil" className={({ isActive }) => isActive ? `${s.activeBtn}` : `${s.btn}`}>
                      mi perfil

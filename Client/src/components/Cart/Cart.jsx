@@ -1,12 +1,14 @@
 import React from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from "universal-cookie"
 import { priceWithCommas } from '../../assets/helpers'
 import { deleteCartProduct } from '../../redux/actions'
 import s from "./Cart.module.css"
+import Paypal from '../Paypal/Paypal.jsx';
 
 export default function Cart() {
-
+   const [checkout, setCheckOut] = useState(false);
    const dispatch = useDispatch()
    let cookies = new Cookies()
    const cartCookies = cookies.get("cart")
@@ -22,7 +24,8 @@ export default function Cart() {
    const totalPrice = () => {
       const prices = cartProducts.map(e => e[1].price)
       const res = prices.reduce((pv, cv) => pv + cv, 0);
-      return priceWithCommas(res)
+      const coma = priceWithCommas(res)
+      return coma.replace(',','.')
    }
 
    return (
@@ -55,6 +58,23 @@ export default function Cart() {
             {cartProducts.length ? 
             <div>
                <h1>{`Total: $${totalPrice()}`}</h1>
+               <div className={s.paypal}>
+         
+         {checkout ? (
+            <div className={s.paypal}>  <Paypal value={totalPrice()} /> </div>
+         
+         ) : (
+           <button
+             onClick={() => {
+               setCheckOut(true);
+             }}
+           >
+             Comprar
+           </button>
+         )}
+       
+   
+            </div>
             </div>
             : ""}
          </div>

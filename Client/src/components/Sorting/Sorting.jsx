@@ -16,7 +16,7 @@ export const Sorting = () => {
     return (
        <div className={s.priceSort}>
           <select onChange={e => handleSort(e)}>
-             <option value="All">Select</option>
+             <option value="All">Filtros</option>
              <option value="OrderByPriceASC">Lower price</option>
              <option value="OrderByPriceDESC">Higher price</option>
              <option value="OrderByNameASC">A - Z</option>
