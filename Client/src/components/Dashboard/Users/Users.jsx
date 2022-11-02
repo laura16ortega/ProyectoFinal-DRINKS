@@ -9,14 +9,11 @@ import { useState } from 'react'
 const Users = () => {
     const allUsers = useSelector(state => state.allUsers)
     const dispatch = useDispatch()
-    const [loaded, setLoaded] = useState(false)
+
 
     useEffect(() => {
-        if (!allUsers) {
-            dispatch(getAllUsers()).then(
-                (res) => typeof res === "object" && setLoaded(true))
-        }
-    }, [dispatch])
+        dispatch(getAllUsers())
+    }, [])
 
     const handleSelect = (e) => {
         dispatch(dashboardUsersFilter(e.target.value))
@@ -32,19 +29,18 @@ const Users = () => {
                 </select>
             </div>
             <div className={s.renderContainer}>
-                {allUsers ? !loaded ? allUsers.map((e, i) =>
+                {allUsers ? allUsers.map((e, i) =>
                     <ProfileCard
                         key={i}
                         id={e._id}
                         backgroundImage={e.backgroundImage}
-                        profileImage={e.profileImage}
+                        profileImage={e.image}
                         email={e.email}
                         username={e.fullName}
                         createdAt={e.createdAt}
                         banned={e.isBanned} />
                 )
-                    : <div className={s.loader}></div> :
-                    <div className={s.noResults}><h1>SIN USUARIOS</h1></div>}
+                    : <div className={s.loader}></div> }
             </div>
         </div>
     )

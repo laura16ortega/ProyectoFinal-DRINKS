@@ -111,6 +111,7 @@ const rootReducer = (state = initialState, action) => {
             productDetails: action.payload
          }
       case CLEAR_PRODUCT_DETAILS:
+         console.log("Product details payload: ", action.payload)
          return {
             ...state,
             productDetails: {}
@@ -225,6 +226,7 @@ const rootReducer = (state = initialState, action) => {
             }
          case GET_ALL_USERS: 
             return {
+               ...state,
                allUsers: action.payload,
                allUsersBackup: action.payload
             }

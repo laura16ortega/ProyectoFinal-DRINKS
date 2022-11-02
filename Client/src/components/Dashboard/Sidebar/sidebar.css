@@ -4,12 +4,13 @@
     background-color: rgba(220, 251, 251, 0.371);
     position: sticky;
     top: 50px;
-    
+
 }
 
 .sidebarWrapper{
     padding: 20px;
     color: #555;
+    background-color: #F2FEFE;
 }
 
 .sidebarMenu{
@@ -42,4 +43,8 @@
 .sidebarIcon{
     margin-right: 5px;
     font-size: 20px;
+}
+
+.sidebar ul li a {
+    display: flex;
 }

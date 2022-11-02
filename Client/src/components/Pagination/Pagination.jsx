@@ -64,9 +64,8 @@ const Pagination = ({ allProducts, loaded }) => {
                   ))
 
                ) : (
-                  <div>
-                   {/*   <Placeholder /> */}
-                     <h1 className={s.noResults}>No results</h1>
+                  <div style={{height: "70vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                     <div className={s.loader}></div>
                   </div>
                )}
             </div>

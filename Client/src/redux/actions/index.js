@@ -344,7 +344,7 @@ export const deleteProduct = (token, productId) => {
    return async (dispatch) => {
       try {
          const data = await axios.delete(
-            "http://localhost:3001/api/products/delete", {
+            "https://drinksshop.herokuapp.com/api/products/delete", {
             headers: {
                Authorization: `Bearer ${token}`,
             },
@@ -363,7 +363,7 @@ export const deleteUser = (token, userId) => {
    return async (dispatch) => {
       try {
          const data = await axios.delete(
-            "http://localhost:3001/api/users/delete", {
+            "https://drinksshop.herokuapp.com/api/users/delete", {
             headers: { Authorization: `Bearer ${token}`,},
             data: { id : userId,},
          })
@@ -377,7 +377,8 @@ export const deleteUser = (token, userId) => {
 export const getAllUsers = () => {
    return async (dispatch) => {
       try {
-         const { data } = await axios.get("http://localhost:3001/api/users/all")
+         const { data } = await axios.get("https://drinksshop.herokuapp.com/api/users/all")
+         console.log(data)
          return dispatch({ type: GET_ALL_USERS, payload: data })
       } catch (e) {
          console.log("get all users action error", e)
