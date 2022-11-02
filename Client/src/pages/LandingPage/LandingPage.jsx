@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 
 export default function LandingPage() {
 
-   const products = useSelector(state => state.products)
+   const products = useSelector(state => state.allProducts)
    const ratingSort = products.sort((a, b) => {
       return b.rating - a.rating
    })
@@ -51,11 +51,18 @@ export default function LandingPage() {
                      <div className={s.leftContents}>
                         <div className={s.titleContainer}>
                            <h1>
-                              LOREM. IPSUM. SOLOR SIT AMET.
+                              PRODUCTO DEL MES
                            </h1>
                         </div>
                         <div>
-                           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae rerum cupiditate distinctio deserunt amet vel mollitia saepe quos dignissimos? Nihil labore repudiandae fugiat mollitia ut quidem. Aspernatur facere repellat dolor.</p>
+                           <p>
+                              Jack Daniel's es una destilería y marca de whiskey estadounidense de Tennessee.
+                              Conocida por sus
+                              botellas cuadradas y su etiqueta de color negro. Con un poco de miel, pero con
+                              mucho de Jack. Tiene el mismo cuerpo y la sensación en la boca como un clásico de Jack Daniel,
+                              pero más suave, solamente 35° alcohol. Si eres joven de cuerpo y alma, Jack Daniel's Honey te
+                              gustará... es fácil de tomar, perfecto para beberlo con las amigas y amigos...
+                           </p>
                         </div>
                         <div className={s.buttonContainer}>
                            <Link to="/productos">
@@ -67,7 +74,7 @@ export default function LandingPage() {
                      </div>
                   </div>
                   <div className={s.imgContainer}>
-                     <img src="https://cdn.discordapp.com/attachments/783048528128770108/1032273194280828968/WallpaperDog-5514386.jpg" alt="dan"/>
+                     <img src="https://cdn.discordapp.com/attachments/783048528128770108/1032273194280828968/WallpaperDog-5514386.jpg" alt="dan" />
                   </div>
                </div>
             </div>
@@ -99,18 +106,18 @@ export default function LandingPage() {
                <div className={s.categories}>
                   <h1>NUESTRAS CATEGORIAS</h1>
                   <div className={s.categoriesLink}>
-                        {categoeries.map(e => 
-                           <div key={e.name} style={{padding: "0 15px"}}>
-                              <div>
-                                 <img src={e.image} alt={e.name}  style={{width: "277px", height: "auto"}}/>
-                              </div>
-                              <div>
-                                 <h2>
-                                    {e.name}
-                                 </h2>
-                              </div>
+                     {categoeries.map(e =>
+                        <div key={e.name} style={{ padding: "0 15px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                           <div>
+                              <img src={e.image} alt={e.name} style={{ width: "277px", height: "auto" }} />
                            </div>
-                        )}
+                           <div>
+                              <h2>
+                                 {e.name}
+                              </h2>
+                           </div>
+                        </div>
+                     )}
                   </div>
                </div>
             </div>
