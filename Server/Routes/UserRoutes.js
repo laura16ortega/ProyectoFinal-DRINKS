@@ -34,7 +34,7 @@ userRouter.post(
 userRouter.post(
   "/",
   asyncHandler(async (req, res) => {
-    const { fullName, email, password, phone_number } = req.body;
+    const { fullName, email, password, phone_number, image } = req.body;
     const userExists = await User.findOne({ email });
 
     if (userExists) {
@@ -170,6 +170,22 @@ userRouter.put(
     } else {
       res.status(404);
       throw new Error("User not found");
+    }
+  })
+);
+
+//PATCH PROFILE
+userRouter.patch(
+  "/profile",
+  protect,
+  asyncHandler(async (req, res) => {
+    try {
+      const user = await User.findById(req.user._id);
+      Object.assign(user, req.body);
+      user.save();
+      res.send({ data: user });
+    } catch (error) {
+      res.status(404).send({ error: "User not found" });
     }
   })
 );
