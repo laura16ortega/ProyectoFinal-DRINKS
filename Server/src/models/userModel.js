@@ -7,7 +7,11 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    image: { type: String },
+    image: {
+      type: String,
+      required: true,
+      default: "https://cdn-icons-png.flaticon.com/512/1053/1053244.png?w=360",
+    },
     email: {
       type: String,
       required: true,
