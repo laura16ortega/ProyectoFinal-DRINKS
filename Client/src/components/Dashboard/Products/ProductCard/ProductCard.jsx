@@ -14,7 +14,6 @@ const ProductCard = ({ id, name, image, price, category, numComments, rating, st
 
    const handleDelete = (id) => {
       dispatch(deleteProduct(token, id))
-      window.location.reload()
       Swal.fire({
          icon: "success",
          text: "Eliminado con exito"
