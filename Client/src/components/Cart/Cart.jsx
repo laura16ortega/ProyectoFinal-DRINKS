@@ -37,40 +37,31 @@ export default function Cart() {
    const value = totalPrice()
 
    async function query(value) {
-      
+      console.log('ACA  ')
+      console.log(value)
+      const value2 = value.replace(',','')
+      console.log(value2);
       try{
       const converting = await axios.get(`https://api.getgeoapi.com/v2/currency/convert?api_key=c468bbf1369d2ce9bb231877edb9bb0cd57326aa&from=ARS&to=USD&amount=${value2}&format=json`)
       const answer = await converting.data.rates.USD.rate_for_amount
-      console.log(answer)
       setChange(answer)
       return answer
-      
       }catch(err){
          console.log(err);
       }
     }
 
-    const query2 = (value) => {
+/*     const query2 = (value) => {
       const value2 = parseInt(value) * 1;
       axios.get(`https://api.getgeoapi.com/v2/currency/convert?api_key=c468bbf1369d2ce9bb231877edb9bb0cd57326aa&from=ARS&to=USD&amount=${value2}&format=json`).then((response) => setChange(response.data))
-      .then(response => { }).catch((err) => console.log(err));
+      .then(response => {}).catch((err) => console.log(err));
     }
+ */
 
-    async function getExchange() {
-      try{
-         const exchange = await query(value);
-         return exchange
-      }catch(err){
-         console.log(err)
-      }
-    }
-
-    const converted = query2(value);
+    const converted = query(value).then((result) => setChange(result));
     console.log('resultado')
     console.log(converted)
-
-
-   
+    console.log(change + 'FUNCIONA')
 
    return (
       <div className={s.cartContainer}>
@@ -105,7 +96,7 @@ export default function Cart() {
                <div className={s.paypal}>
          
          {checkout ? (
-            <div className={s.paypal}>  <Paypal value={converted} /> </div>
+            <div className={s.paypal}>  <Paypal value={change} /> </div>
          
          ) : (
            <button

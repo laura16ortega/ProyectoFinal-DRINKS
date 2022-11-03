@@ -14,7 +14,8 @@ function Reviews({forceUpdate}) {
     const product = useSelector(state => state.productDetails)
     const actionErrors = useSelector(state => state.errors)
     const { user, isAuthenticated } = useAuth0();
-    const token = window.localStorage.getItem("jwt")
+    const token = window.localStorage.getItem('jwt');
+    const userId = window.localStorage.getItem('userId');
     const localUser = useSelector(state => state.localUser)
     const [error, setError] = useState({});
     const [review, setReview] = useState({
@@ -24,6 +25,8 @@ function Reviews({forceUpdate}) {
         comment: '',
         rating: ''
     });
+
+    console.log(localUser)
     const productReviews = product.reviews
 
     const setData = () => {
@@ -43,6 +46,17 @@ function Reviews({forceUpdate}) {
     useEffect(() => {
         setData()
     }, [review.rating])
+
+
+    }, [review])
+    const setData = () => {
+        setReview({
+            ...review,
+            userId: localUser._id,
+            userImage: localUser.image,
+            name: localUser.fullName
+        })
+    }
 
     const handleInput = (e) => {
         e.preventDefault();
@@ -85,6 +99,7 @@ function Reviews({forceUpdate}) {
         return error
     }
 
+
     const handleNewReview = async (e) => {
         e.preventDefault(e);
         const validator = validate()
@@ -118,7 +133,9 @@ function Reviews({forceUpdate}) {
         })
     }
 
+
     const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
     const obj = [{
         "userImage": "https://img.itch.zone/aW1nLzEwMzg2NTc3LnBuZw==/original/lqeJ%2FW.png",
         "comment": "This is a random text that is just meant to occupy space and give space notion ",
@@ -147,7 +164,7 @@ function Reviews({forceUpdate}) {
         "comment": "Use your holy crucifix to perform exorcisms, fight back against possessed cultists, and cleanse haunted objects. Discover a world of dread, isolation, and mystery as you explore haunted forests, abandoned churches, and the inner sanctums of a Satanic cult.",
         "username": "Mortis",
         "rating": 3
-    }]
+    }] */
 
 
     return (
