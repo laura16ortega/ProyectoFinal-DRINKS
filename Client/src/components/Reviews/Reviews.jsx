@@ -100,9 +100,14 @@ function Reviews({forceUpdate}) {
                 comment: '',
                 rating: 0
             })
-            setTimeout(() => {
-                forceUpdate()
-            }, 500);
+            Swal.fire({
+                icon: "success",
+                text: "Review agregada"
+                }).then((res) => {
+                if (res.value) {
+                    forceUpdate()
+                }
+            })
         }
     }
 
@@ -151,7 +156,7 @@ function Reviews({forceUpdate}) {
                 {productReviews.length ? productReviews.map((e, i) => {
                     return (
                         <div key={i}>
-                            <Review id={e._id} username={e.username? e.username : e.name} userImage={e.userImage} comment={e.comment} rating={e.rating} />
+                            <Review username={e.username? e.username : e.name} userImage={e.userImage} comment={e.comment} rating={e.rating} />
                         </div>
                     )
                 }) : <div><h3 style={{ fontSize: "1.6rem", margin: "0", color: "#7F8487" }}>Sin reviews</h3></div>}
