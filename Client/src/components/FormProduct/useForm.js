@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { addProduct, getProducts } from "../../redux/actions"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2"
 
 const loginValidation = (InitialState, token) => {
     const [errors, setErrors] = useState({})
@@ -87,7 +88,15 @@ const loginValidation = (InitialState, token) => {
             }, token))
             setInput(InitialState)
             setErrors({})
-            navigate("/dashboard/products")
+                Swal.fire({
+                    icon: "success",
+                    text: "Producto agregado con exito"
+                }).then((res) => {
+                    console.log("Res del swal: ", res)
+                    if (res.value) {
+                        navigate("/dashboard/products")
+                    }
+                })
         }
     }
 

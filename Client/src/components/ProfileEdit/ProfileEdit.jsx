@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { editProfile, getUser } from '../../redux/actions'
 import s from "./ProfileEdit.module.css"
 
-const ProfileEdit = ({ token, forceUpdate }) => {
+const ProfileEdit = ({ token, forceUpdate, setEdit }) => {
 
     const dispatch = useDispatch()
     const loggedUser = useSelector(state => state.localUser)
@@ -98,6 +98,7 @@ const ProfileEdit = ({ token, forceUpdate }) => {
                 passwordConfirm: ""
             })
             setErrors({})
+            setEdit(false)
             setTimeout(() => {
                 forceUpdate()
             }, 500);

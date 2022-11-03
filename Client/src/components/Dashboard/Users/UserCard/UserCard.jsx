@@ -6,12 +6,13 @@ import deleteCross from "../../../../assets/img/redCross.png"
 import { deleteUser } from '../../../../redux/actions'
 import { token } from '../../../../assets/helpers'
 
-const UserCard = ({ id, backgroundImage, profileImage, email, username, createdAt, banned }) => {
+const UserCard = ({ id, backgroundImage, profileImage, email, username, createdAt, banned, forceUpdate }) => {
     const dispatch = useDispatch()
     const placeholderBackground = "https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80"
 
     const handleDelete = (id) => {
         dispatch(deleteUser(token, id))
+        forceUpdate()
     }
 
     const handleBan = (id) => {
@@ -32,7 +33,7 @@ const UserCard = ({ id, backgroundImage, profileImage, email, username, createdA
                         </div>
                     </button>
                 </div>
-                {banned ? <img className={s.deleteButton} src={deleteCross} alt="x" onClick={() => handleDelete(id)} /> : ""/*<button className={s.banButton}>Unban</button>*/}
+                <img className={s.deleteButton} src={deleteCross} alt="x" onClick={() => handleDelete(id)} />
                 <div className={s.profileInfo}>
                     <div className={s.backgroundImage}>
                         <img className={s.imgFit} src={backgroundImage ? backgroundImage : placeholderBackground} alt="nada" />
