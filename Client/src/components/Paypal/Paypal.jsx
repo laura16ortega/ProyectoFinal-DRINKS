@@ -8,7 +8,7 @@ export default function Paypal({value}) {
   const paypal = useRef();
   /* const price = value.substring(0, value.length - 2) */
 
-
+  console.log(value)
 
   useEffect(() => {
     window.paypal
@@ -21,7 +21,7 @@ export default function Paypal({value}) {
                 description: "Drinks",
                 amount: {
                   currency_code: "USD",
-                  value: parseInt(value),
+                  value: value.slice(0, -2),
                 },
               },
             ],
