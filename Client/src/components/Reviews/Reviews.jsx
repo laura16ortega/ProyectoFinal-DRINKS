@@ -7,10 +7,12 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { addReview, getUser } from '../../redux/actions';
 import { Link } from "react-router-dom"
 import placeholderImage from "../../assets/img/user.png"
+import Swal from 'sweetalert2';
 
-function Reviews() {
+function Reviews({forceUpdate}) {
     const dispatch = useDispatch();
     const product = useSelector(state => state.productDetails)
+    const actionErrors = useSelector(state => state.errors)
     const { user, isAuthenticated } = useAuth0();
     const token = window.localStorage.getItem('jwt');
     const userId = window.localStorage.getItem('userId');
@@ -19,7 +21,7 @@ function Reviews() {
     const [review, setReview] = useState({
         userId: '',
         userImage: '',
-        username: '',
+        name: '',
         comment: '',
         rating: ''
     });
@@ -27,12 +29,24 @@ function Reviews() {
     console.log(localUser)
     const productReviews = product.reviews
 
+    const setData = () => {
+        setReview({
+            ...review,
+            userId: isAuthenticated ? user.email : localUser._id,
+            userImage: isAuthenticated ? user.picture : localUser.image,
+            name: isAuthenticated ? user.name : localUser.fullName
+        })
+    } 
+
     useEffect(() => {
         dispatch(getUser(token))
     }, [dispatch])
 
 
     useEffect(() => {
+        setData()
+    }, [review.rating])
+
 
     }, [review])
     const setData = () => {
@@ -86,35 +100,37 @@ function Reviews() {
     }
 
 
-    const handleNewReview = (e) => {
+    const handleNewReview = async (e) => {
         e.preventDefault(e);
-
-        console.log(localUser)
-
-        setReview({
-            ...review,
-            userId: isAuthenticated ? user.email : localUser._id,
-            userImage: isAuthenticated ? user.picture : localUser.image,
-            username: isAuthenticated ? user.fullName : localUser.fullName
-        })
-        if (Object.keys(error).length > 0) {
+        const validator = validate()
+        if (Object.keys(validator).length > 0) {
             alert('Completa los campos correctamente')
         } else {
             console.log("Review del submit: ", review);
-            dispatch(addReview(product._id, token, review));
-            alert('review added');
+            dispatch(addReview(product._id, token, review))
             setReview({
                 userId: '',
                 userImage: '',
-                username: '',
+                name: '',
                 comment: '',
-                rating: ''
+                rating: 0
             })
+            setTimeout(() => {
+                forceUpdate()
+            }, 500);
         }
-
-
     }
-/*     const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    if (Object.keys(actionErrors).length) {
+        Swal.fire({
+           icon: "error",
+           text: `${actionErrors.message}`
+        })
+    }
+
+
+    const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
     const obj = [{
         "userImage": "https://img.itch.zone/aW1nLzEwMzg2NTc3LnBuZw==/original/lqeJ%2FW.png",
         "comment": "This is a random text that is just meant to occupy space and give space notion ",

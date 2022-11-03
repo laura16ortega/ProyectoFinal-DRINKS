@@ -14,10 +14,8 @@ const Products = () => {
   const token = window.localStorage.getItem("jwt")
 
   useEffect(() => {
-    if (!allProducts) {
-      dispatch(getProducts()).then(
-        (res) => typeof res === "object" && setLoaded(true))
-    }
+    dispatch(getProducts()).then(
+      (res) => typeof res === "object" && setLoaded(true))
   }, [dispatch])
 
   const handleSelect = (e) => {

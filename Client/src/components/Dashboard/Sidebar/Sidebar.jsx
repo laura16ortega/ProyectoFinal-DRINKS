@@ -12,8 +12,8 @@ export default function Sidebar() {
             <div className="sidebarMenu">
                 <h3 className="sidebarTitle">Dashboard</h3>
                 <ul className="sidebarList">
-                    <li className="sidebarListItem active">
-                    <NavLink to="/dashboard">
+                    <li >
+                    <NavLink to="/dashboard/home" className="sidebarListItem" >
                         <LineStyle className="sidebarIcon"/>
                         Home
                     </NavLink>
@@ -31,14 +31,14 @@ export default function Sidebar() {
             <div className="sidebarMenu">
                 <h3 className="sidebarTitle"> Menú rápido </h3>
                 <ul className="sidebarList">
-                    <li className="sidebarListItem ">
-                    <NavLink to="/dashboard/users">
+                    <li >
+                    <NavLink to="/dashboard/users" className="sidebarListItem ">
                         <Person className="sidebarIcon"/>
                         Users
                     </NavLink>
                     </li>
-                    <li className="sidebarListItem">
-                    <NavLink to="/dashboard/products">
+                    <li >
+                    <NavLink to="/dashboard/products" className="sidebarListItem">
                         <Storefront className="sidebarIcon"/>
                         Products
                         </NavLink>
