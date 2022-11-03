@@ -29,14 +29,14 @@ function Reviews({forceUpdate}) {
     console.log(localUser)
     const productReviews = product.reviews
 
-    const setData = () => {
+    /*const setData = () => {
         setReview({
             ...review,
             userId: isAuthenticated ? user.email : localUser._id,
             userImage: isAuthenticated ? user.picture : localUser.image,
             name: isAuthenticated ? user.name : localUser.fullName
         })
-    } 
+    } */
 
     useEffect(() => {
         dispatch(getUser(token))
@@ -48,7 +48,7 @@ function Reviews({forceUpdate}) {
     }, [review.rating])
 
 
-    }, [review])
+    
     const setData = () => {
         setReview({
             ...review,
@@ -115,9 +115,14 @@ function Reviews({forceUpdate}) {
                 comment: '',
                 rating: 0
             })
-            setTimeout(() => {
-                forceUpdate()
-            }, 500);
+            Swal.fire({
+                icon: "success",
+                text: "Review agregada"
+                }).then((res) => {
+                if (res.value) {
+                    forceUpdate()
+                }
+            })
         }
     }
 
@@ -128,7 +133,7 @@ function Reviews({forceUpdate}) {
         })
     }
 
-
+    /*
     const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     const obj = [{
@@ -168,7 +173,7 @@ function Reviews({forceUpdate}) {
                 {productReviews.length ? productReviews.map((e, i) => {
                     return (
                         <div key={i}>
-                            <Review id={e._id} username={e.username? e.username : e.name} userImage={e.userImage} comment={e.comment} rating={e.rating} />
+                            <Review username={e.username? e.username : e.name} userImage={e.userImage} comment={e.comment} rating={e.rating} />
                         </div>
                     )
                 }) : <div><h3 style={{ fontSize: "1.6rem", margin: "0", color: "#7F8487" }}>Sin reviews</h3></div>}
