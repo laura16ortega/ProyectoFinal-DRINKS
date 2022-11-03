@@ -16,7 +16,7 @@ const Products = () => {
   useEffect(() => {
     dispatch(getProducts()).then(
       (res) => typeof res === "object" && setLoaded(true))
-  }, [allProducts, dispatch])
+  }, [dispatch])
 
   const handleSelect = (e) => {
     dispatch(reviewsFilter(e.target.value))

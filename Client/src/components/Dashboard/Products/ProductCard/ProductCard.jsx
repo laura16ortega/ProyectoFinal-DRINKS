@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import pencilEdit from "../../../../assets/img/pencilEdit.svg";
 import deleteCross from "../../../../assets/img/redCross.png"
 import { Rating } from 'react-simple-star-rating';
-import { deleteProduct } from '../../../../redux/actions'
+import { deleteProduct, getProducts } from '../../../../redux/actions'
 import Swal from 'sweetalert2'
 
 const ProductCard = ({ id, name, image, price, category, numComments, rating, stock, token }) => {
@@ -17,7 +17,11 @@ const ProductCard = ({ id, name, image, price, category, numComments, rating, st
       Swal.fire({
          icon: "success",
          text: "Eliminado con exito"
-      })
+      }).then((res) => {
+         if (res.value) {
+            dispatch(getProducts())
+         }
+     })
    }
 
    return (

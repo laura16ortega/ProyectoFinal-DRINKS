@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getAllUsers, getProducts } from '../../../redux/actions'
 import Home from '../Home/Home'
-import Topbar from '../topbar/Topbar'
+import Topbar from '../TopBar/TopBar'
 
 
 const Dashboard = () => {

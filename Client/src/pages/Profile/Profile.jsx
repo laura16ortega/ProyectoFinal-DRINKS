@@ -75,7 +75,7 @@ function Profile(props) {
                         </div>
                     </div>
                     <div className={edit ? s.posrel : s.posabs} >
-                        <EditForm token={token} forceUpdate={forceUpdate} />
+                        <EditForm token={token} forceUpdate={forceUpdate} setEdit={setEdit} />
                     </div>
                 </div>
                 : <div className={isAuthenticated ? s.hidden : s.loader}>

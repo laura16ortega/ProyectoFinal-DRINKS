@@ -31,7 +31,9 @@ import './App.scss';
 import EditProduct from './components/Dashboard/EditProduct/EditProduct';
 
 function App() {
-  const { isLoading, error } = useAuth0();
+  const { isLoading, error, isAuthenticated } = useAuth0();
+  const token = window.localStorage.getItem("jwt")
+
   return (
     <div className="App" >
 
@@ -51,9 +53,21 @@ function App() {
         </Route>
         <Route path='/carrito' element={<Cart />} />
         <Route path='/details/:id' element={<Details />} />
-        <Route path='/perfil' element={<Profile />} />
-        <Route exact path='/register' element={<Register />} />
-        <Route exact path='/login' element={<LoginOptions />} />
+        {isAuthenticated || token ? (
+            <Route path='/perfil' element={<Profile />} />
+        ) : (
+          <Route path="/perfil" element={<Navigate to="/" replace />}/>
+        ) }
+        {isAuthenticated || token ? (
+            <Route path="/register" element={<Navigate to="/" replace />}/>
+        ) : (
+          <Route exact path='/register' element={<Register />} />
+        ) }
+        {isAuthenticated || token ? (
+            <Route path="/login" element={<Navigate to="/" replace />}/>
+        ) : (
+          <Route exact path='/login' element={<LoginOptions />} />
+        ) }
         <Route path="/liked" element={<FavoriteProducts />} />
         <Route path='/contact' element={<Contact />} />
 

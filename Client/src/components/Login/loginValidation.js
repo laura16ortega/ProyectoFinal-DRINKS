@@ -38,8 +38,9 @@ const loginValidation = (InitialState) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const validated = validation(input)
         try {
-            const validated = validation(input)
+            
 
         if (Object.keys(validated).length > 0) setErrors(validated)
         else {
