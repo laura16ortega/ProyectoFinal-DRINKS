@@ -12,7 +12,8 @@ function Reviews() {
     const dispatch = useDispatch();
     const product = useSelector(state => state.productDetails)
     const { user, isAuthenticated } = useAuth0();
-    const token = window.localStorage.getItem("jwt")
+    const token = window.localStorage.getItem('jwt');
+    const userId = window.localStorage.getItem('userId');
     const localUser = useSelector(state => state.localUser)
     const [error, setError] = useState({});
     const [review, setReview] = useState({
@@ -22,6 +23,8 @@ function Reviews() {
         comment: '',
         rating: ''
     });
+
+    console.log(localUser)
     const productReviews = product.reviews
 
     useEffect(() => {
@@ -32,8 +35,18 @@ function Reviews() {
     useEffect(() => {
 
     }, [review])
+    const setData = () => {
+        setReview({
+            ...review,
+            userId: localUser._id,
+            userImage: localUser.image,
+            name: localUser.fullName
+        })
+    }
+
     const handleInput = (e) => {
         e.preventDefault();
+        setData()
         setReview({
             ...review,
             [e.target.name]: e.target.value
@@ -71,13 +84,18 @@ function Reviews() {
 
         return error
     }
+
+
     const handleNewReview = (e) => {
         e.preventDefault(e);
+
+        console.log(localUser)
+
         setReview({
             ...review,
             userId: isAuthenticated ? user.email : localUser._id,
             userImage: isAuthenticated ? user.picture : localUser.image,
-            username: isAuthenticated ? user.name : localUser.fullName
+            username: isAuthenticated ? user.fullName : localUser.fullName
         })
         if (Object.keys(error).length > 0) {
             alert('Completa los campos correctamente')
@@ -96,7 +114,7 @@ function Reviews() {
 
 
     }
-    const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+/*     const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const obj = [{
         "userImage": "https://img.itch.zone/aW1nLzEwMzg2NTc3LnBuZw==/original/lqeJ%2FW.png",
         "comment": "This is a random text that is just meant to occupy space and give space notion ",
@@ -125,7 +143,7 @@ function Reviews() {
         "comment": "Use your holy crucifix to perform exorcisms, fight back against possessed cultists, and cleanse haunted objects. Discover a world of dread, isolation, and mystery as you explore haunted forests, abandoned churches, and the inner sanctums of a Satanic cult.",
         "username": "Mortis",
         "rating": 3
-    }]
+    }] */
 
 
     return (

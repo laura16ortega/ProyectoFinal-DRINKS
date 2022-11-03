@@ -18,15 +18,11 @@ function Navbar(props) {
    console.log(localStorage.getItem('jwt'))
    const [auth, setAuth] = useState(!true);
 
+   
 
 
 
-   useEffect(() => {
-/*       if(localStorage.getItem('jwt') == null){
-         setAuth(false);
-      }
-      setAuth(!auth); */
-   },[localStorage])
+
 
    return (
       <div className={window.location.pathname.includes("dashboard") ? s.noDisplay : s.navBar}>

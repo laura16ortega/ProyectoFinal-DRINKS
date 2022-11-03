@@ -78,7 +78,7 @@ export const addReview = (id, token, payload) => {
    return async (dispatch) => {
       try {
          const data = await axios.post(
-            `http://localhost:3001/api/products/${id}/review`,
+            `https://drinksshop.herokuapp.com/api/products/${id}/review`,
             payload,
             { headers: { Authorization: `Bearer ${token}` } })
          return data
