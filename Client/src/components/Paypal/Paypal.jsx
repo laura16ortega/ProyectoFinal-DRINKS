@@ -4,8 +4,12 @@ import s from './Paypal.module.css';
 
 
 export default function Paypal({value}) {
+
   const paypal = useRef();
-  const price = value.substring(0, value.length - 2)
+  /* const price = value.substring(0, value.length - 2) */
+
+
+
   useEffect(() => {
     window.paypal
       .Buttons({
@@ -17,7 +21,7 @@ export default function Paypal({value}) {
                 description: "Drinks",
                 amount: {
                   currency_code: "USD",
-                  value: 600.0,
+                  value: parseInt(value),
                 },
               },
             ],

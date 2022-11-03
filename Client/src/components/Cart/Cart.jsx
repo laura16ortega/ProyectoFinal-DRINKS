@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from "universal-cookie"
@@ -6,6 +6,7 @@ import { priceWithCommas } from '../../assets/helpers'
 import { deleteCartProduct } from '../../redux/actions'
 import s from "./Cart.module.css"
 import Paypal from '../Paypal/Paypal.jsx';
+import axios from 'axios'
 
 export default function Cart() {
    const [checkout, setCheckOut] = useState(false);
@@ -16,6 +17,8 @@ export default function Cart() {
    console.log(cartProducts)
    const cart = useSelector(state => state.cart)
 
+   const [change, setChange ] = useState()
+
    const handleDelete = (id) => {
       dispatch(deleteCartProduct(id))
       cookies.remove(id)
@@ -25,8 +28,49 @@ export default function Cart() {
       const prices = cartProducts.map(e => e[1].price)
       const res = prices.reduce((pv, cv) => pv + cv, 0);
       const coma = priceWithCommas(res)
-      return coma.replace(',','.')
+      return coma /* .replace(',','.') */
    }
+   useEffect(() => {
+      console.log(change)
+   },[change])
+
+   const value = totalPrice()
+
+   async function query(value) {
+      
+      try{
+      const converting = await axios.get(`https://api.getgeoapi.com/v2/currency/convert?api_key=c468bbf1369d2ce9bb231877edb9bb0cd57326aa&from=ARS&to=USD&amount=${value2}&format=json`)
+      const answer = await converting.data.rates.USD.rate_for_amount
+      console.log(answer)
+      setChange(answer)
+      return answer
+      
+      }catch(err){
+         console.log(err);
+      }
+    }
+
+    const query2 = (value) => {
+      const value2 = parseInt(value) * 1;
+      axios.get(`https://api.getgeoapi.com/v2/currency/convert?api_key=c468bbf1369d2ce9bb231877edb9bb0cd57326aa&from=ARS&to=USD&amount=${value2}&format=json`).then((response) => setChange(response.data))
+      .then(response => { }).catch((err) => console.log(err));
+    }
+
+    async function getExchange() {
+      try{
+         const exchange = await query(value);
+         return exchange
+      }catch(err){
+         console.log(err)
+      }
+    }
+
+    const converted = query2(value);
+    console.log('resultado')
+    console.log(converted)
+
+
+   
 
    return (
       <div className={s.cartContainer}>
@@ -61,7 +105,7 @@ export default function Cart() {
                <div className={s.paypal}>
          
          {checkout ? (
-            <div className={s.paypal}>  <Paypal value={totalPrice()} /> </div>
+            <div className={s.paypal}>  <Paypal value={converted} /> </div>
          
          ) : (
            <button
