@@ -23,6 +23,7 @@ export default function Register() {
       email: '',
       password: '',
       phone_number: '',
+      image: 'https://cdn-icons-png.flaticon.com/512/1053/1053244.png?w=360'
    })
 
    // function handleChange

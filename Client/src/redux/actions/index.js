@@ -78,7 +78,7 @@ export const addReview = (id, token, payload) => {
    return async (dispatch) => {
       try {
          const data = await axios.post(
-            `http://localhost:3001/api/products/${id}/review`,
+            `https://drinksshop.herokuapp.com/api/products/${id}/review`,
             payload,
             { headers: { Authorization: `Bearer ${token}` } })
          return data
@@ -251,10 +251,10 @@ export const deleteFavoriteProduct = (id) => {
 
 
 export const userRegister = (payload) => {
-   return async () => {
+   return async (dispatch) => {
       try {
          const json = await axios.post(
-            "https://drinksshop.herokuapp.com/api/users/",
+            "https://drinksshop.herokuapp.com/api/users",
             payload
          );
          return json;
@@ -392,3 +392,42 @@ export const dashboardUsersFilter = (payload) => {
       payload
    }
 }
+
+export const deleteReview = (token, productId) => {
+   return async (dispatch) => {
+      try {
+         const data = await axios.delete(
+            "https://drinksshop.herokuapp.com/api/products/delete", {
+            headers: { Authorization: `Bearer ${token}`,},
+            data: { id : productId,},
+         })
+         return data
+      } catch (err) {
+         console.log("Delete review error: ", err)
+      }
+   }
+}
+
+/*
+
+//DELETE REVIEW
+productRoute.delete(
+  "/delete",
+  protect,                                                     // token
+  asyncHandler(async (req, res) => {
+    const { id } = req.body;                                   // id (del producto)
+    const review = await Product.findById(id);
+    if (!review) {
+      res.status(404);
+      throw new Error("Invalid id");
+    } else {
+      const resultado = await Product.deleteOne({
+        _id: mongoose.Types.ObjectId(id),
+      });
+      res.status(201).json({ message: "Product deleted" });
+    }
+  })
+);
+
+
+*/
