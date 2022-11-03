@@ -15,6 +15,7 @@
     justify-content: center;
     box-shadow: 0px 5px 6px 0px #92929242;
 }
+
 .btn {
     width: 20.3rem;
     margin: 0 auto;
@@ -23,14 +24,7 @@
     font-family: manrope-regular;
     color: black;
 }
-/* .inputs {
-    display: flex;
-    flex-direction: column;
-    width: 10rem;
-    margin: 0 auto;
-    
-   
-} */
+
 .input {
     border: none;
     background-color: rgb(228, 225, 225);
@@ -43,10 +37,12 @@
     transition: 0.3s;
     text-indent: 0.3rem;
 }
+
 input:-webkit-autofill{
     -webkit-text-fill-color: black !important;
   
 }
+
 input:-webkit-autofill:active{
     box-shadow: 0 0 0 30px white inset !important;
 }
@@ -56,6 +52,7 @@ input:-webkit-autofill:active{
     margin-bottom: 15px;
     color: black;
 }
+
 .alert {
     color:red;
     margin-top: -1.3rem;
