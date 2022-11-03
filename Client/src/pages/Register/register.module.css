@@ -1,30 +1,19 @@
 
 
-
 .container {
     display: flex;
-    width: 100%;
-    height: 100%;
-    padding-top: 10rem;
-    justify-content: center;
+    justify-content: center
 }
-
-.form {
-    background-color: rgb(255, 255, 255);
-    padding: 2% 2% 1.5% 2%;
+.inputs{
     display: flex;
     flex-direction: column;
-    border-radius: 0.3vh;
-    justify-content: center;
-    box-shadow: 0px 5px 6px 0px #92929242;
 }
-.btn {
-    width: 20.3rem;
-    margin: 0 auto;
-    border: black solid;
-    background:none;
-    font-family: manrope-regular;
-    color: black;
+.inputs input {
+    margin:5px;
+    text-align: center;
+    padding:5px;
+    width:200px;
+    border-radius:5px;
 }
 /* .inputs {
     display: flex;
@@ -54,10 +43,16 @@ input:-webkit-autofill:active{
     box-shadow: 0 0 0 30px white inset !important;
 }
 
+
+.containerner input {
+    margin-bottom: 15px;
+    color: black;
+}
 .alert {
     color:red;
     margin-top: -1.3rem;
     font-size: 12px;
+
 }
 
 /* input:-webkit-autofill,
@@ -74,65 +69,4 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px rgb(160, 160, 160) inset;
   transition: background-color 5000s ease-in-out 0s;
 } */
-
-
-.button{
-    background-color: rgba(72, 162, 197, 0.795);
-    margin: 10px
-}
-
-
-.container {
-    width: 280px;
-    margin: 0 auto;
-    background-color: #fcfcfc;
-    padding: 20px 50px 40px;
-    box-shadow: 1px 4px 10px 1px #aaa;
-    font-family: sans-serif;
-}
-
-.containerForm {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.contain {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.containerner h3 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #777;
-}
-
-.containerner label {
-    color: #777;
-    font-size: 0.8em;
-}
-
-.containerner input {
-    margin-bottom: 15px;
-}
-
-.inputsdsadas {
-    display: block;
-    height: 32px;
-    padding: 6px 6px;
-    width: 100%;
-    border: none;
-    background-color: #f3f3f3;
-}
-
-.errors {
-    color: red;
-    font-size: 0.8em;
-    margin-bottom: 15px;
-    text-align: center;
-}
 

@@ -14,7 +14,12 @@ import {
    DELETE_CART_PRODUCT,
    GET_FAVORITE_PRODUCTS,
    DELETE_FAVORITE_PRODUCT,
-   ERROR
+   ERROR,
+   CLEAR_ERROR,
+   GET_USER,
+   REVIEWS_FILTER, 
+   GET_ALL_USERS,
+   DASHBOARD_USER_FILTER
 } from "../actions"
 
 const initialState = {
@@ -27,7 +32,10 @@ const initialState = {
    productDetails: {},
    favoriteProducts: [],
    errors: {},
-   userAuth: {}
+   userAuth: {},
+   localUser: {},
+   allUsers: [],
+   allUsersBackup: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -103,6 +111,7 @@ const rootReducer = (state = initialState, action) => {
             productDetails: action.payload
          }
       case CLEAR_PRODUCT_DETAILS:
+         console.log("Product details payload: ", action.payload)
          return {
             ...state,
             productDetails: {}
@@ -192,6 +201,44 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             errors: action.payload
          }
+      case CLEAR_ERROR: 
+         return {
+            ...state,
+            errors: {}
+         }
+      case GET_USER: 
+         return {
+            ...state,
+            localUser: action.payload
+         }
+         case REVIEWS_FILTER:
+            if (action.payload === "All") {
+               return {
+                  ...state,
+                  products: state.allProducts
+               }
+            }
+            const filteredReviews = state.allProducts.filter(e => e.reviews.length)
+            return {
+               ...state,
+               products: filteredReviews,
+               productsBackup: filteredReviews
+            }
+         case GET_ALL_USERS: 
+            return {
+               ...state,
+               allUsers: action.payload,
+               allUsersBackup: action.payload
+            }
+         case DASHBOARD_USER_FILTER:
+            const filteredUsers = action.payload === "All" ? state.allUsersBackup
+            : action.payload === "Banned" ? state.allUsersBackup.filter(e => e.isBanned)
+              : state.allUsersBackup.filter(e => !e.isBanned)
+   
+            return {
+               ...state,
+               allUsers: filteredUsers
+            }
       default:
          return initialState
    }

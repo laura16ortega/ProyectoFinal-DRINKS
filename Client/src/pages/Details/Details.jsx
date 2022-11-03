@@ -8,13 +8,16 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Reviews from "../../components/Reviews/Reviews";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { clearProductDetails, getProductDetails, addProductToCart } from "../../redux/actions";
+import { clearProductDetails, getProductDetails, addProductToCart, clearErrors } from "../../redux/actions";
+import { priceWithCommas } from "../../assets/helpers"
+import { useReducer } from "react";
 
 function Details() {
 
    const { id } = useParams();
    const dispatch = useDispatch()
    const product = useSelector(state => state.productDetails)
+   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
    const cart = useSelector(state => state.cart)
    const qty = useSelector(state => state.qtyToAdd)
    console.log(cart)
@@ -80,8 +83,9 @@ function Details() {
       window.scrollTo(0, 0)
       return () => {
          dispatch(clearProductDetails())
+         dispatch(clearErrors())
       }
-   }, [dispatch, id])
+   }, [dispatch, id, reducerValue])
 
 
    // console.log(React.Children.toArray())
@@ -103,10 +107,10 @@ function Details() {
                <div>
                   <div className={s.rightData}>
                      <div className={s.title}>
-                        <h3 style={{ fontSize: "35px  " }}>{product.name}</h3>
+                        <h3 style={{ fontSize: "35px  ", margin: "35px 0" }}>{product.name}</h3>
                      </div>
                      <div className={s.price}>
-                        <p style={{fontSize: "30px"}}>{`$${product.price}`}</p>
+                        <p style={{fontSize: "30px", margin: "30px 0"}}>{`$${priceWithCommas(product.price)}`}</p>
                      </div>
                      <div className={s.rating}>
                         <Rating
@@ -125,13 +129,13 @@ function Details() {
 
                            <h2>Description</h2>
 
-                           {product.description? product.description : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                           <span>{product.description? product.description : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                            enim ad minim veniam, quis nostrud exercitation ullamco laboris
                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
                            reprehenderit in voluptate velit esse cillum dolore eu fugiat
                            nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                           sunt in culpa qui officia deserunt mollit anim id est laborum.`}
+                           sunt in culpa qui officia deserunt mollit anim id est laborum.`}</span>
                      </div>
 
                      <div  className={s.amount}>
@@ -145,7 +149,7 @@ function Details() {
                         <h2 className={s.reviewsHeader}>
                            Reviews
                         </h2>
-                           <Reviews />
+                           <Reviews forceUpdate={forceUpdate}/>
                      </div> 
 
                   </div>

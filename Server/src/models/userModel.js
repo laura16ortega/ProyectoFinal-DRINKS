@@ -9,6 +9,8 @@ const userSchema = mongoose.Schema(
     },
     image: {
       type: String,
+      required: true,
+      default: "https://cdn-icons-png.flaticon.com/512/1053/1053244.png?w=360",
     },
     email: {
       type: String,
@@ -24,6 +26,7 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isBanned: { type: Boolean, required: true, default: false },
     phone_number: {
       type: Number,
       required: true,

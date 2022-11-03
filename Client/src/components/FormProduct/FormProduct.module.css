@@ -1,0 +1,171 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.wrapper {
+    background-color: #3C4048;
+    display: flex;
+    align-items: center;
+}
+
+.previewDivider {
+    margin: 4rem;
+}
+
+.previewContainer {
+    padding: 1rem;
+    background-color: #EAEAEA;
+    max-width: 242px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    word-break: break-all;
+}
+
+.previewImageContainer {
+    border: 1px solid #2e2e2e;
+    width: 210px;
+    height: 246px;
+}
+
+.previewContainer img {
+    width: 210px;
+    height: 246px;
+    object-fit: cover;
+}
+
+.previewData {
+    color: #1A1A1A
+}
+
+.previewData h2 {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+}
+
+.previewData h3 {
+    margin: 0.3rem 0;
+    font-size: large;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.onlyRow {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.onlyRow textarea {
+    border: none;
+    resize: none;
+    padding: 10px;
+}
+
+.onlyRow textarea:focus {
+    outline: none;
+    background-color: #2e2e2e;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3px;
+}
+
+.formInput label {
+    margin-bottom: 3px;
+}
+
+.formInput input {
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 12px;
+    text-align: center;
+}
+
+.formInput input:focus {
+    background-color: #2e2e2e;
+}
+
+.formInput button {
+    background-color: #2e2e2e;
+    border-radius: 5px;
+    transition: 0.7s ease;
+}
+
+.formInput button:hover {
+    border-color: transparent;
+    background-color: #B2B2B2;
+}
+
+.radioContainer {
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    display: inline-block;
+    padding: 5px;
+    background-color: #3B3B3B;
+}
+
+.radioLabel {
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    margin: 0 3px;
+    padding: 0;
+    text-align: center;
+    width: 80px;
+    transition: .3s all ease-in-out;
+}
+
+.rangeOn {
+    cursor: pointer;
+    background-color: #815B5B;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    margin: 0 3px;
+    padding: 0;
+    text-align: center;
+    width: 80px;
+}
+
+.submitButton {
+    width: 100%;
+    background-color: #2e2e2e;
+    border-radius: 5px;
+    transition: 0.5s ease;
+}
+
+.submitButton:hover {
+    border-color: transparent;
+    background-color: #1B1A17;
+}
+
+.errors {
+    color: #F96666;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
