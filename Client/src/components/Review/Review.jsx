@@ -3,17 +3,15 @@ import s from './Review.module.css';
 import userPhoto from '../../assets/img/user.png';
 import { Rating } from 'react-simple-star-rating';
 import deleteCross from "../../assets/img/redCross.png"
+import { useDispatch } from 'react-redux';
+import { token } from "../../assets/helpers"
+import { useParams } from 'react-router-dom';
 
-function Review({ id, username, userImage, comment, rating }) {
-
-    const handleDelete = (id) => {
-        //dispatch delete comment
-    }
+function Review({ username, userImage, comment, rating }) {
 
     return (
         <>
             <div className={s.body}>
-                <img className={s.deleteCross} src={deleteCross} alt="X" onClick={() => handleDelete(id)}/> {/* get jwt, mostrar solo si el user es admin */}
                 <div className={s.usernameBody}>
                     <img className={s.img} alt='user photo' src={userImage ? userImage : userPhoto} />
                     <p className={s.username}>{username}</p>
