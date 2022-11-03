@@ -393,7 +393,7 @@ export const dashboardUsersFilter = (payload) => {
    }
 }
 
-export const deleteReview = (token, productId) => {
+/* export const deleteReview = (token, productId) => {
    return async (dispatch) => {
       try {
          const data = await axios.delete(
@@ -406,7 +406,7 @@ export const deleteReview = (token, productId) => {
          console.log("Delete review error: ", err)
       }
    }
-}
+} */
 
 /*
 
