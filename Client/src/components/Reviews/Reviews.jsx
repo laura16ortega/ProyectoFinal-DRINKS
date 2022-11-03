@@ -29,14 +29,14 @@ function Reviews({forceUpdate}) {
     console.log(localUser)
     const productReviews = product.reviews
 
-    const setData = () => {
+    /*const setData = () => {
         setReview({
             ...review,
             userId: isAuthenticated ? user.email : localUser._id,
             userImage: isAuthenticated ? user.picture : localUser.image,
             name: isAuthenticated ? user.name : localUser.fullName
         })
-    } 
+    } */
 
     useEffect(() => {
         dispatch(getUser(token))
@@ -48,7 +48,7 @@ function Reviews({forceUpdate}) {
     }, [review.rating])
 
 
-    }, [review])
+    
     const setData = () => {
         setReview({
             ...review,
@@ -133,7 +133,7 @@ function Reviews({forceUpdate}) {
         })
     }
 
-
+    /*
     const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     const obj = [{
